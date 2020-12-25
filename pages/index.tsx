@@ -1,9 +1,11 @@
-import { Typography } from '@material-ui/core'
 import Head from 'next/head'
+import MyAppBar from '../lib/components/AppBar'
+import AppContainer, { AppContainerTypes } from '../lib/components/AppContainer'
+import HideOnScroll from '../lib/components/HideOnScroll'
 
 const Home: React.FC = () => {
   return (
-    <div>
+    <AppContainer type={AppContainerTypes.Page}>
       <Head>
         <title>ReadyAnot</title>
         <link rel="icon" href="/favicon.ico" />
@@ -14,11 +16,13 @@ const Home: React.FC = () => {
       </Head>
 
       <main>
-        <Typography variant="h1">Hello</Typography>
+        <HideOnScroll>
+          <MyAppBar />
+        </HideOnScroll>
       </main>
 
       <footer></footer>
-    </div>
+    </AppContainer>
   )
 }
 

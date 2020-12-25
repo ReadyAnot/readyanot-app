@@ -1,7 +1,22 @@
-import { createMuiTheme, responsiveFontSizes } from '@material-ui/core'
+import { createMuiTheme, responsiveFontSizes, Theme } from '@material-ui/core'
 
-export const theme = createMuiTheme()
+const theme = responsiveFontSizes(
+  createMuiTheme({
+    typography: {
+      button: {
+        textTransform: 'none',
+      },
+    },
+    overrides: {
+      MuiButton: {
+        root: {
+          textTransform: 'none',
+        },
+      },
+    },
+  })
+)
 
-export const responsiveTheme = responsiveFontSizes(theme)
+theme.shadows = ([] as unknown) as Theme['shadows']
 
-export default responsiveTheme
+export default theme
