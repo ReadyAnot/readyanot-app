@@ -2,29 +2,17 @@ import { Container, makeStyles } from '@material-ui/core'
 
 const useStyles = makeStyles({
   container: {
-    alignItems: 'center',
-    display: 'flex',
-    justifyContent: 'center',
-    minHeight: '100vh',
+    minHeight: '200vh',
   },
 })
 
-export enum AppContainerTypes {
-  Nav,
-  Page,
-}
-
-export type AppContainerProps = {
-  type: AppContainerTypes
-}
-
-const AppContainer: React.FC<AppContainerProps> = ({ type, children }) => {
+const PageContainer: React.FC = ({ children }) => {
   const classes = useStyles()
-  const baseContainer = <Container maxWidth="lg">{children}</Container>
-  if (type === AppContainerTypes.Page) {
-    return <div className={classes.container}>{baseContainer}</div>
-  }
-  return baseContainer
+  return <div className={classes.container}>{children}</div>
 }
 
-export default AppContainer
+export const ComponentContainer: React.FC = ({ children }) => (
+  <Container maxWidth="lg">{children}</Container>
+)
+
+export default PageContainer

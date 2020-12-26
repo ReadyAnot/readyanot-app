@@ -1,7 +1,6 @@
 import { AppBar, Button, makeStyles, Toolbar } from '@material-ui/core'
 import Link from 'next/link'
-import AppContainer, { AppContainerTypes } from './AppContainer'
-import HideOnScroll from './HideOnScroll'
+import { ComponentContainer } from './AppContainer'
 
 const useStyles = makeStyles({
   toolBar: {
@@ -25,30 +24,28 @@ const MyAppBar: React.FC = () => {
   const classes = useStyles()
 
   return (
-    <HideOnScroll>
-      <AppBar color="transparent">
-        <AppContainer type={AppContainerTypes.Nav}>
-          <Toolbar className={classes.toolBar}>
-            <Link href="/">
-              <a>
-                <img src="/ready-anot-logo.png" draggable={false} />
-              </a>
-            </Link>
-            <div className={classes.buttonGroup}>
-              <Button size="large" variant="text">
-                Stage
-              </Button>
-              <Button size="large" variant="text">
-                Forum
-              </Button>
-              <Button size="large" variant="contained" color="primary">
-                Login
-              </Button>
-            </div>
-          </Toolbar>
-        </AppContainer>
-      </AppBar>
-    </HideOnScroll>
+    <AppBar position="static" color="transparent">
+      <ComponentContainer>
+        <Toolbar className={classes.toolBar}>
+          <Link href="/">
+            <a>
+              <img src="/ready-anot-logo.png" draggable={false} />
+            </a>
+          </Link>
+          <div className={classes.buttonGroup}>
+            <Button size="large" variant="text">
+              Stage
+            </Button>
+            <Button size="large" variant="text">
+              Forum
+            </Button>
+            <Button size="large" variant="contained" color="primary">
+              Login
+            </Button>
+          </div>
+        </Toolbar>
+      </ComponentContainer>
+    </AppBar>
   )
 }
 

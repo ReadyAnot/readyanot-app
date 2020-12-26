@@ -1,4 +1,4 @@
-import { createMuiTheme, responsiveFontSizes, Theme } from '@material-ui/core'
+import { createMuiTheme, responsiveFontSizes } from '@material-ui/core'
 import { Shadows } from '@material-ui/core/styles/shadows'
 
 // Theme colors.
@@ -13,6 +13,11 @@ export const DeepPurple = '#3e2874'
 // Text colors.
 export const PurpleTingedGrey = '#283747'
 export const Cloud = '#F3F3F3'
+
+// Canvas colors.
+export const LandingPageCanvas = '#d5cbcb'
+
+const defaultTheme = createMuiTheme()
 
 const theme = responsiveFontSizes(
   createMuiTheme({
@@ -94,8 +99,8 @@ const theme = responsiveFontSizes(
           textTransform: 'none',
         },
         contained: {
-          minHeight: 42,
-          minWidth: 95,
+          minHeight: 35,
+          minWidth: 85,
         },
         containedPrimary: {
           backgroundColor: BrightRed,
@@ -106,15 +111,23 @@ const theme = responsiveFontSizes(
         containedSizeLarge: {
           fontSize: '1.025rem',
           fontWeight: 600,
-        },
-        text: {
           minHeight: 42,
+          minWidth: 95,
         },
         textSizeLarge: {
           fontSize: '1.025rem',
           fontWeight: 500,
+          minHeight: 42,
           paddingLeft: '1.25rem',
           paddingRight: '1.25rem',
+        },
+      },
+      MuiToolbar: {
+        gutters: {
+          [defaultTheme.breakpoints.up('sm')]: {
+            paddingLeft: 0,
+            paddingRight: 0,
+          },
         },
       },
     },

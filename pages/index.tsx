@@ -1,11 +1,11 @@
 import Head from 'next/head'
 import MyAppBar from '../lib/components/AppBar'
-import AppContainer, { AppContainerTypes } from '../lib/components/AppContainer'
-import HideOnScroll from '../lib/components/HideOnScroll'
+import PageContainer from '../lib/components/AppContainer'
+import LandingPage from '../lib/components/LandingPage'
 
 const Home: React.FC = () => {
   return (
-    <AppContainer type={AppContainerTypes.Page}>
+    <PageContainer>
       <Head>
         <title>ReadyAnot</title>
         <link rel="icon" href="/favicon.ico" />
@@ -16,13 +16,12 @@ const Home: React.FC = () => {
       </Head>
 
       <main>
-        <HideOnScroll>
-          <MyAppBar />
-        </HideOnScroll>
+        <MyAppBar />
+        <LandingPage />
       </main>
 
       <footer></footer>
-    </AppContainer>
+    </PageContainer>
   )
 }
 
