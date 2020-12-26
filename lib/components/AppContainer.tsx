@@ -2,7 +2,9 @@ import { Container, makeStyles } from '@material-ui/core'
 
 const useStyles = makeStyles({
   container: {
+    position: 'relative',
     minHeight: '100vh',
+    paddingBottom: 153,
   },
 })
 

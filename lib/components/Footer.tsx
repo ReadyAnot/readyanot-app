@@ -8,6 +8,7 @@ const useStyles = makeStyles({
   footer: {
     backgroundColor: FooterCanvas,
     bottom: 0,
+    height: 153,
     padding: '4rem',
     position: 'absolute',
     width: '100%',
