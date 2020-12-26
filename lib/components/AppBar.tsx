@@ -1,18 +1,19 @@
 import { AppBar, Button, makeStyles, Toolbar } from '@material-ui/core'
+import Link from 'next/link'
 import AppContainer, { AppContainerTypes } from './AppContainer'
 import HideOnScroll from './HideOnScroll'
 
 const useStyles = makeStyles({
   toolBar: {
-    minHeight: 120,
+    minHeight: 200,
     '& img': {
-      maxHeight: 80,
+      maxHeight: 120,
     },
   },
   buttonGroup: {
     marginLeft: 'auto',
     '& button': {
-      marginRight: '1rem',
+      marginRight: '1.25rem',
       '&:last-child': {
         marginRight: 'unset',
       },
@@ -28,7 +29,11 @@ const MyAppBar: React.FC = () => {
       <AppBar color="transparent">
         <AppContainer type={AppContainerTypes.Nav}>
           <Toolbar className={classes.toolBar}>
-            <img src="/ready-anot-logo.png" draggable={false} />
+            <Link href="/">
+              <a>
+                <img src="/ready-anot-logo.png" draggable={false} />
+              </a>
+            </Link>
             <div className={classes.buttonGroup}>
               <Button size="large" variant="text">
                 Stage
@@ -36,7 +41,7 @@ const MyAppBar: React.FC = () => {
               <Button size="large" variant="text">
                 Forum
               </Button>
-              <Button size="large" variant="text">
+              <Button size="large" variant="contained" color="primary">
                 Login
               </Button>
             </div>

@@ -1,9 +1,10 @@
 import { createMuiTheme, responsiveFontSizes, Theme } from '@material-ui/core'
+import { Shadows } from '@material-ui/core/styles/shadows'
 
 // Theme colors.
 export const LightRed = '#ff9ea7'
 export const BrightRed = '#de354c'
-export const DeepRed = '932432'
+export const DeepRed = '#932432'
 
 export const LightPurple = '#9d70d5'
 export const PurePurple = '#6c43a3'
@@ -89,13 +90,36 @@ const theme = responsiveFontSizes(
     overrides: {
       MuiButton: {
         root: {
+          borderRadius: 42,
           textTransform: 'none',
+        },
+        contained: {
+          minHeight: 42,
+          minWidth: 95,
+        },
+        containedPrimary: {
+          backgroundColor: BrightRed,
+          '&:hover': {
+            backgroundColor: DeepRed,
+          },
+        },
+        containedSizeLarge: {
+          fontSize: '1.025rem',
+          fontWeight: 600,
+        },
+        text: {
+          minHeight: 42,
+        },
+        textSizeLarge: {
+          fontSize: '1.025rem',
+          fontWeight: 500,
+          paddingLeft: '1.25rem',
+          paddingRight: '1.25rem',
         },
       },
     },
+    shadows: Array(25).fill('none') as Shadows,
   })
 )
-
-theme.shadows = ([] as unknown) as Theme['shadows']
 
 export default theme
