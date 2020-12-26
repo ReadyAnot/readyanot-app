@@ -1,14 +1,14 @@
-import {
-  AppBar,
-  Button,
-  makeStyles,
-  Toolbar,
-  Typography,
-} from '@material-ui/core'
+import { AppBar, Button, makeStyles, Toolbar } from '@material-ui/core'
 import AppContainer, { AppContainerTypes } from './AppContainer'
 import HideOnScroll from './HideOnScroll'
 
 const useStyles = makeStyles({
+  toolBar: {
+    minHeight: 120,
+    '& img': {
+      maxHeight: 80,
+    },
+  },
   buttonGroup: {
     marginLeft: 'auto',
     '& button': {
@@ -27,8 +27,8 @@ const MyAppBar: React.FC = () => {
     <HideOnScroll>
       <AppBar color="transparent">
         <AppContainer type={AppContainerTypes.Nav}>
-          <Toolbar>
-            <Typography variant="h6">ReadyAnot</Typography>
+          <Toolbar className={classes.toolBar}>
+            <img src="/ready-anot-logo.png" draggable={false} />
             <div className={classes.buttonGroup}>
               <Button size="large" variant="text">
                 Stage
