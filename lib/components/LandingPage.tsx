@@ -1,4 +1,5 @@
 import { Button, makeStyles, Typography } from '@material-ui/core'
+import Link from 'next/link'
 import { LightCanvas } from '../styles/theme'
 import { ComponentContainer } from './AppContainer'
 
@@ -34,10 +35,14 @@ const LandingPage: React.FC = () => {
           <div className={classes.landingPageDescription}>
             <Typography variant="h1">{'New to ReadyAnot?'}</Typography>
             <div className={classes.landingPageAction}>
-              <Typography variant="subtitle1">{'Try our Privilege Test?'}</Typography>
-              <Button size="large" variant="contained" color="secondary">
-                {'Take it now'}
-              </Button>
+              <Typography variant="subtitle1">
+                {'Try our Privilege Test?'}
+              </Typography>
+              <Link href="/privilege-test">
+                <Button size="large" variant="contained" color="secondary">
+                  {'Take it now'}
+                </Button>
+              </Link>
             </div>
           </div>
           <img src="/landing-page-graphic.svg" draggable={false} />
