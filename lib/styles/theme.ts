@@ -15,7 +15,9 @@ export const PurpleTingedGrey = '#283747'
 export const Cloud = '#F3F3F3'
 
 // Canvas colors.
-export const LandingPageCanvas = '#d5cbcb'
+export const LightCanvas = '#e5dfdf'
+export const DarkCanvas = '#d5cbcb'
+export const FooterCanvas = '#6a6565'
 
 const defaultTheme = createMuiTheme()
 

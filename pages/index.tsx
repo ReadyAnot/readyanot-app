@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import MyAppBar from '../lib/components/AppBar'
 import PageContainer from '../lib/components/AppContainer'
+import MyFooter from '../lib/components/Footer'
 import LandingPage from '../lib/components/LandingPage'
 
 const Home: React.FC = () => {
@@ -20,7 +21,7 @@ const Home: React.FC = () => {
         <LandingPage />
       </main>
 
-      <footer></footer>
+      <MyFooter />
     </PageContainer>
   )
 }

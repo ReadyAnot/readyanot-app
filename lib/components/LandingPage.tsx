@@ -1,10 +1,10 @@
 import { Button, makeStyles, Typography } from '@material-ui/core'
-import { LandingPageCanvas } from '../styles/theme'
+import { LightCanvas } from '../styles/theme'
 import { ComponentContainer } from './AppContainer'
 
 const useStyles = makeStyles({
   landingPage: {
-    backgroundColor: LandingPageCanvas,
+    backgroundColor: LightCanvas,
     padding: '4rem',
     width: '100%',
   },
@@ -34,9 +34,7 @@ const LandingPage: React.FC = () => {
           <div className={classes.landingPageDescription}>
             <Typography variant="h1">{'New to ReadyAnot?'}</Typography>
             <div className={classes.landingPageAction}>
-              <Typography variant="h5">
-                {'Try our Privilege Test?'}
-              </Typography>
+              <Typography variant="subtitle1">{'Try our Privilege Test?'}</Typography>
               <Button size="large" variant="contained" color="secondary">
                 {'Take it now'}
               </Button>

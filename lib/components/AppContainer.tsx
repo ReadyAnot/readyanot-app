@@ -2,7 +2,7 @@ import { Container, makeStyles } from '@material-ui/core'
 
 const useStyles = makeStyles({
   container: {
-    minHeight: '200vh',
+    minHeight: '100vh',
   },
 })
 
