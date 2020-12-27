@@ -13,7 +13,7 @@ import { ComponentContainer } from './AppContainer'
 export const useCopyRightHeight = () => {
   const theme = useTheme()
   const isLargeFooter = useMediaQuery(theme.breakpoints.up('md'))
-  return isLargeFooter ? 153 : 172
+  return isLargeFooter ? 153 : 184
 }
 
 type StyleProps = {
@@ -49,9 +49,6 @@ const useStyles = makeStyles((theme) => ({
   links: {
     '& p': {
       marginBottom: '0.25rem',
-      '&:last-child': {
-        marginBottom: 'unset',
-      },
     },
     [theme.breakpoints.up('sm')]: {
       alignItems: 'center',
