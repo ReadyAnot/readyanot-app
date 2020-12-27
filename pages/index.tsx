@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import MyAppBar from '../lib/components/AppBar'
 import PageContainer from '../lib/components/AppContainer'
+import AsSeenOn from '../lib/components/AsSeenOn'
 import MyFooter from '../lib/components/Footer'
 import LandingPage from '../lib/components/LandingPage'
 
@@ -18,6 +19,7 @@ const Home: React.FC = () => {
       <main>
         <MyAppBar />
         <LandingPage />
+        <AsSeenOn />
       </main>
 
       <MyFooter />
