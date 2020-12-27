@@ -16,19 +16,26 @@ import MyFooter from '../lib/components/Footer'
 import testQuestions from '../lib/resources/privilegeTest'
 import { LightCanvas } from '../lib/styles/theme'
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   testContent: {
     backgroundColor: LightCanvas,
-    padding: '4rem',
     width: '100%',
+    [theme.breakpoints.up('sm')]: {
+      padding: '4rem',
+    },
   },
   form: {
     marginTop: '1rem',
   },
   buttonRow: {
+    display: 'flex',
+    justifyContent: 'space-between',
     marginTop: '1.25rem',
     '& button': {
       marginRight: '2.5rem',
+      '&:last-child': {
+        marginRight: 'unset',
+      },
     },
   },
   scoreText: {
@@ -36,7 +43,15 @@ const useStyles = makeStyles({
     fontWeight: 700,
     margin: '1rem 0',
   },
-})
+  formControlLabel: {
+    margin: '9px 0',
+  },
+  checkbox: {
+    paddingTop: 0,
+    paddingBottom: 0,
+    paddingLeft: 0,
+  },
+}))
 
 const PrivilegeTest: React.FC = () => {
   const questionsInPage = 15
@@ -68,8 +83,10 @@ const PrivilegeTest: React.FC = () => {
           return (
             <FormControlLabel
               key={indexOffset + id}
+              className={classes.formControlLabel}
               control={
                 <Checkbox
+                  className={classes.checkbox}
                   checked={questionStates[indexOffset + id]}
                   onChange={(event) => {
                     questionStates[indexOffset + id] = event.target.checked
