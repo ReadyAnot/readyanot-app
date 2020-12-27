@@ -1,4 +1,4 @@
-import { Button, makeStyles, Typography } from '@material-ui/core'
+import { Button, Hidden, makeStyles, Typography } from '@material-ui/core'
 import Link from 'next/link'
 import { LightCanvas } from '../styles/theme'
 import { ComponentContainer } from './AppContainer'
@@ -6,6 +6,7 @@ import { ComponentContainer } from './AppContainer'
 const useStyles = makeStyles({
   landingPage: {
     backgroundColor: LightCanvas,
+    overflow: 'hidden',
     padding: '4rem',
     width: '100%',
   },
@@ -13,12 +14,14 @@ const useStyles = makeStyles({
     alignItems: 'center',
     display: 'flex',
     justifyContent: 'space-between',
+    '& img': {},
   },
   landingPageDescription: {},
   landingPageAction: {
     alignItems: 'center',
     display: 'flex',
     marginTop: '1.5rem',
+    minWidth: 400,
     '& button': {
       marginLeft: '1rem',
     },
@@ -45,7 +48,9 @@ const LandingPage: React.FC = () => {
               </Link>
             </div>
           </div>
-          <img src="/landing-page-graphic.svg" draggable={false} />
+          <Hidden smDown>
+            <img src="/landing-page-graphic.svg" draggable={false} />
+          </Hidden>
         </div>
       </ComponentContainer>
     </div>
