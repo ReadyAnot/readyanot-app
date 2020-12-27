@@ -71,7 +71,10 @@ const LandingPage: React.FC = () => {
             </div>
           </div>
           <Hidden smDown>
-            <img src="/landing-page-graphic.svg" draggable={false} />
+            <img
+              src="/assets/home/landing-page/landing-page-graphic.svg"
+              draggable={false}
+            />
           </Hidden>
         </div>
       </ComponentContainer>
