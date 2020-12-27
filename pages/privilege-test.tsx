@@ -7,7 +7,7 @@ import {
   Typography,
 } from '@material-ui/core'
 import Head from 'next/head'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import MyAppBar from '../lib/components/AppBar'
 import PageContainer, {
   ComponentContainer,
@@ -148,6 +148,10 @@ const PrivilegeTest: React.FC = () => {
       </Button>
     </ComponentContainer>
   )
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [page])
 
   return (
     <PageContainer>
