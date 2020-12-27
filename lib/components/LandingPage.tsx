@@ -39,6 +39,9 @@ const useStyles = makeStyles((theme) => ({
       alignItems: 'center',
       display: 'flex',
       marginTop: '1.5rem',
+      '& h6': {
+        marginTop: 'unset',
+      },
       '& button': {
         marginTop: 'unset',
         marginLeft: '1rem',
