@@ -1,50 +1,87 @@
-import { makeStyles, Typography } from '@material-ui/core'
+import {
+  Hidden,
+  makeStyles,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from '@material-ui/core'
 import Link from 'next/link'
 import React from 'react'
 import { FooterCanvas } from '../styles/theme'
 import { ComponentContainer } from './AppContainer'
 
-const useStyles = makeStyles({
+export const useCopyRightHeight = () => {
+  const theme = useTheme()
+  const isLargeFooter = useMediaQuery(theme.breakpoints.up('md'))
+  return isLargeFooter ? 153 : 172
+}
+
+type StyleProps = {
+  footerHeight: number
+}
+
+const useStyles = makeStyles((theme) => ({
   footer: {
     backgroundColor: FooterCanvas,
     bottom: 0,
-    height: 153,
-    padding: '4rem',
+    height: (props: StyleProps) => props.footerHeight,
+    overflow: 'hidden',
     position: 'absolute',
     width: '100%',
     '& a': {
       textDecoration: 'none',
     },
+    [theme.breakpoints.up('sm')]: {
+      display: 'flex',
+      alignItems: 'center',
+    },
   },
   footerContent: {
     alignItems: 'center',
-    display: 'flex',
     justifyContent: 'space-between',
+    [theme.breakpoints.up('md')]: {
+      display: 'flex',
+    },
   },
   divider: {
     margin: '0 1rem',
   },
   links: {
-    alignItems: 'center',
-    display: 'flex',
+    '& p': {
+      marginBottom: '0.25rem',
+      '&:last-child': {
+        marginBottom: 'unset',
+      },
+    },
+    [theme.breakpoints.up('sm')]: {
+      alignItems: 'center',
+      display: 'flex',
+      '& p': {
+        marginBottom: 'unset',
+      },
+    },
   },
   copyright: {
     fontWeight: 400,
+    marginTop: '0.75rem',
     opacity: 0.7,
   },
-})
+}))
 
 const MyFooter: React.FC = () => {
-  const classes = useStyles()
+  const footerHeight = useCopyRightHeight()
+  const classes = useStyles({ footerHeight })
 
   const Divider = () => (
-    <Typography
-      className={classes.divider}
-      variant="body2"
-      color="textSecondary"
-    >
-      {'|'}
-    </Typography>
+    <Hidden xsDown>
+      <Typography
+        className={classes.divider}
+        variant="body2"
+        color="textSecondary"
+      >
+        {'|'}
+      </Typography>
+    </Hidden>
   )
 
   return (
@@ -90,7 +127,7 @@ const MyFooter: React.FC = () => {
               color="textSecondary"
               className={classes.copyright}
             >
-              {`© Copyright ${new Date().getFullYear()} ReadyAnot. All Rights Reserved.`}
+              {`© Copyright ${new Date().getFullYear()} ReadyAnot`}
             </Typography>
           </div>
         </div>

@@ -1,12 +1,18 @@
-import { AppBar, Button, makeStyles, Toolbar } from '@material-ui/core'
+import { AppBar, Button, Hidden, makeStyles, Toolbar } from '@material-ui/core'
 import Link from 'next/link'
 import { ComponentContainer } from './AppContainer'
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   toolBar: {
-    minHeight: 200,
+    padding: 0,
     '& img': {
-      maxHeight: 120,
+      maxHeight: 90,
+    },
+    [theme.breakpoints.up('sm')]: {
+      minHeight: 200,
+      '& img': {
+        maxHeight: 120,
+      },
     },
   },
   buttonGroup: {
@@ -18,7 +24,7 @@ const useStyles = makeStyles({
       },
     },
   },
-})
+}))
 
 const MyAppBar: React.FC = () => {
   const classes = useStyles()
@@ -33,12 +39,14 @@ const MyAppBar: React.FC = () => {
             </a>
           </Link>
           <div className={classes.buttonGroup}>
-            <Button size="large" variant="text">
-              Stage
-            </Button>
-            <Button size="large" variant="text">
-              Forum
-            </Button>
+            <Hidden xsDown>
+              <Button size="large" variant="text">
+                Stage
+              </Button>
+              <Button size="large" variant="text">
+                Forum
+              </Button>
+            </Hidden>
             <Button size="large" variant="contained" color="primary">
               Login
             </Button>

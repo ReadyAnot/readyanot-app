@@ -1,20 +1,37 @@
 import { Container, makeStyles } from '@material-ui/core'
+import { useCopyRightHeight } from './Footer'
 
-const useStyles = makeStyles({
-  container: {
+type StyleProps = {
+  footerHeight: number
+}
+
+const usePageStyles = makeStyles({
+  pageContainer: {
     position: 'relative',
     minHeight: '100vh',
-    paddingBottom: 153,
+    paddingBottom: (props: StyleProps) => props.footerHeight,
   },
 })
 
 const PageContainer: React.FC = ({ children }) => {
-  const classes = useStyles()
-  return <div className={classes.container}>{children}</div>
+  const footerHeight = useCopyRightHeight()
+  const classes = usePageStyles({ footerHeight })
+  return <div className={classes.pageContainer}>{children}</div>
 }
 
-export const ComponentContainer: React.FC = ({ children }) => (
-  <Container maxWidth="lg">{children}</Container>
-)
+const useComponentStyles = makeStyles({
+  componentContainer: {
+    padding: '1.25rem 2rem',
+  },
+})
+
+export const ComponentContainer: React.FC = ({ children }) => {
+  const classes = useComponentStyles()
+  return (
+    <Container className={classes.componentContainer} maxWidth="lg">
+      {children}
+    </Container>
+  )
+}
 
 export default PageContainer
