@@ -1,0 +1,3 @@
+mutation logLabelData($label: String!, $data: String!) {
+  logLabelData(label: $label, data: $data)
+}
