@@ -136,7 +136,7 @@ const PrivilegeTest: React.FC = () => {
     <ComponentContainer>
       <Typography variant="h2">{'Your Privilege Score:'}</Typography>
       <Typography className={classes.scoreText}>
-        {questionStates.filter((el) => !Boolean(el)).length}
+        {questionStates.filter((el) => Boolean(el)).length}
       </Typography>
       <Button
         onClick={clearQuestionStates}
