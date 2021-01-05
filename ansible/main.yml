@@ -21,10 +21,10 @@
         is_ci: "{{ lookup('env', 'CI') | default(false, True) }}"
 
     - name: install dependencies
-      shell: yarn install --frozen-lockfile
+      shell: npm ci
 
     - name: test build application
-      shell: yarn build
+      shell: npm run build
 
     - name: build and tag docker image
       shell: |
