@@ -1,4 +1,4 @@
-FROM node:current-alpine AS base
+FROM node:12-alpine AS base
 WORKDIR /base
 COPY package.json yarn.lock ./
 RUN yarn install --frozen-lockfile
@@ -10,7 +10,7 @@ WORKDIR /build
 COPY --from=base /base ./
 RUN yarn build
 
-FROM node:current-alpine AS production
+FROM node:12-alpine AS production
 ENV NODE_ENV=production
 WORKDIR /app
 COPY --from=build /build/package.json /build/yarn.lock ./
