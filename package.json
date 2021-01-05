@@ -9,7 +9,8 @@
     "start": "next start",
     "export": "next export",
     "gen": "graphql-codegen --config codegen.yml",
-    "image": "bash scripts/docker-push.sh"
+    "image": "bash scripts/docker-push.sh",
+    "env": "bash scripts/get-env.sh"
   },
   "dependencies": {
     "@apollo/client": "^3.3.6",
