@@ -8,7 +8,8 @@
     "build": "next build",
     "start": "next start",
     "export": "next export",
-    "gen": "graphql-codegen --config codegen.yml"
+    "gen": "graphql-codegen --config codegen.yml",
+    "image": "bash scripts/docker-push.sh"
   },
   "dependencies": {
     "@apollo/client": "^3.3.6",
@@ -16,6 +17,7 @@
     "@material-ui/icons": "^4.11.2",
     "@prisma/client": "^2.13.1",
     "apollo-server-micro": "^2.19.1",
+    "aws-sdk": "^2.821.0",
     "graphql": "^15.4.0",
     "graphql-tag": "^2.11.0",
     "next": "10.0.4",
