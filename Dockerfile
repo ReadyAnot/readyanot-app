@@ -16,6 +16,7 @@ WORKDIR /app
 COPY --from=build /build/package.json /build/package-lock.json ./
 COPY --from=build /build/.next ./.next
 COPY --from=build /build/public ./public
+RUN sh get-env.sh
 RUN npm install next
 
 EXPOSE 3000
