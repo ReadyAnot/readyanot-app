@@ -1,29 +1,21 @@
 FROM node:12-alpine
 
-RUN mkdir -p /usr/src
+RUN mkdir -p /usr/src/app
 
-WORKDIR /usr/src
+ENV PORT 3000
 
-COPY . /usr/src
+WORKDIR /usr/src/app
 
-RUN npm install
+COPY package.json /usr/src/app
+
+COPY package-lock.json /usr/src/app
+
+RUN npm install --production
+
+COPY . /usr/src/app
 
 RUN npm run build
 
-RUN apk add --no-cache jq
-
-RUN apk add --no-cache \
-  python3 \
-  py3-pip \
-  && pip3 install --upgrade pip \
-  && pip3 install \
-  awscli \
-  && rm -rf /var/cache/apk/*
-
-RUN aws --version
-
-RUN sh get-env.sh
-
 EXPOSE 3000
 
-CMD npm run start
+CMD [ "npm", "start" ]
