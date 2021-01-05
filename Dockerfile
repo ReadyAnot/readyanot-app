@@ -9,7 +9,15 @@ ENV NODE_ENV=production
 WORKDIR /build
 COPY --from=base /base ./
 RUN npm run build
-RUN apk add --no-cache jq awscli
+RUN apk add --no-cache jq
+RUN apk add --no-cache \
+  python3 \
+  py3-pip \
+  && pip3 install --upgrade pip \
+  && pip3 install \
+  awscli \
+  && rm -rf /var/cache/apk/*
+RUN aws --version
 RUN sh get-env.sh
 
 FROM node:12-alpine AS production
