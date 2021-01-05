@@ -1,15 +1,17 @@
-FROM node:12-alpine AS base
-WORKDIR /base
-COPY package.json package-lock.json ./
-RUN npm ci
-COPY . .
+FROM node:12-alpine
 
-FROM base AS build
-ENV NODE_ENV=production
-WORKDIR /build
-COPY --from=base /base ./
+RUN mkdir -p /usr/src
+
+WORKDIR /usr/src
+
+COPY . /usr/src
+
+RUN npm install
+
 RUN npm run build
+
 RUN apk add --no-cache jq
+
 RUN apk add --no-cache \
   python3 \
   py3-pip \
@@ -17,17 +19,11 @@ RUN apk add --no-cache \
   && pip3 install \
   awscli \
   && rm -rf /var/cache/apk/*
+
 RUN aws --version
+
 RUN sh get-env.sh
 
-FROM node:12-alpine AS production
-ENV NODE_ENV=production
-WORKDIR /app
-COPY --from=build /build/package.json /build/package-lock.json ./
-COPY --from=build /build/.next ./.next
-COPY --from=build /build/public ./public
-COPY --from=build /build/.env ./.env
-RUN npm install next
-
 EXPOSE 3000
+
 CMD npm run start

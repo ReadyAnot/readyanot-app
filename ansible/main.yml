@@ -35,3 +35,4 @@
       shell: |
         docker login -u AWS -p $(aws ecr get-login-password --region ap-southeast-1) {{ aws_ecr_url }}
         docker push {{ aws_ecr_url }}/{{ app_name }}
+      when: is_ci
