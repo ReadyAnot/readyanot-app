@@ -1,8 +1,8 @@
 {
   "AWSEBDockerrunVersion": "1",
   "Image": {
-    "Name": "363599773651.dkr.ecr.ap-southeast-1.amazonaws.com/readyanot-app",
-    "Update": "true"
+    "Name": "363599773651.dkr.ecr.ap-southeast-1.amazonaws.com/readyanot-app:latest",
+    "Update": "false"
   },
   "Ports": [
     {
