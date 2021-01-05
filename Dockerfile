@@ -9,6 +9,7 @@ ENV NODE_ENV=production
 WORKDIR /build
 COPY --from=base /base ./
 RUN npm run build
+RUN apk update && apk add jq
 RUN sh get-env.sh
 
 FROM node:12-alpine AS production
