@@ -58,7 +58,7 @@
     - name: build and tag docker image
       shell: |
         cd {{ home_dir }}
-        docker build -t {{ app_name }} -f ansible/Dockerfile
+        docker build -t {{ app_name }} -f ansible/Dockerfile .
         docker tag {{ app_name }} {{ aws_ecr_url }}/{{ app_name }}
 
     - name: push docker image to ecr
