@@ -51,18 +51,26 @@
 
     - name: test build application
       shell: npm run build
+      args:
+        executable: /bin/bash
 
     - name: build and tag docker image
       shell: |
         docker build -t {{ app_name }} .
         docker tag {{ app_name }} {{ aws_ecr_url }}/{{ app_name }}
+      args:
+        executable: /bin/bash
 
     - name: push docker image to ecr
       shell: |
         docker login -u AWS -p $(aws ecr get-login-password --region ap-southeast-1) {{ aws_ecr_url }}
         docker push {{ aws_ecr_url }}/{{ app_name }}
+      args:
+        executable: /bin/bash
       when: is_ci and is_deploy
 
     - name: deploy to elastic beanstalk
       shell: eb deploy
+      args:
+        executable: /bin/bash
       when: is_ci and is_deploy
