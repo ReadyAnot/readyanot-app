@@ -1,12 +1,39 @@
 ---
 - hosts: localhost
   gather_facts: false
+
   vars:
+    # Notable branches
+    dev_branch: dev
+    prod_branch: main
+
+    # Essential variables
     app_name: readyanot-app
     aws_ecr_url: 363599773651.dkr.ecr.ap-southeast-1.amazonaws.com
     home_dir: ..
 
+    # Variables for templating
+    env_long: "{{ 'development' if (branch_name != prod_branch) else 'production' }}"
+    env_short: "{{ 'dev' if (branch_name != prod_branch) else 'prod' }}"
+
+    # Deployment information
+    branch_name: "{{ lookup('env', 'GITHUB_REF') | default('demo', True) | basename }}"
+    is_ci: "{{ lookup('env', 'CI') | default(false, True) }}"
+    is_deploy: '{{ branch_name == prod_branch or branch_name == dev_branch }}'
+
   tasks:
+    - name: print deployment information
+      vars:
+        msg: |
+          branch_name: {{ branch_name }}
+          is_ci: {{ is_ci }}
+          is_deploy: {{ is_deploy }}
+          env_long: {{ env_long }}
+          env_short: {{ env_short }}
+      debug:
+        msg: "{{ msg.strip().split('\n') }}"
+      tags: debug_info
+
     - name: fetch credentials into dot env files
       shell: |
         ReadyAnotPg=$(aws secretsmanager get-secret-value --secret-id $"prod/ReadyAnot/PostgreSQL" | jq -r ".SecretString")
@@ -14,14 +41,8 @@
         password=$(jq ".password" <<< $ReadyAnotPg | tr -d \")
         host=$(jq ".host" <<< $ReadyAnotPg | tr -d \")
         port=$(jq ".port" <<< $ReadyAnotPg | tr -d \")
-        rm -rf {{ home_dir }}/.env.development.local
-        rm -rf {{ home_dir }}/.env.production.local
-        echo DATABASE_URL=\"postgresql://$username:$password@$host:$port/readyanot-dev?schema=public\" >> {{ home_dir }}/.env.development.local
-        echo DATABASE_URL=\"postgresql://$username:$password@$host:$port/readyanot-prod?schema=public\" >> {{ home_dir }}/.env.production.local
-
-    - name: set environment facts
-      set_fact:
-        is_ci: "{{ lookup('env', 'CI') | default(false, True) }}"
+        rm -rf {{ home_dir }}/.env.*.local
+        echo DATABASE_URL=\"postgresql://$username:$password@$host:$port/readyanot-{{ env_short }}?schema=public\" >> {{ home_dir }}/.env.{{ env_long }}.local
 
     - name: install dependencies
       shell: npm ci
@@ -29,8 +50,7 @@
     - name: update database schemas
       shell: |
         cd {{ home_dir }}
-        dotenv -e .env.development.local -- prisma db push --preview-feature
-        dotenv -e .env.production.local -- prisma db push --preview-feature
+        dotenv -e .env.{{ env_long }}.local -- prisma db push --preview-feature
 
     - name: test build application
       shell: npm run build
@@ -44,6 +64,8 @@
       shell: |
         docker login -u AWS -p $(aws ecr get-login-password --region ap-southeast-1) {{ aws_ecr_url }}
         docker push {{ aws_ecr_url }}/{{ app_name }}
+      when: is_ci
 
     - name: deploy to elastic beanstalk
       shell: eb deploy
+      when: is_ci
