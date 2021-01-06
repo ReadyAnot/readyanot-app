@@ -12,42 +12,25 @@
     aws_ecr_url: 363599773651.dkr.ecr.ap-southeast-1.amazonaws.com
     home_dir: ..
 
-    # Variables for templating
-    env_long: "{{ 'development' if (branch_name != prod_branch) else 'production' }}"
-    env_short: "{{ 'dev' if (branch_name != prod_branch) else 'prod' }}"
-
     # Deployment information
     branch_name: "{{ lookup('env', 'GITHUB_REF') | default('demo', True) | basename }}"
     is_ci: "{{ lookup('env', 'CI') | default(false, True) }}"
     is_deploy: '{{ branch_name == prod_branch or branch_name == dev_branch }}'
 
   tasks:
+    - include_vars: vars/common.yml
+
     - name: print deployment information
       vars:
         msg: |
           branch_name: {{ branch_name }}
           is_ci: {{ is_ci }}
           is_deploy: {{ is_deploy }}
-          env_long: {{ env_long }}
-          env_short: {{ env_short }}
       debug:
         msg: "{{ msg.strip().split('\n') }}"
       tags: debug_info
 
-    - name: fetch credentials into dot env files
-      shell: |
-        ReadyAnotPg=$(aws secretsmanager get-secret-value --secret-id prod/ReadyAnot/PostgreSQL | jq -r ".SecretString")
-        username=$(jq ".username" <<< $ReadyAnotPg | tr -d \")
-        password=$(jq ".password" <<< $ReadyAnotPg | tr -d \")
-        host=$(jq ".host" <<< $ReadyAnotPg | tr -d \")
-        port=$(jq ".port" <<< $ReadyAnotPg | tr -d \")
-        rm -rf {{ home_dir }}/.env.*.local
-        echo DATABASE_URL=\"postgresql://$username:$password@$host:$port/readyanot-{{ env_short }}?schema=public\" >> {{ home_dir }}/.env.{{ env_long }}.local
-      args:
-        executable: /bin/bash
-
-    - name: install global dependencies
-      shell: npm install -g dotenv-cli @prisma/cli
+    - include_tasks: tasks/get-env.yml
 
     - name: install dependencies
       shell: npm ci

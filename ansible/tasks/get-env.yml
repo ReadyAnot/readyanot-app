@@ -1,0 +1,16 @@
+---
+- name: install global dependencies
+  shell: npm install -g dotenv-cli @prisma/cli
+
+- name: fetch credentials into dot env files
+  shell: |
+    ReadyAnotPg=$(aws secretsmanager get-secret-value --secret-id prod/ReadyAnot/PostgreSQL | jq -r ".SecretString")
+    username=$(jq ".username" <<< $ReadyAnotPg | tr -d \")
+    password=$(jq ".password" <<< $ReadyAnotPg | tr -d \")
+    host=$(jq ".host" <<< $ReadyAnotPg | tr -d \")
+    port=$(jq ".port" <<< $ReadyAnotPg | tr -d \")
+    rm -rf {{ home_dir }}/.env.*.local
+    echo DATABASE_URL=\"postgresql://$username:$password@$host:$port/readyanot-dev?schema=public\" >> {{ home_dir }}/{{ env_dev }}
+    echo DATABASE_URL=\"postgresql://$username:$password@$host:$port/readyanot-prod?schema=public\" >> {{ home_dir }}/{{ env_prod }}
+  args:
+    executable: /bin/bash

@@ -29,3 +29,11 @@ model UserRole {
 
   @@id([username, roleName])
 }
+
+model Log {
+  namespace String
+  topic     String
+  data      String
+
+  @@id([namespace, topic])
+}
