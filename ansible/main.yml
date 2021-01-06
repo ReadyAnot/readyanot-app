@@ -46,6 +46,9 @@
       args:
         executable: /bin/bash
 
+    - name: install global dependencies
+      shell: npm install -g dotenv-cli @prisma/cli
+
     - name: install dependencies
       shell: npm ci
 
@@ -69,4 +72,4 @@
 
     - name: deploy to elastic beanstalk
       shell: eb deploy
-      when: is_ci and is_deploy
+      when: false
