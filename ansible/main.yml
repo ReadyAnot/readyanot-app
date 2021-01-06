@@ -48,12 +48,13 @@
         cd {{ home_dir }}
         docker build -t {{ app_name }} -f ansible/Dockerfile .
         docker tag {{ app_name }} {{ aws_ecr_url }}/{{ app_name }}
+      when: is_local
 
     - name: push docker image to ecr
       shell: |
         docker login -u AWS -p $(aws ecr get-login-password --region ap-southeast-1) {{ aws_ecr_url }}
         docker push {{ aws_ecr_url }}/{{ app_name }}
-      when: (is_ci and is_deploy) or is_local
+      when: is_local
 
     - name: deploy to elastic beanstalk
       shell: eb deploy
