@@ -16,6 +16,7 @@
     branch_name: "{{ lookup('env', 'GITHUB_REF') | default('demo', True) | basename }}"
     is_ci: "{{ lookup('env', 'CI') | default(false, True) }}"
     is_deploy: '{{ branch_name == prod_branch or branch_name == dev_branch }}'
+    is_local: "{{ branch_name == 'demo' }}"
 
   tasks:
     - include_vars: vars/common.yml
@@ -26,6 +27,7 @@
           branch_name: {{ branch_name }}
           is_ci: {{ is_ci }}
           is_deploy: {{ is_deploy }}
+          is_local: {{ is_local }}
       debug:
         msg: "{{ msg.strip().split('\n') }}"
       tags: debug_info
@@ -51,8 +53,8 @@
       shell: |
         docker login -u AWS -p $(aws ecr get-login-password --region ap-southeast-1) {{ aws_ecr_url }}
         docker push {{ aws_ecr_url }}/{{ app_name }}
-      when: is_ci and is_deploy
+      when: (is_ci and is_deploy) or is_local
 
     - name: deploy to elastic beanstalk
       shell: eb deploy
-      when: false
+      when: is_local
