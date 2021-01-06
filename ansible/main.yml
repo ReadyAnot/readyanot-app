@@ -16,8 +16,8 @@
         port=$(jq ".port" <<< $ReadyAnotPg | tr -d \")
         rm -rf { home_dir }}/.env.development.local
         rm -rf { home_dir }}/.env.production.local
-        echo DATABASE_URL=\"postgresql://$username:$password@$host:$port/readyanot-dev?schema=public\" >> { home_dir }}/.env.development.local
-        echo DATABASE_URL=\"postgresql://$username:$password@$host:$port/readyanot-prod?schema=public\" >> { home_dir }}/.env.production.local
+        echo DATABASE_URL=\"postgresql://$username:$password@$host:$port/readyanot-dev?schema=public\" >> {{ home_dir }}/.env.development.local
+        echo DATABASE_URL=\"postgresql://$username:$password@$host:$port/readyanot-prod?schema=public\" >> {{ home_dir }}/.env.production.local
 
     - name: set environment facts
       set_fact:
@@ -25,6 +25,12 @@
 
     - name: install dependencies
       shell: npm ci
+
+    - name: update database schemas
+      shell: |
+        cd {{ home_dir }}
+        dotenv -e .env.development.local -- prisma db push --preview-feature
+        dotenv -e .env.production.local -- prisma db push --preview-feature
 
     - name: test build application
       shell: npm run build
