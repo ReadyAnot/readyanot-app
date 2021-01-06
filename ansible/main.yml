@@ -43,6 +43,8 @@
         port=$(jq ".port" <<< $ReadyAnotPg | tr -d \")
         rm -rf {{ home_dir }}/.env.*.local
         echo DATABASE_URL=\"postgresql://$username:$password@$host:$port/readyanot-{{ env_short }}?schema=public\" >> {{ home_dir }}/.env.{{ env_long }}.local
+      args:
+        executable: /bin/bash
 
     - name: install dependencies
       shell: npm ci
