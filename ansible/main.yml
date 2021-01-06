@@ -7,14 +7,17 @@
     home_dir: ..
 
   tasks:
-    - name: fetch database credentials into .env
+    - name: fetch credentials into dot env files
       shell: |
         ReadyAnotPg=$(aws secretsmanager get-secret-value --secret-id $"prod/ReadyAnot/PostgreSQL" | jq -r ".SecretString")
         username=$(jq ".username" <<< $ReadyAnotPg | tr -d \")
         password=$(jq ".password" <<< $ReadyAnotPg | tr -d \")
         host=$(jq ".host" <<< $ReadyAnotPg | tr -d \")
         port=$(jq ".port" <<< $ReadyAnotPg | tr -d \")
-        rm -rf {{ home_dir }}/.env && echo DATABASE_URL=\"postgresql://$username:$password@$host:$port/postgres?schema=public\" >> {{ home_dir }}/.env
+        rm -rf { home_dir }}/.env.development.local
+        rm -rf { home_dir }}/.env.production.local
+        echo DATABASE_URL=\"postgresql://$username:$password@$host:$port/readyanot-dev?schema=public\" >> { home_dir }}/.env.development.local
+        echo DATABASE_URL=\"postgresql://$username:$password@$host:$port/readyanot-prod?schema=public\" >> { home_dir }}/.env.production.local
 
     - name: set environment facts
       set_fact:
