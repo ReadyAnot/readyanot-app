@@ -49,13 +49,6 @@
     - name: install dependencies
       shell: npm ci
 
-    - name: update database schemas
-      shell: |
-        cd {{ home_dir }}
-        dotenv -e .env.{{ env_long }}.local -- prisma db push --preview-feature
-      args:
-        executable: /bin/bash
-
     - name: test build application
       shell: npm run build
 
