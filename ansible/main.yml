@@ -50,7 +50,7 @@
       shell: npm ci
 
     - name: fetch prisma schema from database
-      shell: prisma generate
+      shell: cd {{ home_dir }} && prisma generate
 
     - name: test build application
       shell: npm run build
