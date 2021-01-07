@@ -1,0 +1,28 @@
+scalar DateTime
+
+type Log {
+  namespace: String!
+  topic: String!
+  data: String!
+  createdAt: DateTime!
+}
+
+type QuizQuestion {
+  id: ID!
+  content: String!
+}
+
+type Query {
+  getAllLogs: [Log!]!
+  getQuizQuestions: [QuizQuestion!]!
+}
+
+input LogInput {
+  namespace: String!
+  topic: String!
+  data: String!
+}
+
+type Mutation {
+  createLog(input: LogInput!): Boolean!
+}

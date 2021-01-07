@@ -1,0 +1,10 @@
+---
+- hosts: localhost
+  gather_facts: false
+
+  vars:
+    home_dir: ..
+
+  tasks:
+    - include_vars: vars/common.yml
+    - include_tasks: tasks/get-env.yml

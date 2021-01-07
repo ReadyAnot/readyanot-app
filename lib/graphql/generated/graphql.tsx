@@ -13,26 +13,48 @@ export type Scalars = {
   Boolean: boolean;
   Int: number;
   Float: number;
+  /** A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar. */
+  DateTime: any;
   /** The `Upload` scalar type represents a file upload. */
   Upload: any;
 };
 
 
+
+export type Log = {
+  __typename?: 'Log';
+  namespace: Scalars['String'];
+  topic: Scalars['String'];
+  data: Scalars['String'];
+  createdAt: Scalars['DateTime'];
+};
+
+export type QuizQuestion = {
+  __typename?: 'QuizQuestion';
+  id: Scalars['ID'];
+  content: Scalars['String'];
+};
+
 export type Query = {
   __typename?: 'Query';
-  pingServer: Scalars['Boolean'];
-  getQuizQuestions: Array<Scalars['String']>;
+  getAllLogs: Array<Log>;
+  getQuizQuestions: Array<QuizQuestion>;
+};
+
+export type LogInput = {
+  namespace: Scalars['String'];
+  topic: Scalars['String'];
+  data: Scalars['String'];
 };
 
 export type Mutation = {
   __typename?: 'Mutation';
-  logLabelData: Scalars['Boolean'];
+  createLog: Scalars['Boolean'];
 };
 
 
-export type MutationLogLabelDataArgs = {
-  label: Scalars['String'];
-  data: Scalars['String'];
+export type MutationCreateLogArgs = {
+  input: LogInput;
 };
 
 export enum CacheControlScope {
@@ -41,23 +63,25 @@ export enum CacheControlScope {
 }
 
 
+export type CreateLogMutationVariables = Exact<{
+  input: LogInput;
+}>;
+
+
+export type CreateLogMutation = (
+  { __typename?: 'Mutation' }
+  & Pick<Mutation, 'createLog'>
+);
+
 export type GetQuizQuestionsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type GetQuizQuestionsQuery = (
   { __typename?: 'Query' }
-  & Pick<Query, 'getQuizQuestions'>
-);
-
-export type LogLabelDataMutationVariables = Exact<{
-  label: Scalars['String'];
-  data: Scalars['String'];
-}>;
-
-
-export type LogLabelDataMutation = (
-  { __typename?: 'Mutation' }
-  & Pick<Mutation, 'logLabelData'>
+  & { getQuizQuestions: Array<(
+    { __typename?: 'QuizQuestion' }
+    & Pick<QuizQuestion, 'id' | 'content'>
+  )> }
 );
 
 
@@ -138,10 +162,15 @@ export type DirectiveResolverFn<TResult = {}, TParent = {}, TContext = {}, TArgs
 
 /** Mapping between all available schema types and the resolvers types */
 export type ResolversTypes = {
-  Query: ResolverTypeWrapper<{}>;
-  Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
+  DateTime: ResolverTypeWrapper<Scalars['DateTime']>;
+  Log: ResolverTypeWrapper<Log>;
   String: ResolverTypeWrapper<Scalars['String']>;
+  QuizQuestion: ResolverTypeWrapper<QuizQuestion>;
+  ID: ResolverTypeWrapper<Scalars['ID']>;
+  Query: ResolverTypeWrapper<{}>;
+  LogInput: LogInput;
   Mutation: ResolverTypeWrapper<{}>;
+  Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
   CacheControlScope: CacheControlScope;
   Upload: ResolverTypeWrapper<Scalars['Upload']>;
   Int: ResolverTypeWrapper<Scalars['Int']>;
@@ -149,10 +178,15 @@ export type ResolversTypes = {
 
 /** Mapping between all available schema types and the resolvers parents */
 export type ResolversParentTypes = {
-  Query: {};
-  Boolean: Scalars['Boolean'];
+  DateTime: Scalars['DateTime'];
+  Log: Log;
   String: Scalars['String'];
+  QuizQuestion: QuizQuestion;
+  ID: Scalars['ID'];
+  Query: {};
+  LogInput: LogInput;
   Mutation: {};
+  Boolean: Scalars['Boolean'];
   Upload: Scalars['Upload'];
   Int: Scalars['Int'];
 };
@@ -162,13 +196,31 @@ export type CacheControlDirectiveArgs = {   maxAge?: Maybe<Scalars['Int']>;
 
 export type CacheControlDirectiveResolver<Result, Parent, ContextType = any, Args = CacheControlDirectiveArgs> = DirectiveResolverFn<Result, Parent, ContextType, Args>;
 
+export interface DateTimeScalarConfig extends GraphQLScalarTypeConfig<ResolversTypes['DateTime'], any> {
+  name: 'DateTime';
+}
+
+export type LogResolvers<ContextType = any, ParentType extends ResolversParentTypes['Log'] = ResolversParentTypes['Log']> = {
+  namespace?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  topic?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  data?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  createdAt?: Resolver<ResolversTypes['DateTime'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type QuizQuestionResolvers<ContextType = any, ParentType extends ResolversParentTypes['QuizQuestion'] = ResolversParentTypes['QuizQuestion']> = {
+  id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
+  content?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
 export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
-  pingServer?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
-  getQuizQuestions?: Resolver<Array<ResolversTypes['String']>, ParentType, ContextType>;
+  getAllLogs?: Resolver<Array<ResolversTypes['Log']>, ParentType, ContextType>;
+  getQuizQuestions?: Resolver<Array<ResolversTypes['QuizQuestion']>, ParentType, ContextType>;
 };
 
 export type MutationResolvers<ContextType = any, ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']> = {
-  logLabelData?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType, RequireFields<MutationLogLabelDataArgs, 'label' | 'data'>>;
+  createLog?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType, RequireFields<MutationCreateLogArgs, 'input'>>;
 };
 
 export interface UploadScalarConfig extends GraphQLScalarTypeConfig<ResolversTypes['Upload'], any> {
@@ -176,6 +228,9 @@ export interface UploadScalarConfig extends GraphQLScalarTypeConfig<ResolversTyp
 }
 
 export type Resolvers<ContextType = any> = {
+  DateTime?: GraphQLScalarType;
+  Log?: LogResolvers<ContextType>;
+  QuizQuestion?: QuizQuestionResolvers<ContextType>;
   Query?: QueryResolvers<ContextType>;
   Mutation?: MutationResolvers<ContextType>;
   Upload?: GraphQLScalarType;
@@ -198,9 +253,42 @@ export type DirectiveResolvers<ContextType = any> = {
  */
 export type IDirectiveResolvers<ContextType = any> = DirectiveResolvers<ContextType>;
 
+export const CreateLogDocument = gql`
+    mutation createLog($input: LogInput!) {
+  createLog(input: $input)
+}
+    `;
+export type CreateLogMutationFn = Apollo.MutationFunction<CreateLogMutation, CreateLogMutationVariables>;
+
+/**
+ * __useCreateLogMutation__
+ *
+ * To run a mutation, you first call `useCreateLogMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCreateLogMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [createLogMutation, { data, loading, error }] = useCreateLogMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useCreateLogMutation(baseOptions?: Apollo.MutationHookOptions<CreateLogMutation, CreateLogMutationVariables>) {
+        return Apollo.useMutation<CreateLogMutation, CreateLogMutationVariables>(CreateLogDocument, baseOptions);
+      }
+export type CreateLogMutationHookResult = ReturnType<typeof useCreateLogMutation>;
+export type CreateLogMutationResult = Apollo.MutationResult<CreateLogMutation>;
+export type CreateLogMutationOptions = Apollo.BaseMutationOptions<CreateLogMutation, CreateLogMutationVariables>;
 export const GetQuizQuestionsDocument = gql`
     query getQuizQuestions {
-  getQuizQuestions
+  getQuizQuestions {
+    id
+    content
+  }
 }
     `;
 
@@ -228,34 +316,3 @@ export function useGetQuizQuestionsLazyQuery(baseOptions?: Apollo.LazyQueryHookO
 export type GetQuizQuestionsQueryHookResult = ReturnType<typeof useGetQuizQuestionsQuery>;
 export type GetQuizQuestionsLazyQueryHookResult = ReturnType<typeof useGetQuizQuestionsLazyQuery>;
 export type GetQuizQuestionsQueryResult = Apollo.QueryResult<GetQuizQuestionsQuery, GetQuizQuestionsQueryVariables>;
-export const LogLabelDataDocument = gql`
-    mutation logLabelData($label: String!, $data: String!) {
-  logLabelData(label: $label, data: $data)
-}
-    `;
-export type LogLabelDataMutationFn = Apollo.MutationFunction<LogLabelDataMutation, LogLabelDataMutationVariables>;
-
-/**
- * __useLogLabelDataMutation__
- *
- * To run a mutation, you first call `useLogLabelDataMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useLogLabelDataMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [logLabelDataMutation, { data, loading, error }] = useLogLabelDataMutation({
- *   variables: {
- *      label: // value for 'label'
- *      data: // value for 'data'
- *   },
- * });
- */
-export function useLogLabelDataMutation(baseOptions?: Apollo.MutationHookOptions<LogLabelDataMutation, LogLabelDataMutationVariables>) {
-        return Apollo.useMutation<LogLabelDataMutation, LogLabelDataMutationVariables>(LogLabelDataDocument, baseOptions);
-      }
-export type LogLabelDataMutationHookResult = ReturnType<typeof useLogLabelDataMutation>;
-export type LogLabelDataMutationResult = Apollo.MutationResult<LogLabelDataMutation>;
-export type LogLabelDataMutationOptions = Apollo.BaseMutationOptions<LogLabelDataMutation, LogLabelDataMutationVariables>;

@@ -6,6 +6,7 @@ import {
   makeStyles,
   Typography,
 } from '@material-ui/core'
+import { GetStaticProps, NextPage } from 'next'
 import Head from 'next/head'
 import React, { useEffect, useState } from 'react'
 import MyAppBar from '../lib/components/AppBar'
@@ -13,7 +14,11 @@ import PageContainer, {
   ComponentContainer,
 } from '../lib/components/AppContainer'
 import MyFooter from '../lib/components/Footer'
-import testQuestions from '../lib/resources/privilegeTest'
+import { getStandaloneApolloClient } from '../lib/graphql/client'
+import {
+  GetQuizQuestionsDocument,
+  QuizQuestion,
+} from '../lib/graphql/generated/graphql'
 import { LightCanvas } from '../lib/styles/theme'
 
 const useStyles = makeStyles((theme) => ({
@@ -53,10 +58,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-const PrivilegeTest: React.FC = () => {
+type PrivilegeTestProps = {
+  questions: QuizQuestion[]
+}
+
+const PrivilegeTest: NextPage<PrivilegeTestProps> = ({ questions }) => {
   const questionsInPage = 15
   const classes = useStyles()
-  const questions = testQuestions
+
   const defaultState = new Array<boolean>(questions.length).fill(false)
   const [questionStates, setQuestionStates] = useState<boolean[]>(defaultState)
   const [page, setPage] = useState<number>(0)
@@ -82,7 +91,7 @@ const PrivilegeTest: React.FC = () => {
           const indexOffset = page * questionsInPage
           return (
             <FormControlLabel
-              key={indexOffset + id}
+              key={qn.id}
               className={classes.formControlLabel}
               control={
                 <Checkbox
@@ -95,7 +104,7 @@ const PrivilegeTest: React.FC = () => {
                   name={`question-${indexOffset + id}`}
                 />
               }
-              label={qn}
+              label={qn.content}
             />
           )
         })}
@@ -173,6 +182,18 @@ const PrivilegeTest: React.FC = () => {
       <MyFooter />
     </PageContainer>
   )
+}
+
+export const getStaticProps: GetStaticProps = async (context) => {
+  const client = await getStandaloneApolloClient()
+  const result = await client.query({
+    query: GetQuizQuestionsDocument,
+  })
+  return {
+    props: {
+      questions: result.data.getQuizQuestions,
+    },
+  }
 }
 
 export default PrivilegeTest
