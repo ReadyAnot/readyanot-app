@@ -18,8 +18,14 @@ import { getStandaloneApolloClient } from '../lib/graphql/client'
 import {
   GetQuizQuestionsDocument,
   QuizQuestion,
+  useCreateLogMutation,
 } from '../lib/graphql/generated/graphql'
 import { LightCanvas } from '../lib/styles/theme'
+
+export type QuizLog = {
+  response: boolean[]
+  score: number
+}
 
 const useStyles = makeStyles((theme) => ({
   testContent: {
@@ -71,6 +77,25 @@ const PrivilegeTest: NextPage<PrivilegeTestProps> = ({ questions }) => {
   const [page, setPage] = useState<number>(0)
   const maxPage = Math.floor(questions.length / questionsInPage)
   const [showResults, setShowResults] = useState<boolean>(false)
+
+  const [createLogMutation] = useCreateLogMutation()
+
+  const onViewScore = () => {
+    const logObject: QuizLog = {
+      response: questionStates,
+      score: questionStates.filter((el) => Boolean(el)).length,
+    }
+    createLogMutation({
+      variables: {
+        input: {
+          namespace: 'USAGE',
+          topic: 'PRIVILEGE_TEST',
+          data: JSON.stringify(logObject),
+        },
+      },
+    })
+    setShowResults(true)
+  }
 
   const clearQuestionStates = () => {
     setPage(0)
@@ -129,7 +154,7 @@ const PrivilegeTest: NextPage<PrivilegeTestProps> = ({ questions }) => {
           </Button>
         ) : (
           <Button
-            onClick={() => setShowResults(true)}
+            onClick={onViewScore}
             size="large"
             variant="contained"
             color="primary"
