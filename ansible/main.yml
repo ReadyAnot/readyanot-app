@@ -50,13 +50,12 @@
       shell: |
         cd {{ home_dir }}
         docker build -t {{ app_name }} -f ansible/Dockerfile .
-        docker tag {{ app_name }} {{ aws_ecr_url }}/{{ app_name }}
-      when: is_local
+        docker tag {{ app_name }} {{ aws_ecr_url }}/{{ app_name }}:{{ commit_hash }}
 
     - name: push docker image to ecr
       shell: |
         docker login -u AWS -p $(aws ecr get-login-password --region ap-southeast-1) {{ aws_ecr_url }}
-        docker push {{ aws_ecr_url }}/{{ app_name }}
+        docker push {{ aws_ecr_url }}/{{ app_name }}:{{ commit_hash }}
       when: is_deploy
 
     - name: generate dockerrun aws json
