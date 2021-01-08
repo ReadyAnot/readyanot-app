@@ -63,3 +63,9 @@
         src: templates/Dockerrun.aws.json.j2
         dest: '{{ home_dir }}/Dockerrun.aws.json'
       when: is_deploy
+
+    - name: install ebcli
+      shell: pip install --upgrade pip awsebcli
+
+    - name: deploy to elastic beanstalk
+      shell: eb deploy
