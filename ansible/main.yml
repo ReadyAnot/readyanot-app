@@ -66,8 +66,10 @@
 
     - name: install ebcli
       shell: pip install --upgrade pip awsebcli
+      when: is_deploy
 
     - name: deploy to elastic beanstalk
       shell: |
         cd {{ home_dir }}
         eb deploy
+      when: is_deploy
