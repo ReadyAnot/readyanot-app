@@ -10,7 +10,11 @@ COPY package.json /usr/src/app
 
 COPY package-lock.json /usr/src/app
 
+COPY prisma /usr/src/app/prisma/
+
 RUN npm install
+
+RUN npx prisma generate
 
 COPY . /usr/src/app
 
