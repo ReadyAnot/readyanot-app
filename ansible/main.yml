@@ -68,4 +68,6 @@
       shell: pip install --upgrade pip awsebcli
 
     - name: deploy to elastic beanstalk
-      shell: eb deploy
+      shell: |
+        cd {{ home_dir }}
+        eb deploy
