@@ -37,10 +37,9 @@ model QuizQuestions {
 }
 
 model Log {
+  id        Int      @id @default(autoincrement())
   namespace String
   topic     String
   data      String
   createdAt DateTime @default(now())
-
-  @@id([namespace, topic])
 }
