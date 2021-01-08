@@ -14,12 +14,11 @@ import PageContainer, {
   ComponentContainer,
 } from '../lib/components/AppContainer'
 import MyFooter from '../lib/components/Footer'
-import { getStandaloneApolloClient } from '../lib/graphql/client'
 import {
-  GetQuizQuestionsDocument,
   QuizQuestion,
   useCreateLogMutation,
 } from '../lib/graphql/generated/graphql'
+import getQuizQuestions from '../lib/prisma/server/quiz'
 import { LightCanvas } from '../lib/styles/theme'
 
 export type QuizLog = {
@@ -210,15 +209,7 @@ const PrivilegeTest: NextPage<PrivilegeTestProps> = ({ questions }) => {
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const client = await getStandaloneApolloClient()
-  const result = await client.query({
-    query: GetQuizQuestionsDocument,
-  })
-  return {
-    props: {
-      questions: result.data.getQuizQuestions,
-    },
-  }
+  return { props: { questions: await getQuizQuestions() } }
 }
 
 export default PrivilegeTest

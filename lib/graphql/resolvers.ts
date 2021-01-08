@@ -10,12 +10,6 @@ const resolvers: IResolvers = {
     getAllLogs: async (_, __, context: MyApolloContext) => {
       return await context.prisma.log.findMany()
     },
-
-    getQuizQuestions: async (_, __, context: MyApolloContext) => {
-      return await context.prisma.quizQuestions.findMany({
-        orderBy: { id: 'asc' },
-      })
-    },
   },
 
   Mutation: {

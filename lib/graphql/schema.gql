@@ -7,14 +7,8 @@ type Log {
   createdAt: DateTime!
 }
 
-type QuizQuestion {
-  id: ID!
-  content: String!
-}
-
 type Query {
   getAllLogs: [Log!]!
-  getQuizQuestions: [QuizQuestion!]!
 }
 
 input LogInput {
