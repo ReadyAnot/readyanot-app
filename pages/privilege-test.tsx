@@ -6,7 +6,7 @@ import {
   makeStyles,
   Typography,
 } from '@material-ui/core'
-import { GetStaticProps, NextPage } from 'next'
+import { GetServerSideProps, NextPage } from 'next'
 import Head from 'next/head'
 import React, { useEffect, useState } from 'react'
 import MyAppBar from '../lib/components/AppBar'
@@ -184,7 +184,7 @@ const PrivilegeTest: NextPage<PrivilegeTestProps> = ({ questions }) => {
   )
 }
 
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const client = await getStandaloneApolloClient()
   const result = await client.query({
     query: GetQuizQuestionsDocument,
