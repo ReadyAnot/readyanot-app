@@ -7,6 +7,7 @@ import {
   makeStyles,
   Typography,
 } from '@material-ui/core'
+import { QuizQuestion } from '@prisma/client'
 import { GetServerSideProps, NextPage } from 'next'
 import Head from 'next/head'
 import React, { useEffect, useState } from 'react'
@@ -15,10 +16,7 @@ import PageContainer, {
   ComponentContainer,
 } from '../lib/components/AppContainer'
 import MyFooter from '../lib/components/Footer'
-import {
-  QuizQuestion,
-  useCreateLogMutation,
-} from '../lib/graphql/generated/graphql'
+import { useCreateLogMutation } from '../lib/graphql/generated/graphql'
 import getQuizQuestions from '../lib/prisma/server/quiz'
 import { LightCanvas } from '../lib/styles/theme'
 
