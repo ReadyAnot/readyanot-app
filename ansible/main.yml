@@ -52,5 +52,5 @@
       when: is_deploy
 
     - name: deploy to elastic beanstalk
-      shell: eb deploy
+      shell: eb deploy {{ ebenv_dev }}
       when: is_deploy

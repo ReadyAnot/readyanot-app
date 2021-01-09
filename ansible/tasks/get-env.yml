@@ -14,11 +14,11 @@
     rm -rf {{ home_dir }}/.env.*.local
     
     # Generates .env.development.local
-    echo DATABASE_URL=\"postgresql://$username:$password@$host:$port/readyanot-dev?schema=public\" >> {{ home_dir }}/{{ env_dev }}
-    echo HOSTNAME=\"http://localhost:3000\" >> {{ home_dir }}/{{ env_dev }}
+    echo DATABASE_URL=\"postgresql://$username:$password@$host:$port/readyanot-dev?schema=public\" >> {{ home_dir }}/{{ dotenv_dev }}
+    echo HOSTNAME=\"http://localhost:3000\" >> {{ home_dir }}/{{ dotenv_dev }}
 
     # Generates .env.production.local
-    echo DATABASE_URL=\"postgresql://$username:$password@$host:$port/readyanot-prod?schema=public\" >> {{ home_dir }}/{{ env_prod }}
-    echo HOSTNAME=\"https://readyanot.com\" >> {{ home_dir }}/{{ env_prod }}
+    echo DATABASE_URL=\"postgresql://$username:$password@$host:$port/readyanot-prod?schema=public\" >> {{ home_dir }}/{{ dotenv_prod }}
+    echo HOSTNAME=\"https://readyanot.com\" >> {{ home_dir }}/{{ dotenv_prod }}
   args:
     executable: /bin/bash

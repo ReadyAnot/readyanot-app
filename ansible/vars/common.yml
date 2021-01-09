@@ -4,12 +4,15 @@ app_name: readyanot-app
 aws_ecr_url: 363599773651.dkr.ecr.ap-southeast-1.amazonaws.com
 
 # Dotenv files
-env_dev: .env.development.local
-env_prod: .env.production.local
+dotenv_dev: .env.development.local
+dotenv_prod: .env.production.local
 
 # Deployment branches
 dev_branch: dev
 prod_branch: main
+
+# Elastic beanstalk environments
+ebenv_dev: ReadyAnot-dev
 
 # Deployment information
 branch_name: "{{ lookup('env', 'GITHUB_REF') | default('demo', True) | basename }}"
