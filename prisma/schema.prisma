@@ -9,26 +9,12 @@ generator client {
 }
 
 model User {
-  username  String     @id
-  email     String     @unique
+  username  String  @id
+  email     String  @unique
   firstName String
   lastName  String
   password  String
-  UserRole  UserRole[]
-}
-
-model Role {
-  name     String     @id
-  UserRole UserRole[]
-}
-
-model UserRole {
-  user     User   @relation(fields: [username], references: [username])
-  username String
-  role     Role   @relation(fields: [roleName], references: [name])
-  roleName String
-
-  @@id([username, roleName])
+  isAdmin   Boolean @default(false)
 }
 
 model QuizQuestion {
