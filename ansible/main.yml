@@ -30,6 +30,9 @@
     - name: fetch prisma schema from database
       shell: cd {{ home_dir }} && prisma generate
 
+    - name: run unit tests
+      shell: npm run test
+
     - name: test build application
       shell: npm run build
 
