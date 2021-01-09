@@ -7,8 +7,17 @@ type Log {
   createdAt: DateTime!
 }
 
+type User {
+  username: String!
+  email: String!
+  firstName: String!
+  lastName: String!
+  isAdmin: Boolean!
+}
+
 type Query {
   getAllLogs: [Log!]!
+  getUser: User!
 }
 
 input LogInput {
@@ -17,6 +26,26 @@ input LogInput {
   data: String!
 }
 
+input CreateUserInput {
+  username: String!
+  email: String!
+  firstName: String!
+  lastName: String!
+  password: String!
+}
+
+input UpdateUserInput {
+  username: String!
+  email: String
+  firstName: String
+  lastName: String
+  password: String
+}
+
 type Mutation {
   createLog(input: LogInput!): Boolean!
+  createUser(input: CreateUserInput!): User!
+  updateUser(input: UpdateUserInput!): User!
+  loginUser(username: String!, password: String!): User!
+  logoutUser: Boolean!
 }

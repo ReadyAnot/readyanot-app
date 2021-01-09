@@ -1,6 +1,0 @@
-query getQuizQuestions {
-  getQuizQuestions {
-    id
-    content
-  }
-}

@@ -1,0 +1,9 @@
+query getUser {
+  getUser {
+    username
+    email
+    firstName
+    lastName
+    isAdmin
+  }
+}

@@ -5,6 +5,7 @@ import { readFileSync } from 'fs'
 import path from 'path'
 import resolvers from '../../lib/graphql/resolvers'
 import prisma from '../../lib/prisma'
+import parseRequestCookies, { JwtAuthContent } from '../../lib/auth/jwt'
 
 export type ReadyAnotUser = {
   username: string
@@ -14,12 +15,16 @@ export type ReadyAnotUser = {
 export type MyApolloContext = {
   prisma: PrismaClient
   user?: ReadyAnotUser
-} & NextPageContext
+} & NextPageContext &
+  JwtAuthContent
 
 const apolloServer = new ApolloServer({
   typeDefs: readFileSync(path.join('lib/graphql/schema.gql'), 'utf8'),
   resolvers,
-  context: (ctx: NextPageContext): MyApolloContext => ({ ...ctx, prisma }),
+  context: (ctx: NextPageContext): MyApolloContext => {
+    const authContent = parseRequestCookies(ctx)
+    return { ...ctx, ...authContent, prisma }
+  },
 })
 
 export const config = { api: { bodyParser: false } }

@@ -29,16 +29,19 @@ export type Log = {
   createdAt: Scalars['DateTime'];
 };
 
-export type QuizQuestion = {
-  __typename?: 'QuizQuestion';
-  id: Scalars['ID'];
-  content: Scalars['String'];
+export type User = {
+  __typename?: 'User';
+  username: Scalars['String'];
+  email: Scalars['String'];
+  firstName: Scalars['String'];
+  lastName: Scalars['String'];
+  isAdmin: Scalars['Boolean'];
 };
 
 export type Query = {
   __typename?: 'Query';
   getAllLogs: Array<Log>;
-  getQuizQuestions: Array<QuizQuestion>;
+  getUser: User;
 };
 
 export type LogInput = {
@@ -47,14 +50,50 @@ export type LogInput = {
   data: Scalars['String'];
 };
 
+export type CreateUserInput = {
+  username: Scalars['String'];
+  email: Scalars['String'];
+  firstName: Scalars['String'];
+  lastName: Scalars['String'];
+  password: Scalars['String'];
+};
+
+export type UpdateUserInput = {
+  username: Scalars['String'];
+  email?: Maybe<Scalars['String']>;
+  firstName?: Maybe<Scalars['String']>;
+  lastName?: Maybe<Scalars['String']>;
+  password?: Maybe<Scalars['String']>;
+};
+
 export type Mutation = {
   __typename?: 'Mutation';
   createLog: Scalars['Boolean'];
+  createUser: User;
+  updateUser: User;
+  loginUser: User;
+  logoutUser: Scalars['Boolean'];
 };
 
 
 export type MutationCreateLogArgs = {
   input: LogInput;
+};
+
+
+export type MutationCreateUserArgs = {
+  input: CreateUserInput;
+};
+
+
+export type MutationUpdateUserArgs = {
+  input: UpdateUserInput;
+};
+
+
+export type MutationLoginUserArgs = {
+  username: Scalars['String'];
+  password: Scalars['String'];
 };
 
 export enum CacheControlScope {
@@ -73,15 +112,50 @@ export type CreateLogMutation = (
   & Pick<Mutation, 'createLog'>
 );
 
-export type GetQuizQuestionsQueryVariables = Exact<{ [key: string]: never; }>;
+export type CreateUserMutationVariables = Exact<{
+  input: CreateUserInput;
+}>;
 
 
-export type GetQuizQuestionsQuery = (
+export type CreateUserMutation = (
+  { __typename?: 'Mutation' }
+  & { createUser: (
+    { __typename?: 'User' }
+    & Pick<User, 'username' | 'email' | 'firstName' | 'lastName' | 'isAdmin'>
+  ) }
+);
+
+export type GetUserQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetUserQuery = (
   { __typename?: 'Query' }
-  & { getQuizQuestions: Array<(
-    { __typename?: 'QuizQuestion' }
-    & Pick<QuizQuestion, 'id' | 'content'>
-  )> }
+  & { getUser: (
+    { __typename?: 'User' }
+    & Pick<User, 'username' | 'email' | 'firstName' | 'lastName' | 'isAdmin'>
+  ) }
+);
+
+export type LoginUserMutationVariables = Exact<{
+  username: Scalars['String'];
+  password: Scalars['String'];
+}>;
+
+
+export type LoginUserMutation = (
+  { __typename?: 'Mutation' }
+  & { loginUser: (
+    { __typename?: 'User' }
+    & Pick<User, 'username' | 'email' | 'firstName' | 'lastName' | 'isAdmin'>
+  ) }
+);
+
+export type LogoutUserMutationVariables = Exact<{ [key: string]: never; }>;
+
+
+export type LogoutUserMutation = (
+  { __typename?: 'Mutation' }
+  & Pick<Mutation, 'logoutUser'>
 );
 
 
@@ -165,12 +239,13 @@ export type ResolversTypes = {
   DateTime: ResolverTypeWrapper<Scalars['DateTime']>;
   Log: ResolverTypeWrapper<Log>;
   String: ResolverTypeWrapper<Scalars['String']>;
-  QuizQuestion: ResolverTypeWrapper<QuizQuestion>;
-  ID: ResolverTypeWrapper<Scalars['ID']>;
+  User: ResolverTypeWrapper<User>;
+  Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
   Query: ResolverTypeWrapper<{}>;
   LogInput: LogInput;
+  CreateUserInput: CreateUserInput;
+  UpdateUserInput: UpdateUserInput;
   Mutation: ResolverTypeWrapper<{}>;
-  Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
   CacheControlScope: CacheControlScope;
   Upload: ResolverTypeWrapper<Scalars['Upload']>;
   Int: ResolverTypeWrapper<Scalars['Int']>;
@@ -181,12 +256,13 @@ export type ResolversParentTypes = {
   DateTime: Scalars['DateTime'];
   Log: Log;
   String: Scalars['String'];
-  QuizQuestion: QuizQuestion;
-  ID: Scalars['ID'];
+  User: User;
+  Boolean: Scalars['Boolean'];
   Query: {};
   LogInput: LogInput;
+  CreateUserInput: CreateUserInput;
+  UpdateUserInput: UpdateUserInput;
   Mutation: {};
-  Boolean: Scalars['Boolean'];
   Upload: Scalars['Upload'];
   Int: Scalars['Int'];
 };
@@ -208,19 +284,26 @@ export type LogResolvers<ContextType = any, ParentType extends ResolversParentTy
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
-export type QuizQuestionResolvers<ContextType = any, ParentType extends ResolversParentTypes['QuizQuestion'] = ResolversParentTypes['QuizQuestion']> = {
-  id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
-  content?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+export type UserResolvers<ContextType = any, ParentType extends ResolversParentTypes['User'] = ResolversParentTypes['User']> = {
+  username?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  email?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  firstName?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  lastName?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  isAdmin?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
 export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
   getAllLogs?: Resolver<Array<ResolversTypes['Log']>, ParentType, ContextType>;
-  getQuizQuestions?: Resolver<Array<ResolversTypes['QuizQuestion']>, ParentType, ContextType>;
+  getUser?: Resolver<ResolversTypes['User'], ParentType, ContextType>;
 };
 
 export type MutationResolvers<ContextType = any, ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']> = {
   createLog?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType, RequireFields<MutationCreateLogArgs, 'input'>>;
+  createUser?: Resolver<ResolversTypes['User'], ParentType, ContextType, RequireFields<MutationCreateUserArgs, 'input'>>;
+  updateUser?: Resolver<ResolversTypes['User'], ParentType, ContextType, RequireFields<MutationUpdateUserArgs, 'input'>>;
+  loginUser?: Resolver<ResolversTypes['User'], ParentType, ContextType, RequireFields<MutationLoginUserArgs, 'username' | 'password'>>;
+  logoutUser?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
 };
 
 export interface UploadScalarConfig extends GraphQLScalarTypeConfig<ResolversTypes['Upload'], any> {
@@ -230,7 +313,7 @@ export interface UploadScalarConfig extends GraphQLScalarTypeConfig<ResolversTyp
 export type Resolvers<ContextType = any> = {
   DateTime?: GraphQLScalarType;
   Log?: LogResolvers<ContextType>;
-  QuizQuestion?: QuizQuestionResolvers<ContextType>;
+  User?: UserResolvers<ContextType>;
   Query?: QueryResolvers<ContextType>;
   Mutation?: MutationResolvers<ContextType>;
   Upload?: GraphQLScalarType;
@@ -283,36 +366,141 @@ export function useCreateLogMutation(baseOptions?: Apollo.MutationHookOptions<Cr
 export type CreateLogMutationHookResult = ReturnType<typeof useCreateLogMutation>;
 export type CreateLogMutationResult = Apollo.MutationResult<CreateLogMutation>;
 export type CreateLogMutationOptions = Apollo.BaseMutationOptions<CreateLogMutation, CreateLogMutationVariables>;
-export const GetQuizQuestionsDocument = gql`
-    query getQuizQuestions {
-  getQuizQuestions {
-    id
-    content
+export const CreateUserDocument = gql`
+    mutation createUser($input: CreateUserInput!) {
+  createUser(input: $input) {
+    username
+    email
+    firstName
+    lastName
+    isAdmin
+  }
+}
+    `;
+export type CreateUserMutationFn = Apollo.MutationFunction<CreateUserMutation, CreateUserMutationVariables>;
+
+/**
+ * __useCreateUserMutation__
+ *
+ * To run a mutation, you first call `useCreateUserMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCreateUserMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [createUserMutation, { data, loading, error }] = useCreateUserMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useCreateUserMutation(baseOptions?: Apollo.MutationHookOptions<CreateUserMutation, CreateUserMutationVariables>) {
+        return Apollo.useMutation<CreateUserMutation, CreateUserMutationVariables>(CreateUserDocument, baseOptions);
+      }
+export type CreateUserMutationHookResult = ReturnType<typeof useCreateUserMutation>;
+export type CreateUserMutationResult = Apollo.MutationResult<CreateUserMutation>;
+export type CreateUserMutationOptions = Apollo.BaseMutationOptions<CreateUserMutation, CreateUserMutationVariables>;
+export const GetUserDocument = gql`
+    query getUser {
+  getUser {
+    username
+    email
+    firstName
+    lastName
+    isAdmin
   }
 }
     `;
 
 /**
- * __useGetQuizQuestionsQuery__
+ * __useGetUserQuery__
  *
- * To run a query within a React component, call `useGetQuizQuestionsQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetQuizQuestionsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useGetUserQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetUserQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useGetQuizQuestionsQuery({
+ * const { data, loading, error } = useGetUserQuery({
  *   variables: {
  *   },
  * });
  */
-export function useGetQuizQuestionsQuery(baseOptions?: Apollo.QueryHookOptions<GetQuizQuestionsQuery, GetQuizQuestionsQueryVariables>) {
-        return Apollo.useQuery<GetQuizQuestionsQuery, GetQuizQuestionsQueryVariables>(GetQuizQuestionsDocument, baseOptions);
+export function useGetUserQuery(baseOptions?: Apollo.QueryHookOptions<GetUserQuery, GetUserQueryVariables>) {
+        return Apollo.useQuery<GetUserQuery, GetUserQueryVariables>(GetUserDocument, baseOptions);
       }
-export function useGetQuizQuestionsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetQuizQuestionsQuery, GetQuizQuestionsQueryVariables>) {
-          return Apollo.useLazyQuery<GetQuizQuestionsQuery, GetQuizQuestionsQueryVariables>(GetQuizQuestionsDocument, baseOptions);
+export function useGetUserLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetUserQuery, GetUserQueryVariables>) {
+          return Apollo.useLazyQuery<GetUserQuery, GetUserQueryVariables>(GetUserDocument, baseOptions);
         }
-export type GetQuizQuestionsQueryHookResult = ReturnType<typeof useGetQuizQuestionsQuery>;
-export type GetQuizQuestionsLazyQueryHookResult = ReturnType<typeof useGetQuizQuestionsLazyQuery>;
-export type GetQuizQuestionsQueryResult = Apollo.QueryResult<GetQuizQuestionsQuery, GetQuizQuestionsQueryVariables>;
+export type GetUserQueryHookResult = ReturnType<typeof useGetUserQuery>;
+export type GetUserLazyQueryHookResult = ReturnType<typeof useGetUserLazyQuery>;
+export type GetUserQueryResult = Apollo.QueryResult<GetUserQuery, GetUserQueryVariables>;
+export const LoginUserDocument = gql`
+    mutation loginUser($username: String!, $password: String!) {
+  loginUser(username: $username, password: $password) {
+    username
+    email
+    firstName
+    lastName
+    isAdmin
+  }
+}
+    `;
+export type LoginUserMutationFn = Apollo.MutationFunction<LoginUserMutation, LoginUserMutationVariables>;
+
+/**
+ * __useLoginUserMutation__
+ *
+ * To run a mutation, you first call `useLoginUserMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useLoginUserMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [loginUserMutation, { data, loading, error }] = useLoginUserMutation({
+ *   variables: {
+ *      username: // value for 'username'
+ *      password: // value for 'password'
+ *   },
+ * });
+ */
+export function useLoginUserMutation(baseOptions?: Apollo.MutationHookOptions<LoginUserMutation, LoginUserMutationVariables>) {
+        return Apollo.useMutation<LoginUserMutation, LoginUserMutationVariables>(LoginUserDocument, baseOptions);
+      }
+export type LoginUserMutationHookResult = ReturnType<typeof useLoginUserMutation>;
+export type LoginUserMutationResult = Apollo.MutationResult<LoginUserMutation>;
+export type LoginUserMutationOptions = Apollo.BaseMutationOptions<LoginUserMutation, LoginUserMutationVariables>;
+export const LogoutUserDocument = gql`
+    mutation logoutUser {
+  logoutUser
+}
+    `;
+export type LogoutUserMutationFn = Apollo.MutationFunction<LogoutUserMutation, LogoutUserMutationVariables>;
+
+/**
+ * __useLogoutUserMutation__
+ *
+ * To run a mutation, you first call `useLogoutUserMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useLogoutUserMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [logoutUserMutation, { data, loading, error }] = useLogoutUserMutation({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useLogoutUserMutation(baseOptions?: Apollo.MutationHookOptions<LogoutUserMutation, LogoutUserMutationVariables>) {
+        return Apollo.useMutation<LogoutUserMutation, LogoutUserMutationVariables>(LogoutUserDocument, baseOptions);
+      }
+export type LogoutUserMutationHookResult = ReturnType<typeof useLogoutUserMutation>;
+export type LogoutUserMutationResult = Apollo.MutationResult<LogoutUserMutation>;
+export type LogoutUserMutationOptions = Apollo.BaseMutationOptions<LogoutUserMutation, LogoutUserMutationVariables>;
