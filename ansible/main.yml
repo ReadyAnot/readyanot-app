@@ -3,20 +3,7 @@
   gather_facts: false
 
   vars:
-    # Notable branches
-    dev_branch: dev
-    prod_branch: main
-
-    # Essential variables
-    app_name: readyanot-app
-    aws_ecr_url: 363599773651.dkr.ecr.ap-southeast-1.amazonaws.com
     home_dir: ..
-
-    # Deployment information
-    branch_name: "{{ lookup('env', 'GITHUB_REF') | default('demo', True) | basename }}"
-    commit_hash: "{{ lookup('env', 'GITHUB_SHA') | default('demo', True) }}"
-    is_deploy: '{{ branch_name == prod_branch or branch_name == dev_branch }}'
-    is_local: "{{ branch_name == 'demo' }}"
 
   tasks:
     - include_vars: vars/common.yml
@@ -65,7 +52,5 @@
       when: is_deploy
 
     - name: deploy to elastic beanstalk
-      shell: |
-        cd {{ home_dir }}
-        eb deploy
+      shell: eb deploy
       when: is_deploy
