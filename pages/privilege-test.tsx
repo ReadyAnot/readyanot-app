@@ -3,6 +3,7 @@ import {
   Checkbox,
   FormControlLabel,
   FormGroup,
+  LinearProgress,
   makeStyles,
   Typography,
 } from '@material-ui/core'
@@ -36,6 +37,9 @@ const useStyles = makeStyles((theme) => ({
   },
   form: {
     marginTop: '1rem',
+  },
+  progressBar: {
+    margin: '2rem 0',
   },
   buttonRow: {
     display: 'flex',
@@ -107,7 +111,7 @@ const PrivilegeTest: NextPage<PrivilegeTestProps> = ({ questions }) => {
     (page + 1) * questionsInPage
   )
 
-  const QuestionsComponent = () => (
+  const QuestionsComponent: React.FC = () => (
     <ComponentContainer>
       <Typography variant="h2">{'Privilege Test'}</Typography>
       <FormGroup className={classes.form}>
@@ -133,6 +137,11 @@ const PrivilegeTest: NextPage<PrivilegeTestProps> = ({ questions }) => {
           )
         })}
       </FormGroup>
+      <LinearProgress
+        className={classes.progressBar}
+        variant="determinate"
+        value={(page * 100) / maxPage}
+      />
       <div className={classes.buttonRow}>
         <Button
           onClick={() => setPage(page - 1)}
@@ -165,7 +174,7 @@ const PrivilegeTest: NextPage<PrivilegeTestProps> = ({ questions }) => {
     </ComponentContainer>
   )
 
-  const ResultsComponent = () => (
+  const ResultsComponent: React.FC = () => (
     <ComponentContainer>
       <Typography variant="h2">{'Your Privilege Score:'}</Typography>
       <Typography className={classes.scoreText}>
