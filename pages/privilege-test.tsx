@@ -130,7 +130,7 @@ const PrivilegeTest: NextPage<PrivilegeTestProps> = ({ questions }) => {
                   name={`question-${indexOffset + id}`}
                 />
               }
-              label={qn.content}
+              label={`${id + indexOffset + 1}. ${qn.content}`}
             />
           )
         })}
