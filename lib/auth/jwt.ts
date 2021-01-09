@@ -5,9 +5,9 @@ import { NextPageContext } from 'next'
 import { destroyCookie, parseCookies, setCookie } from 'nookies'
 import { MyApolloContext } from '../../pages/api/graphql'
 
-const JWT_SECRET = process.env.JWT_SECRET || 'jwt-secret'
-const JWT_ALGO = 'HS256'
-const JWT_EXPIRY = '7d'
+export const JWT_SECRET = process.env.JWT_SECRET || 'jwt-secret'
+export const JWT_ALGO = 'HS256'
+export const JWT_EXPIRY = '7d'
 
 export const AUTH_COOKIE = 'auth'
 
@@ -33,8 +33,15 @@ export const isContent = (content: any): boolean => {
 }
 
 export const decodeToken = (token: string): JwtAuthContent => {
-  const content = jwt.verify(token, JWT_SECRET)
-  if (isContent(content)) return content as JwtAuthContent
+  try {
+    const content = jwt.verify(token, JWT_SECRET)
+    if (isContent(content)) {
+      return content as JwtAuthContent
+    }
+    return {}
+  } catch (e) {
+    return {}
+  }
 }
 
 const SALT_ROUNDS = 10
