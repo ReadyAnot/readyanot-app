@@ -10,15 +10,11 @@
     host=$(jq ".host" <<< $ReadyAnotPg | tr -d \")
     port=$(jq ".port" <<< $ReadyAnotPg | tr -d \")
     
-    # Remove existing dotenv files
-    rm -rf {{ home_dir }}/.env.*.local
+    # Remove existing dotenv file
+    rm -rf {{ home_dir }}/.env
     
-    # Generates .env.development.local
-    echo DATABASE_URL=\"postgresql://$username:$password@$host:$port/readyanot-dev?schema=public\" >> {{ home_dir }}/{{ dotenv_dev }}
-    echo HOSTNAME=\"http://localhost:3000\" >> {{ home_dir }}/{{ dotenv_dev }}
-
-    # Generates .env.production.local
-    echo DATABASE_URL=\"postgresql://$username:$password@$host:$port/readyanot-prod?schema=public\" >> {{ home_dir }}/{{ dotenv_prod }}
-    echo HOSTNAME=\"https://readyanot.com\" >> {{ home_dir }}/{{ dotenv_prod }}
+    # Generates .env
+    echo DATABASE_URL=\"postgresql://$username:$password@$host:$port/readyanot-dev?schema=public\" >> {{ home_dir }}/.env
+    echo HOSTNAME=\"http://localhost:3000\" >> {{ home_dir }}/.env
   args:
     executable: /bin/bash

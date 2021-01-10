@@ -10,12 +10,8 @@
     "start": "next start",
     "generate": "prisma generate && graphql-codegen --config codegen.yml",
     "deploy": "ansible-playbook ansible/main.yml",
-    "studio-dev": "dotenv -e .env.development.local -- prisma studio",
-    "studio-prod": "dotenv -e .env.production.local -- prisma studio",
-    "db-push-dev": "dotenv -e .env.development.local -- prisma db push --preview-feature",
-    "db-push-dev-force": "dotenv -e .env.development.local -- prisma db push --preview-feature --force",
-    "db-push-prod": "dotenv -e .env.production.local -- prisma db push --preview-feature",
-    "db-push-prod-force": "dotenv -e .env.production.local -- prisma db push --preview-feature --force",
+    "studio": "prisma studio",
+    "db-push": "prisma db push --preview-feature",
     "setup": "ansible-playbook ansible/setup.yml"
   },
   "dependencies": {
