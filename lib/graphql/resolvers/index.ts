@@ -2,7 +2,11 @@ import _ from 'lodash'
 import { AuthenticationError, IResolvers } from 'apollo-server-micro'
 import { GraphQLDateTime } from 'graphql-iso-date'
 import { MyApolloContext } from '../../../pages/api/graphql'
-import { CreateUserInput, UpdateUserInput } from '../generated/graphql'
+import {
+  CreateUserInput,
+  LogInput,
+  UpdateUserInput,
+} from '../generated/graphql'
 import { requireAuth, requireSameUser } from './validators'
 import {
   checkPassword,
@@ -20,6 +24,14 @@ const logResolvers: IResolvers = {
     getAllLogs: async (_, __, context: MyApolloContext) => {
       requireAuth(context)
       return await context.prisma.log.findMany()
+    },
+  },
+
+  Mutation: {
+    createLog: async (_, args, context: MyApolloContext) => {
+      const logInput = args.input as LogInput
+      await context.prisma.log.create({ data: { ...logInput } })
+      return true
     },
   },
 }
