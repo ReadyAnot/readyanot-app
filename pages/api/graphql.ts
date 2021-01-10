@@ -21,6 +21,8 @@ export type MyApolloContext = {
 const apolloServer = new ApolloServer({
   typeDefs: readFileSync(path.join('lib/graphql/schema.gql'), 'utf8'),
   resolvers,
+  introspection: true,
+  playground: true,
   context: (ctx: NextPageContext): MyApolloContext => {
     const authContent = parseRequestCookies(ctx)
     return { ...ctx, ...authContent, prisma }
