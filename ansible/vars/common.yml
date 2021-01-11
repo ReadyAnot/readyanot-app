@@ -9,6 +9,7 @@ prod_branch: main
 
 # Elastic beanstalk environments
 ebenv_dev: ReadyAnot-dev
+ebenv_prod: ReadyAnot-prod
 
 # Deployment information
 branch_name: "{{ lookup('env', 'GITHUB_REF') | default('demo', True) | basename }}"
