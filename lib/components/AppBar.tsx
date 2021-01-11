@@ -1,5 +1,12 @@
-import { AppBar, Button, Hidden, makeStyles, Toolbar } from '@material-ui/core'
+import {
+  AppBar,
+  Hidden,
+  makeStyles,
+  Toolbar,
+  Typography,
+} from '@material-ui/core'
 import Link from 'next/link'
+import React from 'react'
 import { ComponentContainer } from './AppContainer'
 
 const useStyles = makeStyles((theme) => ({
@@ -21,9 +28,12 @@ const useStyles = makeStyles((theme) => ({
     textDecoration: 'none',
   },
   buttonGroup: {
+    display: 'flex',
     marginLeft: 'auto',
-    '& button': {
-      marginRight: '1.25rem',
+    '& a': {
+      color: 'inherit',
+      marginRight: '2.6875rem',
+      textDecoration: 'none',
       '&:last-child': {
         marginRight: 'unset',
       },
@@ -43,18 +53,34 @@ const MyAppBar: React.FC = () => {
           </Link>
           <div className={classes.buttonGroup}>
             <Hidden xsDown>
-              <Button size="large" variant="text">
-                About
-              </Button>
-              <Button size="large" variant="text">
-                Help
-              </Button>
-              <Button size="large" variant="text">
-                Contact
-              </Button>
-              <Button size="large" variant="text">
-                <i>My Account</i>
-              </Button>
+              <Link href="/">
+                <a>
+                  <Typography variant="h6" color="textPrimary">
+                    About
+                  </Typography>
+                </a>
+              </Link>
+              <Link href="/">
+                <a>
+                  <Typography variant="h6" color="textPrimary">
+                    Help
+                  </Typography>
+                </a>
+              </Link>
+              <Link href="/">
+                <a>
+                  <Typography variant="h6" color="textPrimary">
+                    Contact
+                  </Typography>
+                </a>
+              </Link>
+              <Link href="/">
+                <a>
+                  <Typography variant="h6" color="textPrimary">
+                    <i>My Account</i>
+                  </Typography>
+                </a>
+              </Link>
             </Hidden>
           </div>
         </Toolbar>
