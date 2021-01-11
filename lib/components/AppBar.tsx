@@ -9,7 +9,6 @@ const useStyles = makeStyles((theme) => ({
       maxHeight: 90,
     },
     [theme.breakpoints.up('sm')]: {
-      minHeight: 200,
       '& img': {
         maxHeight: 120,
       },
@@ -41,15 +40,18 @@ const MyAppBar: React.FC = () => {
           <div className={classes.buttonGroup}>
             <Hidden xsDown>
               <Button size="large" variant="text">
-                Stage
+                About
               </Button>
               <Button size="large" variant="text">
-                Forum
+                Help
+              </Button>
+              <Button size="large" variant="text">
+                Contact
+              </Button>
+              <Button size="large" variant="text">
+                <i>My Account</i>
               </Button>
             </Hidden>
-            <Button size="large" variant="contained" color="primary">
-              Login
-            </Button>
           </div>
         </Toolbar>
       </ComponentContainer>
