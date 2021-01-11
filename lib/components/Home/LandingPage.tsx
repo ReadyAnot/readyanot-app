@@ -16,6 +16,7 @@ const useStyles = makeStyles({
     },
     '& img': {
       marginTop: '-5rem',
+      marginBottom: '-3rem',
       zIndex: -1,
     },
   },
