@@ -21,7 +21,7 @@ const PageContainer: React.FC = ({ children }) => {
 
 const useComponentStyles = makeStyles({
   componentContainer: {
-    padding: '1.25rem 2rem',
+    padding: '2.0625rem 2rem',
   },
 })
 

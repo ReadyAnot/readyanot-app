@@ -14,6 +14,12 @@ const useStyles = makeStyles((theme) => ({
       },
     },
   },
+  title: {
+    color: 'inherit',
+    fontSize: '3.125rem',
+    fontWeight: 900,
+    textDecoration: 'none',
+  },
   buttonGroup: {
     marginLeft: 'auto',
     '& button': {
@@ -33,9 +39,7 @@ const MyAppBar: React.FC = () => {
       <ComponentContainer>
         <Toolbar className={classes.toolBar}>
           <Link href="/">
-            <a>
-              <img src="/ready-anot-logo.png" draggable={false} />
-            </a>
+            <a className={classes.title}>Ready Anot</a>
           </Link>
           <div className={classes.buttonGroup}>
             <Hidden xsDown>
