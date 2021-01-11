@@ -42,7 +42,7 @@ const theme = responsiveFontSizes(
       },
     },
     typography: {
-      fontFamily: "'IBM Plex Sans', sans-serif",
+      fontFamily: "'Lato', sans-serif",
       h1: {
         fontSize: '2.8125rem',
         fontWeight: 600,
