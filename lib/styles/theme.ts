@@ -23,6 +23,12 @@ const defaultTheme = createMuiTheme()
 
 const theme = responsiveFontSizes(
   createMuiTheme({
+    breakpoints: {
+      values: {
+        ...defaultTheme.breakpoints.values,
+        lg: 1440,
+      },
+    },
     palette: {
       primary: {
         light: LightRed,
@@ -44,12 +50,12 @@ const theme = responsiveFontSizes(
     typography: {
       fontFamily: "'Lato', sans-serif",
       h1: {
-        fontSize: '2.8125rem',
+        fontSize: '6.25rem',
         fontWeight: 600,
         lineHeight: 1.267,
       },
       h2: {
-        fontSize: '2.25rem',
+        fontSize: '4.375rem',
         fontWeight: 600,
         lineHeight: 1.267,
       },
@@ -111,13 +117,13 @@ const theme = responsiveFontSizes(
           },
         },
         containedSizeLarge: {
-          fontSize: '1.025rem',
+          fontSize: '1.5rem',
           fontWeight: 600,
           minHeight: 42,
           minWidth: 95,
         },
         textSizeLarge: {
-          fontSize: '1.025rem',
+          fontSize: '1.5rem',
           fontWeight: 500,
           minHeight: 42,
           paddingLeft: '1.25rem',
