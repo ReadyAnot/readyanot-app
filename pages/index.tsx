@@ -1,7 +1,10 @@
 import Head from 'next/head'
+import React from 'react'
 import MyAppBar from '../lib/components/AppBar'
 import PageContainer from '../lib/components/AppContainer'
 import MyFooter from '../lib/components/Footer'
+import FullViewHeight from '../lib/components/FullViewHeight'
+import LandingPage from '../lib/components/Home/LandingPage'
 
 const Home: React.FC = () => {
   return (
@@ -15,7 +18,10 @@ const Home: React.FC = () => {
       </Head>
 
       <main>
-        <MyAppBar />
+        <FullViewHeight>
+          <MyAppBar />
+          <LandingPage />
+        </FullViewHeight>
       </main>
 
       <MyFooter />
