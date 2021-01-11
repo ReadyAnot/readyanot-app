@@ -14,10 +14,6 @@ export const DeepPurple = '#3e2874'
 export const PurpleTingedGrey = '#283747'
 export const Cloud = '#F3F3F3'
 
-// Canvas colors.
-export const LightCanvas = '#e5dfdf'
-export const DarkCanvas = '#d5cbcb'
-
 const defaultTheme = createMuiTheme()
 
 const theme = responsiveFontSizes(

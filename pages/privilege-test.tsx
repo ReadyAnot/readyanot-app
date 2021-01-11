@@ -18,7 +18,6 @@ import PageContainer, {
 import MyFooter from '../lib/components/Footer'
 import { useCreateLogMutation } from '../lib/graphql/generated/graphql'
 import getQuizQuestions from '../lib/prisma/server/quiz'
-import { LightCanvas } from '../lib/styles/theme'
 
 export type QuizLog = {
   response: boolean[]
@@ -27,7 +26,6 @@ export type QuizLog = {
 
 const useStyles = makeStyles((theme) => ({
   testContent: {
-    backgroundColor: LightCanvas,
     width: '100%',
     [theme.breakpoints.up('sm')]: {
       padding: '4rem',
