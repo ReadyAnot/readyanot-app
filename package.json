@@ -29,6 +29,7 @@
     "next": "10.0.4",
     "nookies": "^2.5.0",
     "react": "17.0.1",
+    "react-animated-css": "^1.2.1",
     "react-dom": "17.0.1"
   },
   "devDependencies": {

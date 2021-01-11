@@ -1,9 +1,9 @@
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client'
+import CssBaseline from '@material-ui/core/CssBaseline'
 import { ThemeProvider } from '@material-ui/core/styles'
 import React from 'react'
 import Head from 'next/head'
 import { AppPropsType } from 'next/dist/next-server/lib/utils'
-import CssBaseline from '@material-ui/core/CssBaseline'
 import theme from '../lib/styles/theme'
 
 export default function MyApp({ Component, pageProps }: AppPropsType) {
