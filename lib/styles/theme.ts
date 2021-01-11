@@ -25,6 +25,9 @@ const theme = responsiveFontSizes(
       },
     },
     palette: {
+      background: {
+        default: '#FFFFFF',
+      },
       primary: {
         light: LightRed,
         main: BrightRed,
@@ -75,7 +78,7 @@ const theme = responsiveFontSizes(
         lineHeight: 1.3125,
       },
       subtitle1: {
-        fontSize: '1.2rem',
+        fontSize: '1.25rem',
         lineHeight: 1.5,
       },
       body1: {
