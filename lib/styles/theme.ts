@@ -49,50 +49,37 @@ const theme = responsiveFontSizes(
       fontFamily: "'Lato', sans-serif",
       h1: {
         fontSize: '6.25rem',
-        fontWeight: 600,
-        lineHeight: 1.267,
+        fontWeight: 900,
       },
       h2: {
         fontSize: '4.375rem',
-        fontWeight: 600,
-        lineHeight: 1.267,
+        fontWeight: 900,
       },
       h3: {
-        fontSize: '2.25rem',
-        fontWeight: 600,
-        lineHeight: 1.321,
+        fontSize: '3.125rem',
+        fontWeight: 500,
       },
       h4: {
-        fontSize: '1.875rem',
-        fontWeight: 600,
-        lineHeight: 1.364,
-      },
-      h5: {
-        fontSize: '1.725rem',
-        fontWeight: 600,
-        lineHeight: 1.389,
+        fontSize: '2.5rem',
+        fontWeight: 500,
       },
       h6: {
         fontSize: '1.5rem',
         fontWeight: 500,
-        lineHeight: 1.3125,
       },
       subtitle1: {
         fontSize: '1.25rem',
-        lineHeight: 1.5,
       },
       body1: {
         fontSize: '1rem',
-        lineHeight: 1.5625,
       },
       body2: {
         fontSize: '0.875rem',
         fontWeight: 500,
-        lineHeight: 1.429,
       },
       caption: {
-        fontSize: '0.8125rem',
-        lineHeight: 1.308,
+        fontSize: '1.875rem',
+        fontWeight: 300,
       },
       button: {
         textTransform: 'none',
