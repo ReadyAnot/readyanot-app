@@ -1,4 +1,5 @@
 import { Container, makeStyles } from '@material-ui/core'
+import classNames from 'classnames'
 import { useCopyRightHeight } from './Footer'
 
 type StyleProps = {
@@ -25,10 +26,20 @@ const useComponentStyles = makeStyles({
   },
 })
 
-export const ComponentContainer: React.FC = ({ children }) => {
+export type ComponentContainerProps = {
+  className?: string
+}
+
+export const ComponentContainer: React.FC<ComponentContainerProps> = ({
+  children,
+  className,
+}) => {
   const classes = useComponentStyles()
   return (
-    <Container className={classes.componentContainer} maxWidth="lg">
+    <Container
+      className={classNames(classes.componentContainer, className)}
+      maxWidth="lg"
+    >
       {children}
     </Container>
   )
