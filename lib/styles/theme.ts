@@ -17,7 +17,6 @@ export const Cloud = '#F3F3F3'
 // Canvas colors.
 export const LightCanvas = '#e5dfdf'
 export const DarkCanvas = '#d5cbcb'
-export const FooterCanvas = '#6a6565'
 
 const defaultTheme = createMuiTheme()
 
@@ -60,22 +59,22 @@ const theme = responsiveFontSizes(
         lineHeight: 1.267,
       },
       h3: {
-        fontSize: '1.75rem',
+        fontSize: '2.25rem',
         fontWeight: 600,
         lineHeight: 1.321,
       },
       h4: {
-        fontSize: '1.375rem',
+        fontSize: '1.875rem',
         fontWeight: 600,
         lineHeight: 1.364,
       },
       h5: {
-        fontSize: '1.225rem',
+        fontSize: '1.725rem',
         fontWeight: 600,
         lineHeight: 1.389,
       },
       h6: {
-        fontSize: '1rem',
+        fontSize: '1.5rem',
         fontWeight: 500,
         lineHeight: 1.3125,
       },
