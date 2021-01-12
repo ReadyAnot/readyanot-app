@@ -2,6 +2,7 @@ import { makeStyles } from '@material-ui/core'
 import Typography from '@material-ui/core/Typography'
 import Link from 'next/link'
 import React from 'react'
+import ScrollAnimation from 'react-animate-on-scroll'
 import { ComponentContainer, ComponentType } from '../AppContainer'
 
 const useStyles = makeStyles({
@@ -32,31 +33,33 @@ const HomePageContent: React.FC = () => {
 
   return (
     <div className={classes.container}>
-      <ComponentContainer
-        type={ComponentType.Section}
-        className={classes.conversationsContainer}
-      >
-        <div className={classes.descriptionContainer}>
-          <Typography variant="h2">
-            Share your voice.
-            <br />
-            Listen to others.
-          </Typography>
-          <Link href="/">
-            <a>
-              <Typography variant="h6" color="textPrimary">
-                Join conversations&nbsp;&nbsp;{'>'}
-              </Typography>
-            </a>
-          </Link>
-        </div>
-        <div>
-          <img
-            src="/assets/home/home-page-content/reddit-popular-posts.png"
-            draggable={false}
-          />
-        </div>
-      </ComponentContainer>
+      <ScrollAnimation animateIn="fadeIn" animateOnce>
+        <ComponentContainer
+          type={ComponentType.Section}
+          className={classes.conversationsContainer}
+        >
+          <div className={classes.descriptionContainer}>
+            <Typography variant="h2">
+              Share your voice.
+              <br />
+              Listen to others.
+            </Typography>
+            <Link href="/">
+              <a>
+                <Typography variant="h6" color="textPrimary">
+                  Join conversations&nbsp;&nbsp;{'>'}
+                </Typography>
+              </a>
+            </Link>
+          </div>
+          <div>
+            <img
+              src="/assets/home/home-page-content/reddit-popular-posts.png"
+              draggable={false}
+            />
+          </div>
+        </ComponentContainer>
+      </ScrollAnimation>
     </div>
   )
 }
