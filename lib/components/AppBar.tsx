@@ -10,6 +10,9 @@ import React from 'react'
 import { ComponentContainer } from './AppContainer'
 
 const useStyles = makeStyles((theme) => ({
+  appBar: {
+    backgroundColor: '#305F72',
+  },
   toolBar: {
     padding: 0,
     '& img': {
@@ -45,7 +48,7 @@ const MyAppBar: React.FC = () => {
   const classes = useStyles()
 
   return (
-    <AppBar position="static" color="transparent">
+    <AppBar position="static" className={classes.appBar}>
       <ComponentContainer>
         <Toolbar className={classes.toolBar}>
           <Link href="/">
@@ -55,28 +58,22 @@ const MyAppBar: React.FC = () => {
             <Hidden xsDown>
               <Link href="/">
                 <a>
-                  <Typography variant="h6" color="textPrimary">
-                    About
-                  </Typography>
+                  <Typography variant="h6">About</Typography>
                 </a>
               </Link>
               <Link href="/">
                 <a>
-                  <Typography variant="h6" color="textPrimary">
-                    Help
-                  </Typography>
+                  <Typography variant="h6">Help</Typography>
                 </a>
               </Link>
               <Link href="/">
                 <a>
-                  <Typography variant="h6" color="textPrimary">
-                    Contact
-                  </Typography>
+                  <Typography variant="h6">Contact</Typography>
                 </a>
               </Link>
               <Link href="/">
                 <a>
-                  <Typography variant="h6" color="textPrimary">
+                  <Typography variant="h6">
                     <i>My Account</i>
                   </Typography>
                 </a>

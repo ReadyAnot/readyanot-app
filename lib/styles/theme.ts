@@ -64,7 +64,7 @@ const theme = responsiveFontSizes(
         fontWeight: 500,
       },
       h6: {
-        fontSize: '1.5rem',
+        fontSize: '1.5265rem',
         fontWeight: 500,
       },
       subtitle1: {
@@ -102,13 +102,13 @@ const theme = responsiveFontSizes(
           },
         },
         containedSizeLarge: {
-          fontSize: '1.5rem',
+          fontSize: '1.5265rem',
           fontWeight: 600,
           minHeight: 42,
           minWidth: 95,
         },
         textSizeLarge: {
-          fontSize: '1.5rem',
+          fontSize: '1.5265rem',
           fontWeight: 500,
           minHeight: 42,
           paddingLeft: '1.25rem',
