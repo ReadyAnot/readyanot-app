@@ -6,21 +6,11 @@ import { ComponentContainer } from '../AppContainer'
 const useStyles = makeStyles({
   container: {
     display: 'flex',
-    flex: 1,
+    flex: 3,
     flexDirection: 'column',
     justifyContent: 'center',
     textAlign: 'center',
     zIndex: 1,
-    '& h2': {
-      marginBottom: '2.25rem',
-    },
-    '& img': {
-      marginTop: '-5rem',
-      marginBottom: '-3rem',
-    },
-  },
-  handshakeGraphic: {
-    zIndex: -1,
   },
 })
 
@@ -28,26 +18,24 @@ const LandingPage: React.FC = () => {
   const classes = useStyles()
 
   return (
-    <ComponentContainer className={classes.container}>
-      <ScrollAnimation animateIn="fadeInUp" animateOnce>
-        <Typography variant="h2">
-          {'Social conversations made safe & open'}
-        </Typography>
-        <Typography variant="subtitle1">
-          {'3 pointers that convinces the platform'}
-        </Typography>
-      </ScrollAnimation>
-      <ScrollAnimation
-        animateIn="fadeIn"
-        animateOnce
-        className={classes.handshakeGraphic}
-      >
-        <img
-          src="/assets/home/landing-page/continuous-one-line-drawing-handshake-minimalism.jpg"
-          draggable={false}
-        />
-      </ScrollAnimation>
-    </ComponentContainer>
+    <>
+      <ComponentContainer className={classes.container}>
+        <ScrollAnimation animateIn="fadeIn" animateOnce>
+          <Typography
+            style={{
+              fontSize: '12.5rem',
+              color: 'rgba(88, 88, 88, 0.44)',
+            }}
+          >
+            {'SOCIAL'}
+          </Typography>
+          <Typography variant="h2" style={{ color: '#585858' }}>
+            {'conversations made safe & open'}
+          </Typography>
+        </ScrollAnimation>
+      </ComponentContainer>
+      <div style={{ flex: 2 }} />
+    </>
   )
 }
 
