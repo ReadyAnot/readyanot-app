@@ -84,7 +84,7 @@ const PrivilegeTest: NextPage<PrivilegeTestProps> = ({ questions }) => {
   const onViewScore = () => {
     const logObject: QuizLog = {
       response: questionStates,
-      score: questionStates.filter((el) => Boolean(el)).length,
+      score: questionStates.filter((el) => !Boolean(el)).length,
     }
     createLogMutation({
       variables: {
