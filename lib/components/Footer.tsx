@@ -6,7 +6,7 @@ import {
 } from '@material-ui/core'
 import Link from 'next/link'
 import React from 'react'
-import { ComponentContainer } from './AppContainer'
+import { ComponentContainer, ComponentType } from './AppContainer'
 
 export const useCopyRightHeight = () => {
   const theme = useTheme()
@@ -65,7 +65,7 @@ const MyFooter: React.FC = () => {
 
   return (
     <footer className={classes.footer}>
-      <ComponentContainer>
+      <ComponentContainer type={ComponentType.AppBar}>
         <div className={classes.footerContent}>
           <div className={classes.links}>
             <Link href="/">

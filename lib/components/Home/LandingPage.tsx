@@ -1,6 +1,6 @@
 import { makeStyles, Typography } from '@material-ui/core'
 import React from 'react'
-import { ComponentContainer } from '../AppContainer'
+import { ComponentContainer, ComponentType } from '../AppContainer'
 
 const useStyles = makeStyles({
   container: {
@@ -18,7 +18,10 @@ const LandingPage: React.FC = () => {
 
   return (
     <>
-      <ComponentContainer className={classes.container}>
+      <ComponentContainer
+        className={classes.container}
+        type={ComponentType.Section}
+      >
         <Typography style={{ fontSize: '12.5rem' }} color="textSecondary">
           {'SOCIAL'}
         </Typography>
