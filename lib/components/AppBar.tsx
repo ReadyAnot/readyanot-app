@@ -10,9 +10,6 @@ import React from 'react'
 import { ComponentContainer } from './AppContainer'
 
 const useStyles = makeStyles((theme) => ({
-  appBar: {
-    backgroundColor: '#305F72',
-  },
   toolBar: {
     padding: 0,
     '& img': {
@@ -48,7 +45,7 @@ const MyAppBar: React.FC = () => {
   const classes = useStyles()
 
   return (
-    <AppBar position="static" className={classes.appBar}>
+    <AppBar position="static">
       <ComponentContainer>
         <Toolbar className={classes.toolBar}>
           <Link href="/">

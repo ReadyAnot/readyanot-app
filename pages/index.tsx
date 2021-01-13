@@ -4,7 +4,7 @@ import MyAppBar from '../lib/components/AppBar'
 import PageContainer from '../lib/components/AppContainer'
 import MyFooter from '../lib/components/Footer'
 import FullViewHeight from '../lib/components/FullViewHeight'
-import HomePageContent from '../lib/components/Home/HomePageContent'
+import ShareVoiceContent from '../lib/components/Home/ShareVoiceContent'
 import LandingPage from '../lib/components/Home/LandingPage'
 
 const Home: React.FC = () => {
@@ -23,7 +23,7 @@ const Home: React.FC = () => {
           <MyAppBar />
           <LandingPage />
         </FullViewHeight>
-        <HomePageContent />
+        <ShareVoiceContent />
       </main>
 
       <MyFooter />

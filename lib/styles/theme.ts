@@ -2,17 +2,12 @@ import { createMuiTheme, responsiveFontSizes } from '@material-ui/core'
 import { Shadows } from '@material-ui/core/styles/shadows'
 
 // Theme colors.
-export const LightRed = '#ff9ea7'
-export const BrightRed = '#de354c'
-export const DeepRed = '#932432'
-
-export const LightPurple = '#9d70d5'
-export const PurePurple = '#6c43a3'
-export const DeepPurple = '#3e2874'
+export const PrussianBlue = '#305F72'
+export const LightPink = '#FC9999'
 
 // Text colors.
 export const PurpleTingedGrey = '#283747'
-export const Cloud = '#F3F3F3'
+export const Cloud = '#FEFDF9'
 
 const defaultTheme = createMuiTheme()
 
@@ -29,20 +24,16 @@ const theme = responsiveFontSizes(
         default: '#FFFFFF',
       },
       primary: {
-        light: LightRed,
-        main: BrightRed,
-        dark: DeepRed,
+        main: PrussianBlue,
         contrastText: Cloud,
       },
       secondary: {
-        light: LightPurple,
-        main: PurePurple,
-        dark: DeepPurple,
+        main: LightPink,
         contrastText: Cloud,
       },
       text: {
         primary: PurpleTingedGrey,
-        secondary: Cloud,
+        secondary: 'rgba(88, 88, 88, 0.44)',
       },
     },
     typography: {
@@ -96,10 +87,7 @@ const theme = responsiveFontSizes(
           minWidth: 85,
         },
         containedPrimary: {
-          backgroundColor: BrightRed,
-          '&:hover': {
-            backgroundColor: DeepRed,
-          },
+          backgroundColor: PrussianBlue,
         },
         containedSizeLarge: {
           fontSize: '1.5265rem',
