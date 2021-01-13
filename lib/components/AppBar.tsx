@@ -7,7 +7,7 @@ import {
 } from '@material-ui/core'
 import Link from 'next/link'
 import React from 'react'
-import { ComponentContainer } from './AppContainer'
+import { ComponentContainer, ComponentType } from './AppContainer'
 
 const useStyles = makeStyles((theme) => ({
   toolBar: {
@@ -45,8 +45,8 @@ const MyAppBar: React.FC = () => {
   const classes = useStyles()
 
   return (
-    <AppBar position="static">
-      <ComponentContainer>
+    <AppBar position="static" color="transparent">
+      <ComponentContainer type={ComponentType.AppBar}>
         <Toolbar className={classes.toolBar}>
           <Link href="/">
             <a className={classes.title}>Ready Anot</a>

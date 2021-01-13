@@ -20,24 +20,24 @@ const PageContainer: React.FC = ({ children }) => {
   return <div className={classes.pageContainer}>{children}</div>
 }
 
-type ComponentStyleProps = {
-  componentPadding: string
-}
-
 const useComponentStyles = makeStyles({
-  componentContainer: {
-    padding: (props: ComponentStyleProps) => props.componentPadding,
+  appBarPadding: {
+    padding: '2.0625rem 2rem',
+  },
+  sectionPadding: {
+    padding: '4rem 2rem',
   },
 })
 
 export enum ComponentType {
   AppBar,
   Section,
+  Component,
 }
 
 export type ComponentContainerProps = {
   className?: string
-  type?: ComponentType
+  type: ComponentType
 }
 
 export const ComponentContainer: React.FC<ComponentContainerProps> = ({
@@ -45,14 +45,15 @@ export const ComponentContainer: React.FC<ComponentContainerProps> = ({
   className,
   type = ComponentType.AppBar,
 }) => {
-  const classes = useComponentStyles({
-    componentPadding:
-      type == ComponentType.AppBar ? '2.0625rem 2rem' : '4rem 2rem',
-  })
+  const classes = useComponentStyles()
 
   return (
     <Container
-      className={classNames(classes.componentContainer, className)}
+      className={classNames(
+        { [classes.appBarPadding]: type === ComponentType.AppBar },
+        { [classes.sectionPadding]: type === ComponentType.Section },
+        className
+      )}
       maxWidth="lg"
     >
       {children}

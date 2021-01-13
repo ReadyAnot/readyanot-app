@@ -1,29 +1,6 @@
 import { Card, CardContent, makeStyles, Typography } from '@material-ui/core'
-import React, { useState } from 'react'
-import { ComponentContainer } from '../AppContainer'
-
-const useNewsCardScrollStyles = makeStyles({
-  cardScroll: {
-    display: 'flex',
-    overflowX: 'scroll',
-    overflowY: 'hidden',
-    '& div': {
-      marginRight: '2rem',
-      '&:last-child': {
-        marginRight: 'unset',
-      },
-    },
-  },
-})
-
-const NewsCardScroll: React.FC = ({ children }) => {
-  const classes = useNewsCardScrollStyles()
-
-  const [dynamicHeight, setDynamicHeight] = useState<number>(null)
-  const [translateX, setTranslateX] = useState<number>(0)
-
-  return <div className={classes.cardScroll}>{children}</div>
-}
+import React from 'react'
+import StickyScroll from '../StickyScroll'
 
 type newsCardStylesProps = {
   cardColor: string
@@ -59,39 +36,58 @@ const useNewsContentStyles = makeStyles({
     alignItems: 'center',
     marginBottom: '1rem',
   },
+  cardScroll: {
+    display: 'flex',
+    '& div': {
+      marginRight: '4rem',
+      '&:last-child': {
+        marginRight: 'unset',
+      },
+    },
+  },
 })
 
 const NewsContent: React.FC = () => {
   const classes = useNewsContentStyles()
 
-  return (
-    <ComponentContainer>
-      <div className={classes.header}>
-        <Typography style={{ fontSize: '14.375rem', lineHeight: 1 }}>
-          {'YOU'}
+  const Header: React.FC = () => (
+    <div className={classes.header}>
+      <Typography style={{ fontSize: '14.375rem', lineHeight: 1 }}>
+        {'YOU'}
+      </Typography>
+      <div style={{ marginLeft: '2rem' }}>
+        <Typography
+          style={{
+            color: '#B79494',
+            fontSize: '5rem',
+            margin: 0,
+            lineHeight: 1,
+          }}
+        >
+          {'MIGHT'}
         </Typography>
-        <div style={{ marginLeft: '2rem' }}>
-          <Typography
-            style={{
-              color: '#B79494',
-              fontSize: '5rem',
-              margin: 0,
-              lineHeight: 1,
-            }}
-          >
-            {'MIGHT'}
-          </Typography>
-          <Typography style={{ fontSize: '5rem', margin: 0, lineHeight: 1 }}>
-            {'WANNA'}
-          </Typography>
-        </div>
+        <Typography style={{ fontSize: '5rem', margin: 0, lineHeight: 1 }}>
+          {'WANNA'}
+        </Typography>
       </div>
-      <NewsCardScroll>
-        <NewsCard cardColor="#FFFFFF" />
-        <NewsCard cardColor="#7D98A4" />
-        <NewsCard cardColor="#28596C" />
-      </NewsCardScroll>
-    </ComponentContainer>
+    </div>
+  )
+
+  const ScrollContent: React.FC = () => (
+    <div className={classes.cardScroll}>
+      <NewsCard cardColor="#FFFFFF" />
+      <NewsCard cardColor="#FFFFFF" />
+      <NewsCard cardColor="#FFFFFF" />
+      <NewsCard cardColor="#FFFFFF" />
+      <NewsCard cardColor="#FFFFFF" />
+      <NewsCard cardColor="#FFFFFF" />
+    </div>
+  )
+
+  return (
+    <StickyScroll Header={Header}>
+      <ScrollContent />
+    </StickyScroll>
   )
 }
 
