@@ -1,3 +1,4 @@
+import _ from 'lodash'
 import { makeStyles } from '@material-ui/core'
 import React, {
   Dispatch,
@@ -114,7 +115,7 @@ const StickyScroll: React.FC<StickyScrollProps> = ({ Header, children }) => {
   const objectRef = useRef<HTMLDivElement>(null)
   const headerRef = useRef<HTMLDivElement>(null)
 
-  const resizeHandler = () => {
+  const resizeHandler = _.debounce(() => {
     const horizontalMargins = calculateHorizontalMargins(headerRef)
     const componentWidth = headerRef.current.clientWidth
 
@@ -127,7 +128,7 @@ const StickyScroll: React.FC<StickyScrollProps> = ({ Header, children }) => {
     applyScrollListener(containerRef, setTranslateX)
     setHorizontalMargins(horizontalMargins)
     setMarginBottom(headerRef.current.clientHeight)
-  }
+  }, 100)
 
   useEffect(() => resizeHandler(), [horizontalMargins])
 
