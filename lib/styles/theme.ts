@@ -89,16 +89,20 @@ const theme = responsiveFontSizes(
         containedPrimary: {
           backgroundColor: PrussianBlue,
         },
+        text: {
+          fontSize: '1.25rem',
+          fontWeight: 500,
+          paddingLeft: '1.25rem',
+          paddingRight: '1.25rem',
+        },
         containedSizeLarge: {
           fontSize: '1.5265rem',
           fontWeight: 600,
-          minHeight: 42,
           minWidth: 95,
         },
         textSizeLarge: {
           fontSize: '1.5265rem',
           fontWeight: 500,
-          minHeight: 42,
           paddingLeft: '1.25rem',
           paddingRight: '1.25rem',
         },

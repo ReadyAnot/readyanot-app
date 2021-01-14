@@ -1,9 +1,9 @@
 import {
   AppBar,
+  Button,
   Hidden,
   makeStyles,
   Toolbar,
-  Typography,
 } from '@material-ui/core'
 import Link from 'next/link'
 import React from 'react'
@@ -21,18 +21,15 @@ const useStyles = makeStyles((theme) => ({
       },
     },
   },
-  title: {
-    color: 'inherit',
-    fontSize: '3.125rem',
-    fontWeight: 900,
-    textDecoration: 'none',
+  appLogo: {
+    maxHeight: 120,
   },
   buttonGroup: {
     display: 'flex',
     marginLeft: 'auto',
     '& a': {
       color: 'inherit',
-      marginRight: '2.6875rem',
+      marginRight: '1rem',
       textDecoration: 'none',
       '&:last-child': {
         marginRight: 'unset',
@@ -49,30 +46,36 @@ const MyAppBar: React.FC = () => {
       <ComponentContainer type={ComponentType.AppBar}>
         <Toolbar className={classes.toolBar}>
           <Link href="/">
-            <a className={classes.title}>Ready Anot</a>
+            <a>
+              <img
+                src="/ready-anot-logo.png"
+                className={classes.appLogo}
+                draggable={false}
+              />
+            </a>
           </Link>
           <div className={classes.buttonGroup}>
             <Hidden xsDown>
               <Link href="/">
                 <a>
-                  <Typography variant="h6">About</Typography>
+                  <Button variant="text">About</Button>
                 </a>
               </Link>
               <Link href="/">
                 <a>
-                  <Typography variant="h6">Help</Typography>
+                  <Button variant="text">Help</Button>
                 </a>
               </Link>
               <Link href="/">
                 <a>
-                  <Typography variant="h6">Contact</Typography>
+                  <Button variant="text">Contact</Button>
                 </a>
               </Link>
               <Link href="/">
                 <a>
-                  <Typography variant="h6">
+                  <Button variant="text">
                     <i>My Account</i>
-                  </Typography>
+                  </Button>
                 </a>
               </Link>
             </Hidden>

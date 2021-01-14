@@ -1,4 +1,5 @@
 import {
+  Button,
   makeStyles,
   Typography,
   useMediaQuery,
@@ -43,8 +44,7 @@ const useStyles = makeStyles((theme) => ({
   },
   links: {
     '& a': {
-      marginBottom: '0.25rem',
-      marginRight: '3.75rem',
+      marginRight: '1rem',
       '& last-child': {
         marginRight: 'unset',
       },
@@ -70,35 +70,27 @@ const MyFooter: React.FC = () => {
           <div className={classes.links}>
             <Link href="/">
               <a>
-                <Typography variant="h6" color="textPrimary">
-                  About
-                </Typography>
+                <Button variant="text">About</Button>
               </a>
             </Link>
             <Link href="/">
               <a>
-                <Typography variant="h6" color="textPrimary">
-                  Help Centre
-                </Typography>
+                <Button variant="text">Help Centre</Button>
               </a>
             </Link>
             <Link href="/">
               <a>
-                <Typography variant="h6" color="textPrimary">
-                  Terms of Service
-                </Typography>
+                <Button variant="text">Terms of Service</Button>
               </a>
             </Link>
             <Link href="/">
               <a>
-                <Typography variant="h6" color="textPrimary">
-                  Cookie Policy
-                </Typography>
+                <Button variant="text">Cookie Policy</Button>
               </a>
             </Link>
           </div>
           <div>
-            <Typography variant="h6" color="textPrimary">
+            <Typography variant="subtitle1" color="textPrimary">
               {`© ${new Date().getFullYear()} ReadyAnot`}
             </Typography>
           </div>
