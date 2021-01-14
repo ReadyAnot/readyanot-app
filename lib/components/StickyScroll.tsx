@@ -11,19 +11,25 @@ import { ComponentContainer, ComponentType } from './AppContainer'
 
 const calculateDynamicHeight = (
   objectWidth: number,
-  componentWidth: number
+  componentWidth: number,
+  horizontalMargins: number
 ) => {
   const vh = window.innerHeight
-  return objectWidth - componentWidth + vh
+  return objectWidth - componentWidth + vh - 2 * horizontalMargins
 }
 
 const handleDynamicHeight = (
   ref: MutableRefObject<HTMLDivElement>,
   setDynamicHeight: Dispatch<SetStateAction<number>>,
-  componentWidth: number
+  componentWidth: number,
+  horizontalMargins: number
 ) => {
   const objectWidth = ref.current.scrollWidth
-  const dynamicHeight = calculateDynamicHeight(objectWidth, componentWidth)
+  const dynamicHeight = calculateDynamicHeight(
+    objectWidth,
+    componentWidth,
+    horizontalMargins
+  )
   setDynamicHeight(dynamicHeight)
 }
 
@@ -96,7 +102,6 @@ const StickyScroll: React.FC<StickyScrollProps> = ({ Header, children }) => {
   const [translateX, setTranslateX] = useState<number>(0)
   const [marginBottom, setMarginBottom] = useState<number>(0)
   const [horizontalMargins, setHorizontalMargins] = useState<number>(0)
-  const [componentWidth, setComponentWidth] = useState<number>(0)
 
   const classes = useStyles({
     dynamicHeight,
@@ -110,20 +115,23 @@ const StickyScroll: React.FC<StickyScrollProps> = ({ Header, children }) => {
   const headerRef = useRef<HTMLDivElement>(null)
 
   const resizeHandler = () => {
-    const componentMargins = calculateHorizontalMargins(headerRef)
+    const horizontalMargins = calculateHorizontalMargins(headerRef)
     const componentWidth = headerRef.current.clientWidth
 
-    handleDynamicHeight(objectRef, setDynamicHeight, componentWidth)
+    handleDynamicHeight(
+      objectRef,
+      setDynamicHeight,
+      componentWidth,
+      horizontalMargins
+    )
     applyScrollListener(containerRef, setTranslateX)
-    setHorizontalMargins(componentMargins)
+    setHorizontalMargins(horizontalMargins)
     setMarginBottom(headerRef.current.clientHeight)
-    setComponentWidth(componentWidth)
   }
 
-  useEffect(() => {
-    resizeHandler()
-    window.addEventListener('resize', resizeHandler)
-  }, [])
+  useEffect(() => resizeHandler(), [horizontalMargins])
+
+  useEffect(() => window.addEventListener('resize', resizeHandler), [])
 
   return (
     <div className={classes.outerContainer}>
