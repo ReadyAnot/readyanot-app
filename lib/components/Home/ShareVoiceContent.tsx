@@ -1,5 +1,6 @@
-import { makeStyles } from '@material-ui/core'
+import { Button, makeStyles } from '@material-ui/core'
 import Typography from '@material-ui/core/Typography'
+import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos'
 import classNames from 'classnames'
 import Link from 'next/link'
 import React from 'react'
@@ -66,9 +67,10 @@ const ShareVoiceContent: React.FC = () => {
         </Typography>
         <Link href="/">
           <a>
-            <Typography variant="h6" color="textPrimary">
-              Join conversations&nbsp;&nbsp;{'>'}
-            </Typography>
+            <Button variant="contained" color="primary">
+              Join conversations&nbsp;
+              <ArrowForwardIosIcon style={{ fontSize: '1rem' }} />
+            </Button>
           </a>
         </Link>
       </div>

@@ -24,7 +24,7 @@ const theme = responsiveFontSizes(
         default: '#FFFFFF',
       },
       primary: {
-        main: PrussianBlue,
+        main: '#7D9575',
         contrastText: Cloud,
       },
       secondary: {
@@ -83,11 +83,12 @@ const theme = responsiveFontSizes(
           textTransform: 'none',
         },
         contained: {
+          fontSize: '1.25rem',
+          fontWeight: 500,
+          paddingLeft: '1.25rem',
+          paddingRight: '1.25rem',
           minHeight: 35,
           minWidth: 85,
-        },
-        containedPrimary: {
-          backgroundColor: PrussianBlue,
         },
         text: {
           fontSize: '1.25rem',

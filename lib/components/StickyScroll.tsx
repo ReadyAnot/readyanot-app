@@ -74,6 +74,8 @@ const useStyles = makeStyles({
     display: 'flex',
     minHeight: '100vh',
     alignItems: 'center',
+    background:
+      'linear-gradient(180deg, #FFFFFF 0%, #F9EDED 20%, rgba(241, 140, 142, 0) 100%)',
   },
   contentContent: {
     marginBottom: ({ marginBottom }) => marginBottom,

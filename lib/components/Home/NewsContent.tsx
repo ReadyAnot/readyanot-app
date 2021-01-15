@@ -34,10 +34,6 @@ const NewsCard: React.FC<NewsCardProps> = ({ cardColor }) => {
 }
 
 const useNewsContentStyles = makeStyles({
-  background: {
-    background:
-      'linear-gradient(180deg, #FFFFFF 0%, #F9EDED 10%, rgba(241, 140, 142, 0) 100%)',
-  },
   header: {
     display: 'flex',
     alignItems: 'baseline',
@@ -96,11 +92,9 @@ const NewsContent: React.FC = () => {
   )
 
   return (
-    <div className={classes.background}>
-      <StickyScroll Header={Header}>
-        <ScrollContent />
-      </StickyScroll>
-    </div>
+    <StickyScroll Header={Header}>
+      <ScrollContent />
+    </StickyScroll>
   )
 }
 
