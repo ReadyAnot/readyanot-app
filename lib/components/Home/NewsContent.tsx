@@ -11,7 +11,8 @@ const useNewsCardStyles = makeStyles({
     backgroundColor: (props: newsCardStylesProps) => props.cardColor,
     padding: '1rem 2rem',
     minWidth: 400,
-    minHeight: 500,
+    height: 500,
+    maxHeight: '45vh',
   },
 })
 

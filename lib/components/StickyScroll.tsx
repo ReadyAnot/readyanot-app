@@ -53,7 +53,6 @@ const calculateHorizontalMargins = (ref: MutableRefObject<HTMLDivElement>) => {
 type useStyleProps = {
   dynamicHeight: number
   translateX: number
-  marginBottom: number
   horizontalMargins: number
 }
 
@@ -77,9 +76,7 @@ const useStyles = makeStyles({
     background:
       'linear-gradient(180deg, #FFFFFF 0%, #F9EDED 20%, rgba(241, 140, 142, 0) 100%)',
   },
-  contentContent: {
-    marginBottom: ({ marginBottom }) => marginBottom,
-  },
+  contentContent: {},
   header: {
     display: 'flex',
     justifyContent: 'center',
@@ -103,13 +100,11 @@ type StickyScrollProps = {
 const StickyScroll: React.FC<StickyScrollProps> = ({ Header, children }) => {
   const [dynamicHeight, setDynamicHeight] = useState<number>(null)
   const [translateX, setTranslateX] = useState<number>(0)
-  const [marginBottom, setMarginBottom] = useState<number>(0)
   const [horizontalMargins, setHorizontalMargins] = useState<number>(0)
 
   const classes = useStyles({
     dynamicHeight,
     translateX,
-    marginBottom,
     horizontalMargins,
   })
 
@@ -129,7 +124,6 @@ const StickyScroll: React.FC<StickyScrollProps> = ({ Header, children }) => {
     )
     applyScrollListener(containerRef, setTranslateX)
     setHorizontalMargins(horizontalMargins)
-    setMarginBottom(headerRef.current.clientHeight)
   }, 100)
 
   useEffect(() => resizeHandler(), [horizontalMargins])
