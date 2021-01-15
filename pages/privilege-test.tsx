@@ -14,6 +14,7 @@ import React, { useEffect, useState } from 'react'
 import MyAppBar from '../lib/components/AppBar'
 import PageContainer, {
   ComponentContainer,
+  ComponentType,
 } from '../lib/components/AppContainer'
 import MyFooter from '../lib/components/Footer'
 import { useCreateLogMutation } from '../lib/graphql/generated/graphql'
@@ -108,7 +109,7 @@ const PrivilegeTest: NextPage<PrivilegeTestProps> = ({ questions }) => {
   )
 
   const QuestionsComponent: React.FC = () => (
-    <ComponentContainer>
+    <ComponentContainer type={ComponentType.Section}>
       <Typography variant="h2">{'Privilege Test'}</Typography>
       <FormGroup className={classes.form}>
         {pageQuestion.map((qn, id) => {
@@ -171,7 +172,7 @@ const PrivilegeTest: NextPage<PrivilegeTestProps> = ({ questions }) => {
   )
 
   const ResultsComponent: React.FC = () => (
-    <ComponentContainer>
+    <ComponentContainer type={ComponentType.Component}>
       <Typography variant="h2">{'Your Privilege Score:'}</Typography>
       <Typography className={classes.scoreText}>
         {questionStates.filter((el) => Boolean(el)).length}
