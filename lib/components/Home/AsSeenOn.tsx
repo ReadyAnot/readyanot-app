@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
     gridTemplateRows: 'auto auto',
     justifyContent: 'center',
     rowGap: '2rem',
-    marginTop: '2.5rem',
+    marginTop: '4rem',
     width: '100%',
     '& img': {
       marginLeft: 'auto',
@@ -55,7 +55,7 @@ const AsSeenOn = () => {
     <div id="as-seen-on" className={classes.asSeenOn}>
       <ComponentContainer type={ComponentType.Section}>
         <div className={classes.asSeenOnContent}>
-          <Typography variant="h3">{'As Seen On'}</Typography>
+          <Typography variant="h2">{'As Seen On'}</Typography>
           <div className={classes.asSeenOnLogos}>
             <img
               src="/assets/home/as-seen-on/mccy-logo-dark.svg"

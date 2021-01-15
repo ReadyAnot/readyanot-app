@@ -7,6 +7,7 @@ import FullViewHeight from '../lib/components/FullViewHeight'
 import ShareVoiceContent from '../lib/components/Home/ShareVoiceContent'
 import LandingPage from '../lib/components/Home/LandingPage'
 import NewsContent from '../lib/components/Home/NewsContent'
+import AsSeenOn from '../lib/components/Home/AsSeenOn'
 
 const Home: React.FC = () => {
   return (
@@ -26,6 +27,7 @@ const Home: React.FC = () => {
         </FullViewHeight>
         <ShareVoiceContent />
         <NewsContent />
+        <AsSeenOn />
       </main>
 
       <MyFooter />
