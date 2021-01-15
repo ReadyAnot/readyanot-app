@@ -9,10 +9,9 @@ type newsCardStylesProps = {
 const useNewsCardStyles = makeStyles({
   card: {
     backgroundColor: (props: newsCardStylesProps) => props.cardColor,
-    borderRadius: 77,
     padding: '1rem 2rem',
-    minWidth: 640,
-    height: 320,
+    minWidth: 400,
+    minHeight: 500,
   },
 })
 
@@ -24,16 +23,24 @@ const NewsCard: React.FC<NewsCardProps> = ({ cardColor }) => {
   const classes = useNewsCardStyles({ cardColor })
 
   return (
-    <Card variant="outlined" className={classes.card}>
-      <CardContent></CardContent>
+    <Card variant="elevation" className={classes.card}>
+      <CardContent>
+        <Typography style={{ fontWeight: 700, textAlign: 'right' }}>
+          {'Know This 🔥'}
+        </Typography>
+      </CardContent>
     </Card>
   )
 }
 
 const useNewsContentStyles = makeStyles({
+  background: {
+    background:
+      'linear-gradient(180deg, #FFFFFF 0%, #F9EDED 10%, rgba(241, 140, 142, 0) 100%)',
+  },
   header: {
     display: 'flex',
-    alignItems: 'center',
+    alignItems: 'baseline',
     marginBottom: '1rem',
   },
   cardScroll: {
@@ -52,22 +59,26 @@ const NewsContent: React.FC = () => {
 
   const Header: React.FC = () => (
     <div className={classes.header}>
-      <Typography style={{ fontSize: '14.375rem', lineHeight: 1 }}>
+      <Typography
+        style={{
+          color: '#FFFFFF',
+          fontSize: '10rem',
+          lineHeight: 1,
+          margin: 0,
+        }}
+      >
         {'YOU'}
       </Typography>
-      <div style={{ marginLeft: '2rem' }}>
+      <div style={{ marginLeft: '-4rem' }}>
         <Typography
           style={{
-            color: '#B79494',
             fontSize: '5rem',
+            fontWeight: 700,
             margin: 0,
             lineHeight: 1,
           }}
         >
-          {'MIGHT'}
-        </Typography>
-        <Typography style={{ fontSize: '5rem', margin: 0, lineHeight: 1 }}>
-          {'WANNA'}
+          {'might wanna'}
         </Typography>
       </div>
     </div>
@@ -76,18 +87,20 @@ const NewsContent: React.FC = () => {
   const ScrollContent: React.FC = () => (
     <div className={classes.cardScroll}>
       <NewsCard cardColor="#FFFFFF" />
+      <NewsCard cardColor="#E7E7E7" />
+      <NewsCard cardColor="#A9C1A0" />
       <NewsCard cardColor="#FFFFFF" />
-      <NewsCard cardColor="#FFFFFF" />
-      <NewsCard cardColor="#FFFFFF" />
-      <NewsCard cardColor="#FFFFFF" />
-      <NewsCard cardColor="#FFFFFF" />
+      <NewsCard cardColor="#E7E7E7" />
+      <NewsCard cardColor="#A9C1A0" />
     </div>
   )
 
   return (
-    <StickyScroll Header={Header}>
-      <ScrollContent />
-    </StickyScroll>
+    <div className={classes.background}>
+      <StickyScroll Header={Header}>
+        <ScrollContent />
+      </StickyScroll>
+    </div>
   )
 }
 
