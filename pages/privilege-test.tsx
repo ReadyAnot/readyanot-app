@@ -84,7 +84,7 @@ const PrivilegeTest: NextPage<PrivilegeTestProps> = ({ questions }) => {
   const onViewScore = () => {
     const logObject: QuizLog = {
       response: questionStates,
-      score: questionStates.filter((el) => Boolean(el)).length,
+      score: questionStates.filter((el) => Boolean(el)).length*2,
     }
     createLogMutation({
       variables: {
@@ -176,7 +176,7 @@ const PrivilegeTest: NextPage<PrivilegeTestProps> = ({ questions }) => {
     <ComponentContainer>
       <Typography variant="h2">{'Your Privilege Score:'}</Typography>
       <Typography className={classes.scoreText}>
-        {questionStates.filter((el) => Boolean(el)).length}
+        {questionStates.filter((el) => Boolean(el)).length*2}
       </Typography>
       <Button
         onClick={clearQuestionStates}
