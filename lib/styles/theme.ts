@@ -1,14 +1,6 @@
 import { createMuiTheme, responsiveFontSizes } from '@material-ui/core'
 import { Shadows } from '@material-ui/core/styles/shadows'
 
-// Theme colors.
-export const PrussianBlue = '#305F72'
-export const LightPink = '#FC9999'
-
-// Text colors.
-export const PurpleTingedGrey = '#283747'
-export const Cloud = '#FEFDF9'
-
 const defaultTheme = createMuiTheme()
 
 const theme = responsiveFontSizes(
@@ -24,15 +16,15 @@ const theme = responsiveFontSizes(
         default: '#FFFFFF',
       },
       primary: {
-        main: '#7D9575',
-        contrastText: Cloud,
+        main: '#6D7968',
+        contrastText: '#FEFDF9',
       },
       secondary: {
-        main: LightPink,
-        contrastText: Cloud,
+        main: '#FC9999',
+        contrastText: '#FEFDF9',
       },
       text: {
-        primary: PurpleTingedGrey,
+        primary: '#283747',
         secondary: 'rgba(88, 88, 88, 0.44)',
       },
     },
