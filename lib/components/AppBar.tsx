@@ -1,10 +1,4 @@
-import {
-  AppBar,
-  Button,
-  Hidden,
-  makeStyles,
-  Toolbar,
-} from '@material-ui/core'
+import { AppBar, Button, makeStyles, Toolbar } from '@material-ui/core'
 import Link from 'next/link'
 import React from 'react'
 import { ComponentContainer, ComponentType } from './AppContainer'
@@ -45,40 +39,34 @@ const MyAppBar: React.FC = () => {
     <AppBar position="static" color="transparent">
       <ComponentContainer type={ComponentType.AppBar}>
         <Toolbar className={classes.toolBar}>
-          <Link href="/">
-            <a>
-              <img
-                src="/ready-anot-logo.png"
-                className={classes.appLogo}
-                draggable={false}
-              />
-            </a>
-          </Link>
           <div className={classes.buttonGroup}>
-            <Hidden xsDown>
-              <Link href="/">
-                <a>
-                  <Button variant="text">About</Button>
-                </a>
-              </Link>
-              <Link href="/">
-                <a>
-                  <Button variant="text">Help</Button>
-                </a>
-              </Link>
-              <Link href="/">
-                <a>
-                  <Button variant="text">Contact</Button>
-                </a>
-              </Link>
-              <Link href="/">
-                <a>
-                  <Button variant="text">
-                    <i>My Account</i>
-                  </Button>
-                </a>
-              </Link>
-            </Hidden>
+            <Link href="/">
+              <a>
+                <Button variant="text">Home</Button>
+              </a>
+            </Link>
+            <Link href="/">
+              <a>
+                <Button variant="text">About</Button>
+              </a>
+            </Link>
+            <Link href="/">
+              <a>
+                <Button variant="text">Help</Button>
+              </a>
+            </Link>
+            <Link href="/">
+              <a>
+                <Button variant="text">Contact</Button>
+              </a>
+            </Link>
+            <Link href="/">
+              <a>
+                <Button variant="text">
+                  <i>My Account</i>
+                </Button>
+              </a>
+            </Link>
           </div>
         </Toolbar>
       </ComponentContainer>
