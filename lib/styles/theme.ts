@@ -40,17 +40,21 @@ const theme = responsiveFontSizes(
       },
       h3: {
         fontSize: '3.125rem',
-        fontWeight: 500,
+        fontWeight: 900,
       },
       h4: {
         fontSize: '2.5rem',
-        fontWeight: 500,
+        fontWeight: 600,
       },
       h6: {
         fontSize: '1.5265rem',
         fontWeight: 500,
       },
       subtitle1: {
+        fontSize: '1.25rem',
+        fontWeight: 600,
+      },
+      subtitle2: {
         fontSize: '1.25rem',
       },
       body1: {

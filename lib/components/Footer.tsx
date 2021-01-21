@@ -21,9 +21,9 @@ type StyleProps = {
 
 const useStyles = makeStyles((theme) => ({
   footer: {
+    backgroundColor: '#CCE0C5',
     bottom: 0,
     height: (props: StyleProps) => props.footerHeight,
-    opacity: 0.5,
     overflow: 'hidden',
     position: 'absolute',
     width: '100%',
@@ -91,7 +91,7 @@ const MyFooter: React.FC = () => {
           </div>
           <div>
             <Typography variant="subtitle1" color="textPrimary">
-              {`© ${new Date().getFullYear()} ReadyAnot`}
+              {`© ${new Date().getFullYear()} Candid`}
             </Typography>
           </div>
         </div>

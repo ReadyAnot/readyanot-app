@@ -3,17 +3,16 @@ import React from 'react'
 import MyAppBar from '../lib/components/AppBar'
 import PageContainer from '../lib/components/AppContainer'
 import MyFooter from '../lib/components/Footer'
-import FullViewHeight from '../lib/components/FullViewHeight'
-import ShareVoiceContent from '../lib/components/Home/ShareVoiceContent'
 import LandingPage from '../lib/components/Home/LandingPage'
-import NewsContent from '../lib/components/Home/NewsContent'
-import AsSeenOn from '../lib/components/Home/AsSeenOn'
+import FeaturedPartners from '../lib/components/Home/FeaturedPartners'
+import PrivilegeTestPrompt from '../lib/components/Home/PrivilegeTestPrompt'
+import DoMoreSection from '../lib/components/Home/DoMoreSection'
 
 const Home: React.FC = () => {
   return (
     <PageContainer>
       <Head>
-        <title>ReadyAnot</title>
+        <title>Candid!</title>
         <link
           rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
@@ -21,13 +20,11 @@ const Home: React.FC = () => {
       </Head>
 
       <main>
-        <FullViewHeight>
-          <MyAppBar />
-          <LandingPage />
-        </FullViewHeight>
-        <ShareVoiceContent />
-        <NewsContent />
-        <AsSeenOn />
+        <MyAppBar />
+        <LandingPage />
+        <FeaturedPartners />
+        <PrivilegeTestPrompt />
+        <DoMoreSection />
       </main>
 
       <MyFooter />

@@ -1,17 +1,45 @@
-import { makeStyles, Typography } from '@material-ui/core'
+import { Card, CardContent, makeStyles, Typography } from '@material-ui/core'
+import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight'
 import React from 'react'
 import { ComponentContainer, ComponentType } from '../AppContainer'
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   container: {
     display: 'flex',
-    flex: 3,
     flexDirection: 'column',
-    justifyContent: 'center',
     textAlign: 'center',
-    zIndex: 1,
+    '& h1': {
+      fontSize: '10rem',
+      fontWeight: 'normal',
+    },
+    '& h2': {
+      fontSize: '3rem',
+      fontWeight: 'normal',
+      marginBottom: '5rem',
+    },
+    '& h4': {
+      fontWeight: 500,
+      '& i': {
+        color: theme.palette.primary.main,
+        fontWeight: 600,
+      },
+    },
   },
-})
+  appFeatures: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  appFeatureContainer: {
+    margin: '1rem 4rem 0rem 4rem',
+    '& h6': {
+      textAlign: 'bottom',
+    },
+    '& svg': {
+      verticalAlign: 'middle',
+    },
+  },
+}))
 
 const LandingPage: React.FC = () => {
   const classes = useStyles()
@@ -22,14 +50,48 @@ const LandingPage: React.FC = () => {
         className={classes.container}
         type={ComponentType.Section}
       >
-        <Typography style={{ fontSize: '12.5rem' }} color="textSecondary">
-          {'SOCIAL'}
+        <Typography variant="h1" color="primary">
+          {'CANDID'}
         </Typography>
-        <Typography variant="h2" style={{ color: '#585858' }}>
-          {'conversations made safe & open'}
+        <Typography variant="h2" color="primary">
+          {'conversations'}
         </Typography>
+        <Typography variant="h4">
+          Creating a more <i>vocal</i> and <i>empathetic</i> society
+        </Typography>
+        <div id="app-features" className={classes.appFeatures}>
+          <div className={classes.appFeatureContainer}>
+            <Card>
+              <CardContent>
+                <Typography variant="subtitle1">
+                  <KeyboardArrowRightIcon color="disabled" />
+                  {'Raising Awareness'}
+                </Typography>
+              </CardContent>
+            </Card>
+          </div>
+          <div className={classes.appFeatureContainer}>
+            <Card>
+              <CardContent>
+                <Typography variant="subtitle1">
+                  <KeyboardArrowRightIcon color="disabled" />
+                  {'Empowering People'}
+                </Typography>
+              </CardContent>
+            </Card>
+          </div>
+          <div className={classes.appFeatureContainer}>
+            <Card>
+              <CardContent>
+                <Typography variant="subtitle1">
+                  <KeyboardArrowRightIcon color="disabled" />
+                  {'Creating a Safe Space'}
+                </Typography>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
       </ComponentContainer>
-      <div style={{ flex: 2 }} />
     </>
   )
 }

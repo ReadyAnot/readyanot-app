@@ -6,9 +6,6 @@ const useStyles = makeStyles((theme) => ({
   asSeenOn: {
     overflow: 'hidden',
     width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      padding: '4rem',
-    },
   },
   asSeenOnContent: {
     alignItems: 'center',
@@ -24,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
     gridTemplateRows: 'auto auto',
     justifyContent: 'center',
     rowGap: '2rem',
-    marginTop: '4rem',
+    marginTop: '2rem',
     width: '100%',
     '& img': {
       marginLeft: 'auto',
@@ -48,29 +45,33 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-const AsSeenOn = () => {
+const FeaturedPartners = () => {
   const classes = useStyles()
 
   return (
     <div id="as-seen-on" className={classes.asSeenOn}>
       <ComponentContainer type={ComponentType.Section}>
         <div className={classes.asSeenOnContent}>
-          <Typography variant="h2">{'As Seen On'}</Typography>
+          <Typography variant="h4">{'Featured On'}</Typography>
           <div className={classes.asSeenOnLogos}>
             <img
               src="/assets/home/as-seen-on/mccy-logo-dark.svg"
+              alt="mccy-logo"
               draggable={false}
             />
             <img
               src="/assets/home/as-seen-on/startupx-logo.png"
+              alt="startupx-logo"
               draggable={false}
             />
             <img
               src="/assets/home/as-seen-on/berita-harian-logo.svg"
+              alt="berita-harian-logo"
               draggable={false}
             />
             <img
-              src="/assets/home/as-seen-on/channel-5-logo.png"
+              src="/assets/home/as-seen-on/groundup-sandbox-logo.png"
+              alt="ground-up-sandbox"
               draggable={false}
             />
           </div>
@@ -80,4 +81,4 @@ const AsSeenOn = () => {
   )
 }
 
-export default AsSeenOn
+export default FeaturedPartners
