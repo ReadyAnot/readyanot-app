@@ -69,7 +69,13 @@ const PrivilegeTestPrompt: React.FC = () => {
           </a>
         </Link>
       </div>
-      <div className={classes.sideImage}></div>
+      <div className={classes.sideImage}>
+        <img
+          src="/assets/home/privilege-test/graphic.svg"
+          alt="privilege-test-graphic"
+          draggable={false}
+        />
+      </div>
     </ComponentContainer>
   )
 }
