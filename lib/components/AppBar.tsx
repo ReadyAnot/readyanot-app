@@ -42,22 +42,28 @@ const MyAppBar: React.FC = () => {
           <div className={classes.buttonGroup}>
             <Link href="/">
               <a>
-                <Button variant="text">About</Button>
+                <Button variant="text" size="large">
+                  About
+                </Button>
               </a>
             </Link>
             <Link href="/">
               <a>
-                <Button variant="text">Help</Button>
+                <Button variant="text" size="large">
+                  Help
+                </Button>
               </a>
             </Link>
             <Link href="/">
               <a>
-                <Button variant="text">Contact</Button>
+                <Button variant="text" size="large">
+                  Contact
+                </Button>
               </a>
             </Link>
             <Link href="/">
               <a>
-                <Button variant="text">
+                <Button variant="text" size="large">
                   <i>My Account</i>
                 </Button>
               </a>

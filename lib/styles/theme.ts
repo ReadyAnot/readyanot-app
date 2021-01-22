@@ -46,10 +46,6 @@ const theme = responsiveFontSizes(
         fontSize: '2.5rem',
         fontWeight: 600,
       },
-      h6: {
-        fontSize: '1.5265rem',
-        fontWeight: 500,
-      },
       subtitle1: {
         fontSize: '1.25rem',
         fontWeight: 600,
@@ -79,7 +75,7 @@ const theme = responsiveFontSizes(
           textTransform: 'none',
         },
         contained: {
-          fontSize: '1.25rem',
+          fontSize: '1rem',
           fontWeight: 500,
           paddingLeft: '1.25rem',
           paddingRight: '1.25rem',
@@ -87,18 +83,18 @@ const theme = responsiveFontSizes(
           minWidth: 85,
         },
         text: {
-          fontSize: '1.25rem',
+          fontSize: '1rem',
           fontWeight: 500,
           paddingLeft: '1.25rem',
           paddingRight: '1.25rem',
         },
         containedSizeLarge: {
-          fontSize: '1.5265rem',
+          fontSize: '1.25rem',
           fontWeight: 600,
           minWidth: 95,
         },
         textSizeLarge: {
-          fontSize: '1.5265rem',
+          fontSize: '1.25rem',
           fontWeight: 500,
           paddingLeft: '1.25rem',
           paddingRight: '1.25rem',
