@@ -6,7 +6,7 @@ import Link from 'next/link'
 import React from 'react'
 import { ComponentContainer, ComponentType } from '../AppContainer'
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   conversationsContainer: {
     display: 'grid',
     gridTemplateColumns: '1fr 1fr',
@@ -14,6 +14,9 @@ const useStyles = makeStyles({
       color: 'inherit',
       textDecoration: 'none',
       textAlign: 'center',
+    },
+    [theme.breakpoints.down('sm')]: {
+      display: 'block',
     },
   },
   descriptionContainer: {
@@ -35,7 +38,7 @@ const useStyles = makeStyles({
       maxWidth: '70%',
     },
   },
-})
+}))
 
 const PrivilegeTestPrompt: React.FC = () => {
   const classes = useStyles()

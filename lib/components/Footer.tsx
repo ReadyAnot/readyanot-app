@@ -1,10 +1,13 @@
 import {
   Button,
+  Hidden,
   makeStyles,
   Typography,
   useMediaQuery,
   useTheme,
 } from '@material-ui/core'
+import InstagramIcon from '@material-ui/icons/Instagram'
+import MailIcon from '@material-ui/icons/Mail'
 import Link from 'next/link'
 import React from 'react'
 import { ComponentContainer, ComponentType } from './AppContainer'
@@ -12,15 +15,17 @@ import { ComponentContainer, ComponentType } from './AppContainer'
 export const useCopyRightHeight = () => {
   const theme = useTheme()
   const isLargeFooter = useMediaQuery(theme.breakpoints.up('md'))
-  return isLargeFooter ? 160 : 184
+  return isLargeFooter ? 160 : 300
 }
 
 type StyleProps = {
   footerHeight: number
 }
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   footer: {
+    display: 'flex',
+    alignItems: 'center',
     backgroundColor: '#CCE0C5',
     bottom: 0,
     height: (props: StyleProps) => props.footerHeight,
@@ -30,32 +35,42 @@ const useStyles = makeStyles((theme) => ({
     '& a': {
       textDecoration: 'none',
     },
-    [theme.breakpoints.up('sm')]: {
-      display: 'flex',
-      alignItems: 'center',
-    },
   },
+
+  // Desktop footer styles
   footerContent: {
+    display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
-    [theme.breakpoints.up('md')]: {
-      display: 'flex',
-    },
   },
   links: {
+    alignItems: 'center',
+    display: 'flex',
     '& a': {
-      marginRight: '1rem',
-      '& last-child': {
-        marginRight: 'unset',
-      },
+      marginBottom: 'unset',
     },
-    [theme.breakpoints.up('sm')]: {
-      alignItems: 'center',
-      display: 'flex',
-      '& a': {
-        marginBottom: 'unset',
-      },
+  },
+
+  // Mobile footer styles
+  mobileFooterContent: {
+    '& h6': {
+      fontWeight: 600,
+      marginBottom: '0.5rem',
     },
+    '& a': {
+      color: 'inherit',
+      textDecoration: 'none',
+    },
+  },
+  inlineIcon: {
+    display: 'flex',
+    marginTop: '0.25rem',
+    '& svg': {
+      marginRight: '0.5rem',
+    },
+  },
+  mobileCopyright: {
+    marginTop: '1rem',
   },
 }))
 
@@ -63,38 +78,91 @@ const MyFooter: React.FC = () => {
   const footerHeight = useCopyRightHeight()
   const classes = useStyles({ footerHeight })
 
+  const DesktopFooter: React.FC = () => (
+    <div className={classes.footerContent}>
+      <div className={classes.links}>
+        <div id="about-link">
+          <Link href="/">
+            <a>
+              <Button variant="text">About</Button>
+            </a>
+          </Link>
+        </div>
+        <div id="help-centre-link">
+          <Link href="/">
+            <a>
+              <Button variant="text">Help Centre</Button>
+            </a>
+          </Link>
+        </div>
+        <div id="terms-of-service-link">
+          <Link href="/">
+            <a>
+              <Button variant="text">Terms of Service</Button>
+            </a>
+          </Link>
+        </div>
+        <div id="cookie-policy-link">
+          <Link href="/">
+            <a>
+              <Button variant="text">Cookie Policy</Button>
+            </a>
+          </Link>
+        </div>
+      </div>
+      <div>
+        <Typography variant="subtitle1" color="textPrimary">
+          {`© ${new Date().getFullYear()} Candid`}
+        </Typography>
+      </div>
+    </div>
+  )
+
+  const MobileFooter: React.FC = () => (
+    <div className={classes.mobileFooterContent}>
+      <Link href="/">
+        <a>
+          <Typography variant="h6">{'Home'}</Typography>
+        </a>
+      </Link>
+      <Link href="/">
+        <a>
+          <Typography variant="h6">{'About'}</Typography>
+        </a>
+      </Link>
+      <Link href="/">
+        <a>
+          <Typography variant="h6">{'Privacy Policy'}</Typography>
+        </a>
+      </Link>
+      <Typography variant="h6">{'Contact Us'}</Typography>
+      <div className={classes.inlineIcon}>
+        <InstagramIcon />
+        <Typography>{'@readyanot'}</Typography>
+      </div>
+      <div className={classes.inlineIcon}>
+        <MailIcon />
+        <Typography>{'candoursg2020@gmail.com'}</Typography>
+      </div>
+      <Typography
+        variant="body1"
+        color="textPrimary"
+        className={classes.mobileCopyright}
+      >
+        {`© ${new Date().getFullYear()} Candid`}
+      </Typography>
+    </div>
+  )
+
   return (
     <footer className={classes.footer}>
-      <ComponentContainer type={ComponentType.AppBar}>
-        <div className={classes.footerContent}>
-          <div className={classes.links}>
-            <Link href="/">
-              <a>
-                <Button variant="text">About</Button>
-              </a>
-            </Link>
-            <Link href="/">
-              <a>
-                <Button variant="text">Help Centre</Button>
-              </a>
-            </Link>
-            <Link href="/">
-              <a>
-                <Button variant="text">Terms of Service</Button>
-              </a>
-            </Link>
-            <Link href="/">
-              <a>
-                <Button variant="text">Cookie Policy</Button>
-              </a>
-            </Link>
-          </div>
-          <div>
-            <Typography variant="subtitle1" color="textPrimary">
-              {`© ${new Date().getFullYear()} Candid`}
-            </Typography>
-          </div>
-        </div>
+      <ComponentContainer type={ComponentType.Section}>
+        <Hidden smDown>
+          <DesktopFooter />
+        </Hidden>
+        <Hidden mdUp>
+          <MobileFooter />
+        </Hidden>
       </ComponentContainer>
     </footer>
   )

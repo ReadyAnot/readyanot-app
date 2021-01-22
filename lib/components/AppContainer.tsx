@@ -20,14 +20,20 @@ const PageContainer: React.FC = ({ children }) => {
   return <div className={classes.pageContainer}>{children}</div>
 }
 
-const useComponentStyles = makeStyles({
+const useComponentStyles = makeStyles((theme) => ({
   appBarPadding: {
-    padding: '2.0625rem 2rem',
+    padding: '2rem',
+    [theme.breakpoints.down('xs')]: {
+      padding: '1rem 1rem',
+    },
   },
   sectionPadding: {
-    padding: '4rem 2rem',
+    padding: '6rem 2rem',
+    [theme.breakpoints.down('xs')]: {
+      padding: '4rem 1rem',
+    },
   },
-})
+}))
 
 export enum ComponentType {
   AppBar,

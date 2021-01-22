@@ -1,4 +1,4 @@
-import { Card, CardContent, makeStyles, Typography } from '@material-ui/core'
+import { makeStyles, Typography } from '@material-ui/core'
 import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight'
 import React from 'react'
 import { ComponentContainer, ComponentType } from '../AppContainer'
@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     textAlign: 'center',
     '& h1': {
-      fontSize: '10rem',
+      fontSize: '16vw',
       fontWeight: 'normal',
     },
     '& h2': {
@@ -29,6 +29,9 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
+    [theme.breakpoints.down('sm')]: {
+      display: 'block',
+    },
   },
   appFeatureContainer: {
     margin: '1rem 4rem 0rem 4rem',
@@ -61,34 +64,22 @@ const LandingPage: React.FC = () => {
         </Typography>
         <div id="app-features" className={classes.appFeatures}>
           <div className={classes.appFeatureContainer}>
-            <Card>
-              <CardContent>
-                <Typography variant="subtitle1">
-                  <KeyboardArrowRightIcon color="disabled" />
-                  {'Raising Awareness'}
-                </Typography>
-              </CardContent>
-            </Card>
+            <Typography variant="subtitle1">
+              <KeyboardArrowRightIcon color="disabled" />
+              {'Raising Awareness'}
+            </Typography>
           </div>
           <div className={classes.appFeatureContainer}>
-            <Card>
-              <CardContent>
-                <Typography variant="subtitle1">
-                  <KeyboardArrowRightIcon color="disabled" />
-                  {'Empowering People'}
-                </Typography>
-              </CardContent>
-            </Card>
+            <Typography variant="subtitle1">
+              <KeyboardArrowRightIcon color="disabled" />
+              {'Empowering People'}
+            </Typography>
           </div>
           <div className={classes.appFeatureContainer}>
-            <Card>
-              <CardContent>
-                <Typography variant="subtitle1">
-                  <KeyboardArrowRightIcon color="disabled" />
-                  {'Creating a Safe Space'}
-                </Typography>
-              </CardContent>
-            </Card>
+            <Typography variant="subtitle1">
+              <KeyboardArrowRightIcon color="disabled" />
+              {'Creating a Safe Space'}
+            </Typography>
           </div>
         </div>
       </ComponentContainer>

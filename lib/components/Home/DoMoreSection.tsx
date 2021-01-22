@@ -2,7 +2,7 @@ import { Button, makeStyles, Typography } from '@material-ui/core'
 import React from 'react'
 import { ComponentContainer, ComponentType } from '../AppContainer'
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   container: {
     textAlign: 'center',
     '& span': {
@@ -19,10 +19,16 @@ const useStyles = makeStyles({
     '& img': {
       maxWidth: 200,
     },
+    [theme.breakpoints.down('sm')]: {
+      flexDirection: 'column',
+    },
   },
   action: {
     margin: '4rem',
     maxWidth: 240,
+    [theme.breakpoints.down('sm')]: {
+      margin: '1rem',
+    },
   },
   buttonDiv: {
     maxWidth: 240,
@@ -32,7 +38,7 @@ const useStyles = makeStyles({
       marginTop: '0.5rem',
     },
   },
-})
+}))
 
 const DoMoreSection = () => {
   const classes = useStyles()

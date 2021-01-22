@@ -1,4 +1,4 @@
-import { AppBar, Button, makeStyles, Toolbar } from '@material-ui/core'
+import { AppBar, Button, Hidden, makeStyles, Toolbar } from '@material-ui/core'
 import Link from 'next/link'
 import React from 'react'
 import { ComponentContainer, ComponentType } from './AppContainer'
@@ -16,7 +16,8 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   appLogo: {
-    maxHeight: 120,
+    width: 160,
+    maxWidth: '30vw',
   },
   buttonGroup: {
     display: 'flex',
@@ -39,28 +40,36 @@ const MyAppBar: React.FC = () => {
     <AppBar position="static" color="transparent">
       <ComponentContainer type={ComponentType.AppBar}>
         <Toolbar className={classes.toolBar}>
+          <img
+            src="/candid-logo.svg"
+            alt="candid-logo"
+            className={classes.appLogo}
+            draggable={false}
+          />
           <div className={classes.buttonGroup}>
-            <Link href="/">
-              <a>
-                <Button variant="text" size="large">
-                  About
-                </Button>
-              </a>
-            </Link>
-            <Link href="/">
-              <a>
-                <Button variant="text" size="large">
-                  Help
-                </Button>
-              </a>
-            </Link>
-            <Link href="/">
-              <a>
-                <Button variant="text" size="large">
-                  Contact
-                </Button>
-              </a>
-            </Link>
+            <Hidden smDown>
+              <Link href="/">
+                <a>
+                  <Button variant="text" size="large">
+                    About
+                  </Button>
+                </a>
+              </Link>
+              <Link href="/">
+                <a>
+                  <Button variant="text" size="large">
+                    Help
+                  </Button>
+                </a>
+              </Link>
+              <Link href="/">
+                <a>
+                  <Button variant="text" size="large">
+                    Contact
+                  </Button>
+                </a>
+              </Link>
+            </Hidden>
             <Link href="/">
               <a>
                 <Button variant="text" size="large">
