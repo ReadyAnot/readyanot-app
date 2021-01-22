@@ -40,12 +40,16 @@ const MyAppBar: React.FC = () => {
     <AppBar position="static" color="transparent">
       <ComponentContainer type={ComponentType.AppBar}>
         <Toolbar className={classes.toolBar}>
-          <img
-            src="/candid-logo.svg"
-            alt="candid-logo"
-            className={classes.appLogo}
-            draggable={false}
-          />
+          <Link href="/">
+            <a>
+              <img
+                src="/candid-logo.svg"
+                alt="candid-logo"
+                className={classes.appLogo}
+                draggable={false}
+              />
+            </a>
+          </Link>
           <div className={classes.buttonGroup}>
             <Hidden smDown>
               <Link href="/">
