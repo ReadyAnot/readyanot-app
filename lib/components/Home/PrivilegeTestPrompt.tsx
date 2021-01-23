@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     justifyContent: 'center',
     '& img': {
-      maxWidth: '70%',
+      width: '70%',
     },
   },
 }))
