@@ -52,28 +52,30 @@ const FeaturedPartners = () => {
     <div id="as-seen-on" className={classes.asSeenOn}>
       <ComponentContainer type={ComponentType.Section}>
         <div className={classes.asSeenOnContent}>
-          <Typography variant="h4">{'Featured On'}</Typography>
-          <div className={classes.asSeenOnLogos}>
-            <img
-              src="/assets/home/as-seen-on/mccy-logo-dark.svg"
-              alt="mccy-logo"
-              draggable={false}
-            />
-            <img
-              src="/assets/home/as-seen-on/startupx-logo.png"
-              alt="startupx-logo"
-              draggable={false}
-            />
-            <img
-              src="/assets/home/as-seen-on/berita-harian-logo.svg"
-              alt="berita-harian-logo"
-              draggable={false}
-            />
-            <img
-              src="/assets/home/as-seen-on/groundup-sandbox-logo.png"
-              alt="ground-up-sandbox"
-              draggable={false}
-            />
+          <div>
+            <Typography variant="h5">{'Featured On'}</Typography>
+            <div className={classes.asSeenOnLogos}>
+              <img
+                src="/assets/home/as-seen-on/mccy-logo-dark.svg"
+                alt="mccy-logo"
+                draggable={false}
+              />
+              <img
+                src="/assets/home/as-seen-on/startupx-logo.png"
+                alt="startupx-logo"
+                draggable={false}
+              />
+              <img
+                src="/assets/home/as-seen-on/berita-harian-logo.svg"
+                alt="berita-harian-logo"
+                draggable={false}
+              />
+              <img
+                src="/assets/home/as-seen-on/groundup-sandbox-logo.png"
+                alt="ground-up-sandbox"
+                draggable={false}
+              />
+            </div>
           </div>
         </div>
       </ComponentContainer>

@@ -39,6 +39,7 @@ export enum ComponentType {
   AppBar,
   Section,
   Component,
+  PaddingOnly,
 }
 
 export type ComponentContainerProps = {
@@ -52,6 +53,14 @@ export const ComponentContainer: React.FC<ComponentContainerProps> = ({
   type = ComponentType.AppBar,
 }) => {
   const classes = useComponentStyles()
+
+  if (type == ComponentType.PaddingOnly) {
+    return (
+      <Container maxWidth={false} className={classes.sectionPadding}>
+        {children}
+      </Container>
+    )
+  }
 
   return (
     <Container
