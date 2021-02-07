@@ -30,14 +30,6 @@ const useStyles = makeStyles((theme) => ({
       margin: '1rem',
     },
   },
-  buttonDiv: {
-    maxWidth: 240,
-    width: '100%',
-    marginTop: '1rem',
-    '&:last-child': {
-      marginTop: '0.5rem',
-    },
-  },
 }))
 
 const DoMoreSection = () => {
@@ -69,20 +61,12 @@ const DoMoreSection = () => {
             alt="initiate-logo"
             draggable={false}
           />
-          <Typography variant="h4">{'Initiate'}</Typography>
-          <Typography variant="body1">
-            {'For likeminded people. Source for support & funding.'}
+          <Typography variant="h5" style={{ marginBottom: '0.5rem' }}>
+            {'Content Creator'}
           </Typography>
-          <div id="initiate-join-button" className={classes.buttonDiv}>
-            <Button variant="contained" color="primary">
-              {'Join'}
-            </Button>
-          </div>
-          <div id="initiate-learn-more-button" className={classes.buttonDiv}>
-            <Button variant="text" color="secondary">
-              {'Learn more'}
-            </Button>
-          </div>
+          <Typography variant="body1">
+            {'Create content to equip the public with the right knowledge'}
+          </Typography>
         </div>
         <div id="advocate-action" className={classes.action}>
           <img
@@ -90,41 +74,12 @@ const DoMoreSection = () => {
             alt="initiate-logo"
             draggable={false}
           />
-          <Typography variant="h4">{'Advocate'}</Typography>
-          <Typography variant="body1">
-            {'Help others get into the conversation.'}
+          <Typography variant="h5" style={{ marginBottom: '0.5rem' }}>
+            {'Moderator'}
           </Typography>
-          <div id="advocate-join-button" className={classes.buttonDiv}>
-            <Button variant="contained" color="primary">
-              {'Join'}
-            </Button>
-          </div>
-          <div id="advocate-learn-more-button" className={classes.buttonDiv}>
-            <Button variant="text" color="secondary">
-              {'Learn more'}
-            </Button>
-          </div>
-        </div>
-        <div id="support-action" className={classes.action}>
-          <img
-            src="/assets/home/do-more/support-logo.png"
-            alt="initiate-logo"
-            draggable={false}
-          />
-          <Typography variant="h4">{'Support'}</Typography>
           <Typography variant="body1">
-            {'Support change-makers that align with your cause.'}
+            {'Help others get into the conversation'}
           </Typography>
-          <div id="support-join-button" className={classes.buttonDiv}>
-            <Button variant="contained" color="primary">
-              {'Join'}
-            </Button>
-          </div>
-          <div id="support-learn-more-button" className={classes.buttonDiv}>
-            <Button variant="text" color="secondary">
-              {'Learn more'}
-            </Button>
-          </div>
         </div>
       </div>
     </ComponentContainer>
