@@ -61,7 +61,7 @@ const FeaturedPartners = () => {
                 draggable={false}
               />
               <img
-                src="/assets/home/as-seen-on/startupx-logo.png"
+                src="/assets/home/as-seen-on/startupx-logo.svg"
                 alt="startupx-logo"
                 draggable={false}
               />
