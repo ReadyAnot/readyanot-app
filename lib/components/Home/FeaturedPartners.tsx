@@ -71,7 +71,7 @@ const FeaturedPartners = () => {
                 draggable={false}
               />
               <img
-                src="/assets/home/as-seen-on/groundup-sandbox-logo.png"
+                src="/assets/home/as-seen-on/groundup-sandbox-logo.svg"
                 alt="ground-up-sandbox"
                 draggable={false}
               />
