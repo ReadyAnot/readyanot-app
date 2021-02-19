@@ -22,6 +22,17 @@ const Home: React.FC = () => {
       <main>
         <MyAppBar />
         <LandingPage />
+        <img
+          style={{
+            display: 'block',
+            marginTop: '4rem',
+            marginLeft: 'auto',
+            marginRight: 'auto',
+            maxWidth: '80%',
+          }}
+          src="/assets/home/sub-header.png"
+          draggable="false"
+        />
         <FeaturedPartners />
         <PrivilegeTestPrompt />
         <DoMoreSection />
