@@ -41,7 +41,7 @@ const Home: React.FC = () => {
               display: 'block',
               marginLeft: 'auto',
               marginRight: 'auto',
-              maxWidth: '100%',
+              maxWidth: '80%',
             }}
             src="/assets/home/sub-header.jpg"
             draggable="false"
