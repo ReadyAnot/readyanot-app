@@ -15,7 +15,7 @@ import { ComponentContainer, ComponentType } from './AppContainer'
 export const useCopyRightHeight = () => {
   const theme = useTheme()
   const isLargeFooter = useMediaQuery(theme.breakpoints.up('md'))
-  return isLargeFooter ? 160 : 300
+  return isLargeFooter ? 160 : 335
 }
 
 type StyleProps = {
@@ -53,14 +53,14 @@ const useStyles = makeStyles(() => ({
 
   // Mobile footer styles
   mobileFooterContent: {
-    '& h6': {
-      fontWeight: 600,
-      marginBottom: '0.5rem',
-    },
     '& a': {
       color: 'inherit',
       textDecoration: 'none',
     },
+  },
+  mobileFooterHeader: {
+    fontWeight: 600,
+    marginBottom: '1rem',
   },
   inlineIcon: {
     display: 'flex',
@@ -70,7 +70,9 @@ const useStyles = makeStyles(() => ({
     },
   },
   mobileCopyright: {
+    fontWeight: 600,
     marginTop: '1rem',
+    marginBottom: '1rem',
   },
 }))
 
@@ -122,20 +124,28 @@ const MyFooter: React.FC = () => {
     <div className={classes.mobileFooterContent}>
       <Link href="/">
         <a>
-          <Typography variant="h6">{'Home'}</Typography>
+          <Typography variant="body1" className={classes.mobileFooterHeader}>
+            {'Home'}
+          </Typography>
         </a>
       </Link>
       <Link href="/">
         <a>
-          <Typography variant="h6">{'About'}</Typography>
+          <Typography variant="body1" className={classes.mobileFooterHeader}>
+            {'About'}
+          </Typography>
         </a>
       </Link>
       <Link href="/">
         <a>
-          <Typography variant="h6">{'Privacy Policy'}</Typography>
+          <Typography variant="body1" className={classes.mobileFooterHeader}>
+            {'Privacy Policy'}
+          </Typography>
         </a>
       </Link>
-      <Typography variant="h6">{'Contact Us'}</Typography>
+      <Typography variant="body1" className={classes.mobileFooterHeader}>
+        {'Contact Us'}
+      </Typography>
       <div className={classes.inlineIcon}>
         <InstagramIcon />
         <Typography>{'@readyanot'}</Typography>
