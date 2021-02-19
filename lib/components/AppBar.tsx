@@ -74,13 +74,6 @@ const MyAppBar: React.FC = () => {
                 </a>
               </Link>
             </Hidden>
-            <Link href="/">
-              <a>
-                <Button variant="text" size="large">
-                  <i>My Account</i>
-                </Button>
-              </a>
-            </Link>
           </div>
         </Toolbar>
       </ComponentContainer>

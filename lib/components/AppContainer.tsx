@@ -30,7 +30,7 @@ const useComponentStyles = makeStyles((theme) => ({
   sectionPadding: {
     padding: '6rem 2rem',
     [theme.breakpoints.down('xs')]: {
-      padding: '4rem 1rem',
+      padding: '2rem 1rem',
     },
   },
 }))

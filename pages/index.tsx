@@ -1,9 +1,11 @@
 import Head from 'next/head'
 import React from 'react'
 import MyAppBar from '../lib/components/AppBar'
-import PageContainer from '../lib/components/AppContainer'
+import PageContainer, {
+  ComponentContainer,
+  ComponentType,
+} from '../lib/components/AppContainer'
 import MyFooter from '../lib/components/Footer'
-import LandingPage from '../lib/components/Home/LandingPage'
 import FeaturedPartners from '../lib/components/Home/FeaturedPartners'
 import PrivilegeTestPrompt from '../lib/components/Home/PrivilegeTestPrompt'
 import DoMoreSection from '../lib/components/Home/DoMoreSection'
@@ -21,18 +23,30 @@ const Home: React.FC = () => {
 
       <main>
         <MyAppBar />
-        <LandingPage />
-        <img
-          style={{
-            display: 'block',
-            marginTop: '4rem',
-            marginLeft: 'auto',
-            marginRight: 'auto',
-            maxWidth: '80%',
-          }}
-          src="/assets/home/sub-header.png"
-          draggable="false"
-        />
+        <ComponentContainer type={ComponentType.Section}>
+          <img
+            style={{
+              display: 'block',
+              marginLeft: 'auto',
+              marginRight: 'auto',
+              maxWidth: '100%',
+            }}
+            src="/assets/home/header.svg"
+            draggable="false"
+          />
+        </ComponentContainer>
+        <ComponentContainer type={ComponentType.Section}>
+          <img
+            style={{
+              display: 'block',
+              marginLeft: 'auto',
+              marginRight: 'auto',
+              maxWidth: '100%',
+            }}
+            src="/assets/home/sub-header.png"
+            draggable="false"
+          />
+        </ComponentContainer>
         <FeaturedPartners />
         <PrivilegeTestPrompt />
         <DoMoreSection />
