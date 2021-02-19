@@ -63,7 +63,7 @@ const PrivilegeTestPrompt: React.FC = () => {
           </Typography>
         </span>
         <Typography variant="h3">{'Fact or Myth?'}</Typography>
-        <Link href="/privilege-test">
+        <Link href="/">
           <a>
             <Button variant="contained" color="primary">
               Take the Test&nbsp;
