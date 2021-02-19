@@ -22,15 +22,18 @@ const PageContainer: React.FC = ({ children }) => {
 
 const useComponentStyles = makeStyles((theme) => ({
   appBarPadding: {
-    padding: '2rem',
+    padding: '1rem 2rem',
     [theme.breakpoints.down('xs')]: {
       padding: '1rem 1rem',
     },
   },
   sectionPadding: {
     padding: '6rem 2rem',
+    [theme.breakpoints.down('lg')]: {
+      padding: '4rem 2rem',
+    },
     [theme.breakpoints.down('xs')]: {
-      padding: '2rem 1rem',
+      padding: '3rem 1rem',
     },
   },
 }))

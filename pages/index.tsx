@@ -9,8 +9,10 @@ import MyFooter from '../lib/components/Footer'
 import FeaturedPartners from '../lib/components/Home/FeaturedPartners'
 import PrivilegeTestPrompt from '../lib/components/Home/PrivilegeTestPrompt'
 import DoMoreSection from '../lib/components/Home/DoMoreSection'
+import { Hidden, useMediaQuery, useTheme } from '@material-ui/core'
 
 const Home: React.FC = () => {
+  const isLarge = useMediaQuery(useTheme().breakpoints.up('md'))
   return (
     <PageContainer>
       <Head>
@@ -22,7 +24,9 @@ const Home: React.FC = () => {
       </Head>
 
       <main>
-        <MyAppBar />
+        <Hidden smDown>
+          <MyAppBar />
+        </Hidden>
         <ComponentContainer type={ComponentType.Section}>
           <img
             style={{
@@ -31,7 +35,7 @@ const Home: React.FC = () => {
               marginRight: 'auto',
               maxWidth: '100%',
             }}
-            src="/assets/home/header.svg"
+            src="/assets/home/header.jpg"
             draggable="false"
           />
         </ComponentContainer>
@@ -41,7 +45,7 @@ const Home: React.FC = () => {
               display: 'block',
               marginLeft: 'auto',
               marginRight: 'auto',
-              maxWidth: '80%',
+              maxWidth: isLarge ? '80%' : '100%',
             }}
             src="/assets/home/sub-header.jpg"
             draggable="false"
