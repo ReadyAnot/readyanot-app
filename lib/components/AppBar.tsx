@@ -1,6 +1,7 @@
 import { AppBar, Button, Hidden, makeStyles, Toolbar } from '@material-ui/core'
 import Link from 'next/link'
-import { ComponentContainer } from './AppContainer'
+import React from 'react'
+import { ComponentContainer, ComponentType } from './AppContainer'
 
 const useStyles = makeStyles((theme) => ({
   toolBar: {
@@ -9,16 +10,22 @@ const useStyles = makeStyles((theme) => ({
       maxHeight: 90,
     },
     [theme.breakpoints.up('sm')]: {
-      minHeight: 200,
       '& img': {
         maxHeight: 120,
       },
     },
   },
+  appLogo: {
+    width: 160,
+    maxWidth: '30vw',
+  },
   buttonGroup: {
+    display: 'flex',
     marginLeft: 'auto',
-    '& button': {
-      marginRight: '1.25rem',
+    '& a': {
+      color: 'inherit',
+      marginRight: '1rem',
+      textDecoration: 'none',
       '&:last-child': {
         marginRight: 'unset',
       },
@@ -31,25 +38,49 @@ const MyAppBar: React.FC = () => {
 
   return (
     <AppBar position="static" color="transparent">
-      <ComponentContainer>
+      <ComponentContainer type={ComponentType.AppBar}>
         <Toolbar className={classes.toolBar}>
           <Link href="/">
             <a>
-              <img src="/ready-anot-logo.png" draggable={false} />
+              <img
+                src="/candid-logo.svg"
+                alt="candid-logo"
+                className={classes.appLogo}
+                draggable={false}
+              />
             </a>
           </Link>
           <div className={classes.buttonGroup}>
-            <Hidden xsDown>
-              <Button size="large" variant="text">
-                Stage
-              </Button>
-              <Button size="large" variant="text">
-                Forum
-              </Button>
+            <Hidden smDown>
+              <Link href="/">
+                <a>
+                  <Button variant="text" size="large">
+                    About
+                  </Button>
+                </a>
+              </Link>
+              <Link href="/">
+                <a>
+                  <Button variant="text" size="large">
+                    Help
+                  </Button>
+                </a>
+              </Link>
+              <Link href="/">
+                <a>
+                  <Button variant="text" size="large">
+                    Contact
+                  </Button>
+                </a>
+              </Link>
             </Hidden>
-            <Button size="large" variant="contained" color="primary">
-              Login
-            </Button>
+            <Link href="/">
+              <a>
+                <Button variant="text" size="large">
+                  <i>My Account</i>
+                </Button>
+              </a>
+            </Link>
           </div>
         </Toolbar>
       </ComponentContainer>
