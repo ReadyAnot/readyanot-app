@@ -43,7 +43,7 @@ const Home: React.FC = () => {
               marginRight: 'auto',
               maxWidth: '100%',
             }}
-            src="/assets/home/sub-header.png"
+            src="/assets/home/sub-header.jpg"
             draggable="false"
           />
         </ComponentContainer>
