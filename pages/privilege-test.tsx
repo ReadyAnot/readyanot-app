@@ -288,7 +288,7 @@ const PrivilegeTest: NextPage<PrivilegeTestProps> = ({ questions }) => {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps = async () => {
   const response = await fetch(
     'https://api.candid.sg/quiz/questions?' +
       new URLSearchParams({ version: QUIZ_VERSION.toString() }),
