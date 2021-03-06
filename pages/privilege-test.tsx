@@ -9,10 +9,9 @@ import {
   Typography,
 } from '@material-ui/core'
 import { Autocomplete } from '@material-ui/lab'
-import { GetServerSideProps, NextPage } from 'next'
+import { NextPage } from 'next'
 import Head from 'next/head'
 import React, { useEffect, useState } from 'react'
-import MyAppBar from '../lib/components/AppBar'
 import PageContainer, {
   ComponentContainer,
   ComponentType,
@@ -62,6 +61,7 @@ const useStyles = makeStyles((theme) => ({
   },
   formControlLabel: {
     margin: '9px 0',
+    maxWidth: '100%',
   },
   checkbox: {
     paddingTop: 0,
@@ -153,7 +153,7 @@ const PrivilegeTest: NextPage<PrivilegeTestProps> = ({ questions }) => {
       <Autocomplete
         options={schools}
         getOptionLabel={(option) => option}
-        style={{ width: 450, maxWidth: '100%' }}
+        style={{ maxWidth: 450, width: '100%' }}
         renderInput={(params) => (
           <TextField
             {...params}
@@ -277,7 +277,6 @@ const PrivilegeTest: NextPage<PrivilegeTestProps> = ({ questions }) => {
       </Head>
 
       <main>
-        <MyAppBar />
         <div className={classes.testContent}>
           {!showResults ? <QuestionsComponent /> : <ResultsComponent />}
         </div>
