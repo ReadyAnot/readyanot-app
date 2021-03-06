@@ -86,6 +86,14 @@ const theme = responsiveFontSizes(
           minHeight: 35,
           minWidth: 85,
         },
+        outlined: {
+          fontSize: '1rem',
+          fontWeight: 500,
+          paddingLeft: '1.25rem',
+          paddingRight: '1.25rem',
+          minHeight: 35,
+          minWidth: 85,
+        },
         text: {
           fontSize: '1rem',
           fontWeight: 500,
@@ -93,6 +101,11 @@ const theme = responsiveFontSizes(
           paddingRight: '1.25rem',
         },
         containedSizeLarge: {
+          fontSize: '1.25rem',
+          fontWeight: 600,
+          minWidth: 95,
+        },
+        outlinedSizeLarge: {
           fontSize: '1.25rem',
           fontWeight: 600,
           minWidth: 95,
