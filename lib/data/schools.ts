@@ -1,4 +1,5 @@
 const schools = [
+  'Rather not say',
   'Admiralty Secondary School',
   'Ahmad Ibrahim Secondary School',
   'Anderson Secondary School',

@@ -25,7 +25,7 @@ export type QuizLog = {
   version: number
   race: string
   secondarySchool: string
-  blueChasCard: boolean
+  blueChasCard: string
   answers: boolean[]
   score: number
 }
@@ -85,7 +85,7 @@ const PrivilegeTest: NextPage<PrivilegeTestProps> = ({ questions }) => {
 
   const [race, setRace] = useState<string>(null)
   const [secondarySchool, setSecondarySchool] = useState<string>(null)
-  const [isBlueChasCard, setIsBlueChasCard] = useState<boolean>(null)
+  const [blueChasCard, setBlueChasCard] = useState<string>(null)
   const [questionStates, setQuestionStates] = useState<boolean[]>(defaultState)
 
   const canViewScore = () => {
@@ -94,7 +94,8 @@ const PrivilegeTest: NextPage<PrivilegeTestProps> = ({ questions }) => {
       race != '' &&
       secondarySchool != null &&
       secondarySchool != '' &&
-      isBlueChasCard != null
+      blueChasCard != null &&
+      blueChasCard != ''
     )
   }
 
@@ -103,7 +104,7 @@ const PrivilegeTest: NextPage<PrivilegeTestProps> = ({ questions }) => {
       version: QUIZ_VERSION,
       race,
       secondarySchool,
-      blueChasCard: isBlueChasCard,
+      blueChasCard: blueChasCard,
       answers: questionStates,
       score: questionStates.filter((el) => Boolean(el)).length,
     }
@@ -124,7 +125,7 @@ const PrivilegeTest: NextPage<PrivilegeTestProps> = ({ questions }) => {
     setShowResults(false)
     setRace(null)
     setSecondarySchool(null)
-    setIsBlueChasCard(null)
+    setBlueChasCard(null)
   }
 
   const pageQuestion = questions.slice(
@@ -138,7 +139,7 @@ const PrivilegeTest: NextPage<PrivilegeTestProps> = ({ questions }) => {
         Your Race
       </Typography>
       <Autocomplete
-        options={['Chinese', 'Malay', 'Indian', 'Others']}
+        options={['Rather not say', 'Chinese', 'Malay', 'Indian', 'Others']}
         getOptionLabel={(option) => option}
         style={{ width: 200 }}
         renderInput={(params) => (
@@ -168,22 +169,14 @@ const PrivilegeTest: NextPage<PrivilegeTestProps> = ({ questions }) => {
         Holding a Blue CHAS Card?
       </Typography>
       <Autocomplete
-        options={['Yes', 'No']}
+        options={['Rather not say', 'Yes', 'No']}
         getOptionLabel={(option) => option}
         style={{ width: 200 }}
         renderInput={(params) => (
           <TextField {...params} label="Select if you do" variant="outlined" />
         )}
-        value={isBlueChasCard == null ? null : isBlueChasCard ? 'Yes' : 'No'}
-        onChange={(_, value) => {
-          if (value == 'Yes') {
-            setIsBlueChasCard(true)
-          } else if (value == 'No') {
-            setIsBlueChasCard(false)
-          } else {
-            setIsBlueChasCard(null)
-          }
-        }}
+        value={blueChasCard}
+        onChange={(_, value) => setBlueChasCard(value)}
       />
     </div>
   )
