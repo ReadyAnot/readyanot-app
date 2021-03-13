@@ -106,7 +106,7 @@ const PrivilegeTest: NextPage<PrivilegeTestProps> = ({ questions }) => {
       secondarySchool,
       blueChasCard: blueChasCard,
       answers: questionStates,
-      score: questionStates.filter((el) => Boolean(el)).length,
+      score: questionStates.filter((el) => !Boolean(el)).length,
     }
     fetch('https://api.candid.sg/quiz/submission', {
       method: 'POST',
@@ -247,7 +247,7 @@ const PrivilegeTest: NextPage<PrivilegeTestProps> = ({ questions }) => {
     <ComponentContainer type={ComponentType.Section}>
       <Typography variant="h3">{'Your Privilege Score:'}</Typography>
       <Typography className={classes.scoreText}>
-        {questionStates.filter((el) => Boolean(el)).length}
+        {questionStates.filter((el) => !Boolean(el)).length}
       </Typography>
       <Button onClick={clearQuestionStates} variant="contained" color="primary">
         {'Try again'}
