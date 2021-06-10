@@ -84,28 +84,28 @@ const MyFooter: React.FC = () => {
     <div className={classes.footerContent}>
       <div className={classes.links}>
         <div id="about-link">
-          <Link href="/">
+          <Link href="#">
             <a>
               <Button variant="text">About</Button>
             </a>
           </Link>
         </div>
         <div id="help-centre-link">
-          <Link href="/">
+          <Link href="#">
             <a>
               <Button variant="text">Help Centre</Button>
             </a>
           </Link>
         </div>
         <div id="terms-of-service-link">
-          <Link href="/">
+          <Link href="#">
             <a>
               <Button variant="text">Terms of Service</Button>
             </a>
           </Link>
         </div>
         <div id="cookie-policy-link">
-          <Link href="/">
+          <Link href="#">
             <a>
               <Button variant="text">Cookie Policy</Button>
             </a>
@@ -129,14 +129,14 @@ const MyFooter: React.FC = () => {
           </Typography>
         </a>
       </Link>
-      <Link href="/">
+      <Link href="#">
         <a>
           <Typography variant="body1" className={classes.mobileFooterHeader}>
             {'About'}
           </Typography>
         </a>
       </Link>
-      <Link href="/">
+      <Link href="#">
         <a>
           <Typography variant="body1" className={classes.mobileFooterHeader}>
             {'Privacy Policy'}
@@ -148,7 +148,11 @@ const MyFooter: React.FC = () => {
       </Typography>
       <div className={classes.inlineIcon}>
         <InstagramIcon />
-        <Typography>{'@readyanot'}</Typography>
+        <Link href="https://www.instagram.com/candid.sg/">
+        <a>
+        <Typography>{'@candid.sg'}</Typography>
+        </a>
+      </Link>
       </div>
       <div className={classes.inlineIcon}>
         <MailIcon />
