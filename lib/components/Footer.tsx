@@ -132,13 +132,6 @@ const MyFooter: React.FC = () => {
       <Link href="#">
         <a>
           <Typography variant="body1" className={classes.mobileFooterHeader}>
-            {'About'}
-          </Typography>
-        </a>
-      </Link>
-      <Link href="#">
-        <a>
-          <Typography variant="body1" className={classes.mobileFooterHeader}>
             {'Privacy Policy'}
           </Typography>
         </a>
@@ -156,7 +149,7 @@ const MyFooter: React.FC = () => {
       </div>
       <div className={classes.inlineIcon}>
         <MailIcon />
-        <Typography>{'candoursg2020@gmail.com'}</Typography>
+        <Typography>{'hello@candid.sg'}</Typography>
       </div>
       <Typography
         variant="body1"

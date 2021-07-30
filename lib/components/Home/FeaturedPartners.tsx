@@ -43,6 +43,28 @@ const useStyles = makeStyles((theme) => ({
       },
     },
   },
+  missionUnitePitch: {
+    width: '100%',
+    marginTop: '2rem',
+    alignItems: 'center',
+    justifyContent: 'center',
+    '& iframe': {
+      height: 162,
+      width: 288,
+      marginLeft: 'auto',
+      marginRight: 'auto',
+      [theme.breakpoints.up('sm')]: {
+        height: 351,
+        width: 624,
+      },
+      [theme.breakpoints.up('md')]: {
+        height: 495,
+        width: 880,
+        marginLeft: 'auto',
+        marginRight: 'auto',
+      },
+    },
+  },
 }))
 
 const FeaturedPartners = () => {
@@ -75,6 +97,9 @@ const FeaturedPartners = () => {
                 alt="ground-up-sandbox"
                 draggable={false}
               />
+            </div>
+            <div className={classes.missionUnitePitch}>
+              <iframe src="https://www.youtube.com/embed/qSzoNE07xsU"></iframe>
             </div>
           </div>
         </div>

@@ -108,7 +108,7 @@ const PrivilegeTest: NextPage<PrivilegeTestProps> = ({ questions }) => {
       answers: questionStates,
       score: questionStates.filter((el) => !Boolean(el)).length,
     }
-    fetch('https://api.candid.sg/quiz/submission', {
+    fetch('https://dev-api.candid.sg/quiz/submission', {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -116,6 +116,7 @@ const PrivilegeTest: NextPage<PrivilegeTestProps> = ({ questions }) => {
       },
       body: JSON.stringify(logObject),
     })
+    console.log(JSON.stringify(logObject))
     setShowResults(true)
   }
 
@@ -282,11 +283,10 @@ const PrivilegeTest: NextPage<PrivilegeTestProps> = ({ questions }) => {
 
 export const getStaticProps = async () => {
   const response = await fetch(
-    'https://api.candid.sg/quiz/questions?' +
-      new URLSearchParams({ version: QUIZ_VERSION.toString() }),
+    'https://dev-api.candid.sg/quiz',
     { method: 'GET' }
   )
-  const questions = (await response.json()).questions
+  const questions = (await response.json())
   return { props: { questions } }
 }
 
