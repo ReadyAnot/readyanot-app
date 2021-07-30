@@ -117,7 +117,6 @@ const PrivilegeTest: NextPage<PrivilegeTestProps> = ({ questions }) => {
       body: JSON.stringify(logObject),
       mode: 'cors',
     })
-    console.log(JSON.stringify(logObject))
     setShowResults(true)
   }
 
