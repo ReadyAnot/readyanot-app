@@ -1,6 +1,10 @@
 import { makeStyles, Typography } from '@material-ui/core'
+import InstagramIcon from '@material-ui/icons/Instagram'
+import MailIcon from '@material-ui/icons/Mail'
 import React from 'react'
+import Link from 'next/dist/client/link'
 import { ComponentContainer, ComponentType } from '../AppContainer'
+import { NONAME } from 'dns'
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -30,6 +34,20 @@ const useStyles = makeStyles((theme) => ({
       margin: '1rem',
     },
   },
+  contact: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    '& div': {
+      display: 'flex',
+      margin: '1rem',
+    },
+    '& a': {
+      textDecoration: 'none',
+      color: 'black',
+      marginLeft: '0.5rem',
+    },
+  }
 }))
 
 const DoMoreSection = () => {
@@ -42,13 +60,13 @@ const DoMoreSection = () => {
     >
       <span>
         <Typography variant="h1" component="span">
-          {'DO M'}
+          {'J'}
         </Typography>
         <Typography variant="h1" component="span" className={classes.pinkText}>
           {'O'}
         </Typography>
         <Typography variant="h1" component="span">
-          {'RE'}
+          {'IN US'}
         </Typography>
       </span>
       <Typography variant="body1">
@@ -80,6 +98,24 @@ const DoMoreSection = () => {
           <Typography variant="body1">
             {'Help others get into the conversation'}
           </Typography>
+        </div>
+      </div>
+      <div className={classes.contact}>
+        <div>
+          <InstagramIcon />
+          <Link href="https://www.instagram.com/candid.sg/">
+            <a>
+              <Typography>{'@candid.sg'}</Typography>
+            </a>
+          </Link>
+        </div>
+        <div>
+          <MailIcon />
+          <Link href="#">
+            <a>
+              <Typography>{'hello@candid.sg'}</Typography>
+            </a>
+          </Link>
         </div>
       </div>
     </ComponentContainer>

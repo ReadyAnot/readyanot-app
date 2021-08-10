@@ -8,8 +8,9 @@ import PageContainer, {
 import MyFooter from '../lib/components/Footer'
 import FeaturedPartners from '../lib/components/Home/FeaturedPartners'
 import PrivilegeTestPrompt from '../lib/components/Home/PrivilegeTestPrompt'
-import DoMoreSection from '../lib/components/Home/DoMoreSection'
+import DoMoreSection from '../lib/components/Home/JoinUsSection'
 import { Hidden, useMediaQuery, useTheme } from '@material-ui/core'
+import StickyScroll from '../lib/components/StickyScroll'
 
 const Home: React.FC = () => {
   const isLarge = useMediaQuery(useTheme().breakpoints.up('md'))

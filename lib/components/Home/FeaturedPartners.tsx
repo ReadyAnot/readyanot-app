@@ -49,6 +49,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     justifyContent: 'center',
     '& iframe': {
+      border: 0,
       height: 162,
       width: 288,
       marginLeft: 'auto',

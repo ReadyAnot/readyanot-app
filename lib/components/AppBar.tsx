@@ -36,6 +36,10 @@ const useStyles = makeStyles((theme) => ({
 const MyAppBar: React.FC = () => {
   const classes = useStyles()
 
+  const handleClick = () => {
+    window.scrollBy(0, 2830)
+  }
+
   return (
     <AppBar position="static" color="transparent">
       <ComponentContainer type={ComponentType.AppBar}>
@@ -51,27 +55,16 @@ const MyAppBar: React.FC = () => {
             </a>
           </Link>
           <div className={classes.buttonGroup}>
-            <Link href="/">
+            <Link href="/privilege-test">
               <a>
                 <Button variant="text" size="large">
-                  About
+                  Majority Privilege Quiz
                 </Button>
               </a>
             </Link>
-            <Link href="/">
-              <a>
-                <Button variant="text" size="large">
-                  Help
-                </Button>
-              </a>
-            </Link>
-            <Link href="/">
-              <a>
-                <Button variant="text" size="large">
-                  Contact
-                </Button>
-              </a>
-            </Link>
+            <Button variant="text" size="large" onClick={handleClick}>
+              Contact
+            </Button>
           </div>
         </Toolbar>
       </ComponentContainer>

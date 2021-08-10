@@ -66,7 +66,7 @@ const PrivilegeTestPrompt: React.FC = () => {
         <Link href="/privilege-test">
           <a>
             <Button variant="contained" color="primary">
-              Take the Test&nbsp;
+              Take the Quiz&nbsp;
               <ArrowForwardIosIcon style={{ fontSize: '1rem' }} />
             </Button>
           </a>
