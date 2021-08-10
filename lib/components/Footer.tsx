@@ -6,9 +6,6 @@ import {
   useMediaQuery,
   useTheme,
 } from '@material-ui/core'
-import InstagramIcon from '@material-ui/icons/Instagram'
-import MailIcon from '@material-ui/icons/Mail'
-import Link from 'next/link'
 import React from 'react'
 import { ComponentContainer, ComponentType } from './AppContainer'
 
@@ -82,36 +79,6 @@ const MyFooter: React.FC = () => {
 
   const DesktopFooter: React.FC = () => (
     <div className={classes.footerContent}>
-      <div className={classes.links}>
-        <div id="about-link">
-          <Link href="#">
-            <a>
-              <Button variant="text">About</Button>
-            </a>
-          </Link>
-        </div>
-        <div id="help-centre-link">
-          <Link href="#">
-            <a>
-              <Button variant="text">Help Centre</Button>
-            </a>
-          </Link>
-        </div>
-        <div id="terms-of-service-link">
-          <Link href="#">
-            <a>
-              <Button variant="text">Terms of Service</Button>
-            </a>
-          </Link>
-        </div>
-        <div id="cookie-policy-link">
-          <Link href="#">
-            <a>
-              <Button variant="text">Cookie Policy</Button>
-            </a>
-          </Link>
-        </div>
-      </div>
       <div>
         <Typography variant="subtitle1" color="textPrimary">
           {`© ${new Date().getFullYear()} Candid`}
@@ -122,35 +89,6 @@ const MyFooter: React.FC = () => {
 
   const MobileFooter: React.FC = () => (
     <div className={classes.mobileFooterContent}>
-      <Link href="/">
-        <a>
-          <Typography variant="body1" className={classes.mobileFooterHeader}>
-            {'Home'}
-          </Typography>
-        </a>
-      </Link>
-      <Link href="#">
-        <a>
-          <Typography variant="body1" className={classes.mobileFooterHeader}>
-            {'Privacy Policy'}
-          </Typography>
-        </a>
-      </Link>
-      <Typography variant="body1" className={classes.mobileFooterHeader}>
-        {'Contact Us'}
-      </Typography>
-      <div className={classes.inlineIcon}>
-        <InstagramIcon />
-        <Link href="https://www.instagram.com/candid.sg/">
-        <a>
-        <Typography>{'@candid.sg'}</Typography>
-        </a>
-      </Link>
-      </div>
-      <div className={classes.inlineIcon}>
-        <MailIcon />
-        <Typography>{'hello@candid.sg'}</Typography>
-      </div>
       <Typography
         variant="body1"
         color="textPrimary"
