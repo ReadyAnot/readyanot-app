@@ -12,7 +12,7 @@ import { ComponentContainer, ComponentType } from './AppContainer'
 export const useCopyRightHeight = () => {
   const theme = useTheme()
   const isLargeFooter = useMediaQuery(theme.breakpoints.up('md'))
-  return isLargeFooter ? 160 : 335
+  return isLargeFooter ? 100 : 100
 }
 
 type StyleProps = {

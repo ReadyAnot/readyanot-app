@@ -1,5 +1,6 @@
 import { makeStyles, Typography } from '@material-ui/core'
 import React from 'react'
+import Link from 'next/dist/client/link'
 import { ComponentContainer, ComponentType } from '../AppContainer'
 
 const useStyles = makeStyles((theme) => ({
@@ -83,21 +84,33 @@ const FeaturedPartners = () => {
                 alt="mccy-logo"
                 draggable={false}
               />
-              <img
-                src="/assets/home/as-seen-on/startupx-logo.svg"
-                alt="startupx-logo"
-                draggable={false}
-              />
-              <img
-                src="/assets/home/as-seen-on/berita-harian-logo.svg"
-                alt="berita-harian-logo"
-                draggable={false}
-              />
-              <img
-                src="/assets/home/as-seen-on/groundup-sandbox-logo.svg"
-                alt="ground-up-sandbox"
-                draggable={false}
-              />
+              <Link href="https://www.facebook.com/858856821171144/videos/3627819660607949">
+                <a target="_blank">
+                  <img
+                    src="/assets/home/as-seen-on/startupx-logo.svg"
+                    alt="startupx-logo"
+                    draggable={false}
+                  />
+                </a>
+              </Link>
+              <Link href="https://www.beritaharian.sg/setempat/forum-antarabangsa-galak-keharmonian-bersatu-padu-akan-diadakan-lagi">
+                <a target="_blank">
+                  <img
+                    src="/assets/home/as-seen-on/berita-harian-logo.svg"
+                    alt="berita-harian-logo"
+                    draggable={false}
+                  />
+                </a>
+              </Link>
+              <Link href="https://www.groundupcentral.sg/groundup-sandbox-innovators">
+                <a target="_blank">
+                  <img
+                    src="/assets/home/as-seen-on/groundup-sandbox-logo.svg"
+                    alt="ground-up-sandbox"
+                    draggable={false}
+                  />
+                </a>
+              </Link>
             </div>
             <div className={classes.missionUnitePitch}>
               <iframe src="https://www.youtube.com/embed/qSzoNE07xsU"></iframe>
