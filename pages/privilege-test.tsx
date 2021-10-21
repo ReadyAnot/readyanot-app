@@ -259,9 +259,6 @@ const PrivilegeTest: NextPage<PrivilegeTestProps> = ({ questions }) => {
       <Typography className={classes.scoreText}>
         {questionStates.filter((el) => !Boolean(el)).length}
       </Typography>
-      <Typography className={classes.endTextMain}>
-        {'Enjoyed the quiz? Do'} <Link href='https://forms.gle/va9kj4Huk8Qp2Cxf6' target="_blank">join us</Link>{' for a conversation about Majority Privilege on 16 Oct, Saturday 2.00pm to 3.30pm!'}
-      </Typography>
       <Typography className={classes.endText}>
         {'If you’re curious, the scores can range from 0 to 50, and a higher score represents typically having more privilege in life.'}
       </Typography>
