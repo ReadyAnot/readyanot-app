@@ -266,6 +266,9 @@ const PrivilegeTest: NextPage<PrivilegeTestProps> = ({ questions }) => {
         {'Of course, a simple quiz is not indicative of the nuance of your lived experience, but we hope you gained a better understanding of how different the experiences of others can be when belonging to a majority or minority group of anything: race, religion, gender, etc.'}
       </Typography>
       <Typography className={classes.endText}>
+        {'Do join us at our upcoming Candid Conversation session on 15 Dec, 8.00pm to 9.30pm'} <Link href='https://forms.gle/QQ6GxgF2sZ3Pon6s7' target="_blank">here</Link> 
+      </Typography>
+      <Typography className={classes.endText}>
         {'Do also follow us on our Instagram'} <Link href='https://instagram.com/candid.sg' target="_blank">@candid.sg</Link> {'or get in touch with us at hello@candid.sg'}
       </Typography>
       <Button onClick={clearQuestionStates} variant="contained" color="primary">
